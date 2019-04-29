@@ -98,6 +98,8 @@ public class IllegalHistoryPreference extends XPreference {
         return null;
     }
 
+
+    
     //-------------------------------------------------------------------------------------------------------------
 
     private static class TimeStampWithJCItem {
