@@ -13,6 +13,7 @@ public class Inspector implements Serializable {
 	private String lhh;
 	private String companyName;
 	private String address;
+	private String zfzh2;
 	private double tempLat;
 	private double tempLng;
 
@@ -113,4 +114,11 @@ public class Inspector implements Serializable {
 		this.companyName = companyName;
 	}
 
+	public String getZfzh2() {
+		return zfzh2;
+	}
+
+	public void setZfzh2(String zfzh2) {
+		this.zfzh2 = zfzh2;
+	}
 }

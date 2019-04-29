@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.miu360.inspect"
     android:versionCode="20180912"
-    android:versionName="1.0.8"> <!-- 0.9.9 1.0.4 -->
+    android:versionName="1.0.9"> <!-- 0.9.9 1.0.4 -->
 
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

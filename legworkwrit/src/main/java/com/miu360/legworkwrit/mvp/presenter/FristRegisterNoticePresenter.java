@@ -67,6 +67,7 @@ public class FristRegisterNoticePresenter extends BasePresenter<FristRegisterNot
     private String[] allAgencyAddress;
     private String[] allAgencyPhone;
     private String[] allPark;
+    private List<Park> allParkList;//停车场列表
     private Activity activity;
     private Date sTime;//文书开始时间
     private Map<String,Integer> updateMap = new HashMap<>();
@@ -263,12 +264,12 @@ public class FristRegisterNoticePresenter extends BasePresenter<FristRegisterNot
         if(listResult == null){
             return;
         }
+        allParkList = listResult;
         List<String> allParkName = new ArrayList<>(listResult.size());
 
         for (Park park : listResult) {
             allParkName.add(park.getName());
         }
-
         allPark = UIUtils.listToArray(allParkName);
     }
 
@@ -282,7 +283,8 @@ public class FristRegisterNoticePresenter extends BasePresenter<FristRegisterNot
         Windows.singleChoice(activity, "选择检查区域", allPark, new CommonDialog.OnDialogItemClickListener() {
             @Override
             public void dialogItemClickListener(int position) {
-                textView.setText(allPark[position]);
+                //textView.setText(allPark[position]);
+                mRootView.setPark(allParkList.get(position));
             }
         });
     }

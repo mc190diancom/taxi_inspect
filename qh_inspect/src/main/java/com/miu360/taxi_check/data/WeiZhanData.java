@@ -95,7 +95,10 @@ import com.miu360.taxi_check.model.groupName;
 import com.miu30.common.ui.entity.queryZFRYByDWMC;
 import com.miu360.taxi_check.util.JacksonUtil;
 
+import android.text.TextUtils;
 import android.util.Log;
+
+import org.json.JSONObject;
 
 public class WeiZhanData extends BaseData {
 	private final static String TAG = "HistoryData";
@@ -2234,7 +2237,16 @@ public class WeiZhanData extends BaseData {
 			String res = HttpRequest.sendPost(Config.SERVER_TAXIINFO, param);
 			ELog.d(TAG, "res:" + res);
 			//result = HtmlDataEweiweima.getCarInfo(res);
-			result.setData(res);
+			if(TextUtils.isEmpty(res)){
+				result.setError(-1);
+				result.setErrorMsg("证件二维码错误");
+			}else{
+				JSONObject jObj = new JSONObject(res);
+				result.setError(jObj.optInt("error", 0));
+				result.setErrorMsg(jObj.optString("errorMsg"));
+				result.setData(res);
+			}
+
 		} catch (Throwable e) {
 			e.printStackTrace();
 			result.setError(-1);

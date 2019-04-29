@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.config.Config;
@@ -21,6 +22,7 @@ import com.miu30.common.ui.entity.DriverInfo;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu30.common.util.ClearEditText;
 import com.miu30.common.util.FullListView;
+import com.miu30.common.util.UIUtils;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;
 import com.miu360.legworkwrit.di.component.DaggerDetainCarDecideComponent;
@@ -31,6 +33,7 @@ import com.miu360.legworkwrit.mvp.model.entity.AgencyInfo;
 import com.miu360.legworkwrit.mvp.model.entity.DetainCarDecideQ;
 import com.miu360.legworkwrit.mvp.model.entity.LiveCheckRecordQ;
 import com.miu360.legworkwrit.mvp.model.entity.ParentQ;
+import com.miu360.legworkwrit.mvp.model.entity.Park;
 import com.miu360.legworkwrit.mvp.presenter.DetainCarDecidePresenter;
 import com.miu360.legworkwrit.mvp.ui.adapter.CarInfoAdapter;
 import com.miu360.legworkwrit.util.DialogUtil;
@@ -175,6 +178,8 @@ public class DetainCarDecideActivity extends BaseInstrumentActivity<DetainCarDec
     CarInfoAdapter mAdapter;
 
     CarInfoAdapter mAdapter2;
+
+    private Park park;//选中的停车场
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -407,10 +412,18 @@ public class DetainCarDecideActivity extends BaseInstrumentActivity<DetainCarDec
         } else {
             detainCarDecideQ.setCLSYR(etLitigant.getText().toString());
         }
-        detainCarDecideQ.setTCCMC(tvChoosePark.getText().toString());
+
         detainCarDecideQ.setJGDH(tvAgencyPhone.getText().toString());
         detainCarDecideQ.setJGDD(tvAgencyAddress.getText().toString());
         detainCarDecideQ.setQSRQZ("");
+        if(park == null || TextUtils.isEmpty(park.getId())){
+            detainCarDecideQ.setTCCID("");
+            detainCarDecideQ.setTCCMC(tvChoosePark.getText().toString());
+        }else{
+            detainCarDecideQ.setTCCID(park.getId());
+            detainCarDecideQ.setTCCMC(tvChoosePark.getText().toString());
+        }
+
         String endtime;
         if (rbtnYes.isChecked()) {
             detainCarDecideQ.setZFSJ(String.valueOf(TimeTool.parseDate(tvInstrumentSendDate.getText().toString()).getTime() / 1000));
@@ -585,6 +598,7 @@ public class DetainCarDecideActivity extends BaseInstrumentActivity<DetainCarDec
 
         }
         setViewTime(info);
+        park = new Park(info.getTCCID(),info.getTCCMC());
         tvDeductionAddress.setText(info.getJDDD());
         if (!TextUtils.isEmpty(info.getCLSYR()) && info.getCLSYR().equals(info.getDSR())) {
             tvCarOwner.setText("当事人本人");
@@ -707,6 +721,12 @@ public class DetainCarDecideActivity extends BaseInstrumentActivity<DetainCarDec
     public void getID(String id) {
         if(TextUtils.isEmpty(id) || "null".equals(id)) return;
         this.instrumentID = id;
+    }
+
+    @Override
+    public void setPark(Park park) {
+        tvChoosePark.setText(park.getName());
+        this.park = park;
     }
 
     @Override

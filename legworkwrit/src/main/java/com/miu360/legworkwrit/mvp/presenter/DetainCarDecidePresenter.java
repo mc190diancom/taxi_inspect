@@ -69,6 +69,7 @@ public class DetainCarDecidePresenter extends BasePresenter<DetainCarDecideContr
     private Activity activity;
 
     private String[] allPark;
+    private List<Park> allParkList;//停车场列表
     private String[] allCarOwner = {"其他", "当事人本人"};
     private String[] allViolationContent = {"非法客运", "国道条"};
     private String[] itemFour = {"从事", "组织从事"};
@@ -244,7 +245,7 @@ public class DetainCarDecidePresenter extends BasePresenter<DetainCarDecideContr
 
     private void setListToArray1(List<Park> parks){
         List<String> allParkName = new ArrayList<>(parks.size());
-
+        allParkList = parks;
         for (Park park : parks) {
             allParkName.add(park.getName());
         }
@@ -278,7 +279,8 @@ public class DetainCarDecidePresenter extends BasePresenter<DetainCarDecideContr
         Windows.singleChoice(activity, "选择检查区域", allPark, new CommonDialog.OnDialogItemClickListener() {
             @Override
             public void dialogItemClickListener(int position) {
-                textView.setText(allPark[position]);
+                //textView.setText(allPark[position]);
+                mRootView.setPark(allParkList.get(position));
             }
         });
     }

@@ -570,6 +570,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 		if (Inspectors != null) {
 			people_one = Inspectors.getZfry1();
 			people_two = Inspectors.getZfry2();
+			zfzh2 = Inspectors.getZfzh2();
 			SimpleDateFormat sf = new SimpleDateFormat(datePatterShow);
 			Date d = null;
 			try {
@@ -1841,6 +1842,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 				if (pref.getString("user_name_update_info", null).contains(prez.getString("zfry1", null))) {
 					people_one = pref.getString("user_name_update_info", null);
 					people_two = prez.getString("zfry2", null);
+					zfzh2 = prez.getString("zfzh2", null);
 				}
 			}
 			time = (System.currentTimeMillis() / 1000) + "";
@@ -2657,6 +2659,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 		zhiFaJianChaModel.setPERSON_NAME(people_one + "," + people_two);
 		zhiFaJianChaModel.setPERSON_CODE(new UserPreference(self).getString("user_name", ""));
 		zhiFaJianChaModel.setCREATE_USER_CODE(new UserPreference(self).getString("user_name", ""));
+		zhiFaJianChaModel.setZFZH2(zfzh2);
 
 		return zhiFaJianChaModel;
 
@@ -3465,6 +3468,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 		inspector.setDriveName(driver_name_et.getText().toString());
 		inspector.setZfry1(people_one);
 		inspector.setZfry2(people_two);
+		inspector.setZfzh2(zfzh2);
 		if (TextUtils.isEmpty(law_time)) {
 			SimpleDateFormat f = new SimpleDateFormat(datePatterShow);
 			Date date = new Date();

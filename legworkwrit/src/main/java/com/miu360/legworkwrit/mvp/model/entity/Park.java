@@ -30,6 +30,14 @@ public class Park {
         this.name = name;
     }
 
+    public Park(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Park() {
+    }
+
     @Override
     public String toString() {
         return "Park{" +

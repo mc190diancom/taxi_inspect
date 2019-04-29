@@ -156,6 +156,7 @@ public class PopWindowDialog extends Dialog implements android.view.View.OnClick
 			if(!TextUtils.isEmpty(inspector.getZfry2())){
 				zhifa_renyuan_one.setText(inspector.getZfry1());
 				zhifa_renyuan_two.setText(inspector.getZfry2());
+				zfzh2 = inspector.getZfzh2();
 			}else{
 				if(zfry2name!=null){
 					ELog.d("pop", "dialog:" + "进入");
@@ -526,8 +527,6 @@ public class PopWindowDialog extends Dialog implements android.view.View.OnClick
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			Log.e("时间", time + "");
-			Log.e("时间", d.getTime() + "");
 			zhifa_time.setTag(d.getTime());
 			zhifa_time.setText(new SimpleDateFormat(datePatterShow).format(new Date(d.getTime())));
 		}
@@ -583,7 +582,6 @@ public class PopWindowDialog extends Dialog implements android.view.View.OnClick
 	}
 
 	public void PopunRegisterMsgReceiver() {
-		Log.e("broadcast", "broadcast出");
 		if (broadcast != null) {
 			context.unregisterReceiver(broadcast);
 		}

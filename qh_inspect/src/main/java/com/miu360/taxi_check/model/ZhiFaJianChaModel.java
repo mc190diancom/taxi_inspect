@@ -138,7 +138,7 @@ public class ZhiFaJianChaModel {
 
 	private String IS_PUNISHMENT;
 
-
+	private String ZFZH2;
 
 	public void setADDRESS(String aDDRESS) {
 		ADDRESS = aDDRESS;
@@ -508,4 +508,11 @@ public class ZhiFaJianChaModel {
 		return this.IS_PUNISHMENT;
 	}
 
+	public String getZFZH2() {
+		return ZFZH2;
+	}
+
+	public void setZFZH2(String ZFZH2) {
+		this.ZFZH2 = ZFZH2;
+	}
 }

@@ -29,6 +29,7 @@ import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.model.entity.AgencyInfo;
 import com.miu360.legworkwrit.mvp.model.entity.FristRegisterQ;
 import com.miu360.legworkwrit.mvp.model.entity.ParentQ;
+import com.miu360.legworkwrit.mvp.model.entity.Park;
 import com.miu360.legworkwrit.mvp.presenter.FristRegisterNoticePresenter;
 import com.miu360.legworkwrit.mvp.ui.adapter.CarInfoAdapter;
 import com.miu360.legworkwrit.util.DialogUtil;
@@ -182,6 +183,7 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
     CarInfoAdapter mAdapter;
 
     private List<String> mCards;
+    private Park park;//选中的停车场
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -447,13 +449,13 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
             mCards.add("其他");
         }
         tvCardInfo.setText(TextUtils.isEmpty(cardName) ? "车牌号码" : cardName.substring(0, cardName.length() - 1));
-
+        park = new Park(info.getTCCID(),info.getTCCMC());
         tvChoosePark.setText(info.getTCCMC());
         tvAgencyAddress.setText(info.getJGDD());
         tvAgencyPhone.setText(info.getJGDH());
         setViewTime(info);
 
-        if (info.getCLSYR().equals(info.getDSR())) {
+        if (!TextUtils.isEmpty(info.getCLSYR()) && info.getCLSYR().equals(info.getDSR())) {
             tvCarOwner.setText("当事人本人");
             llContainerCarOwner.setVisibility(View.GONE);
         } else {
@@ -548,7 +550,6 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
         register.setDLYSZ(llContainerCardTransport.getVisibility() == View.VISIBLE ? etCardTransport.getText().toString() : "");
         register.setKYBZP(llContainerCardFlag.getVisibility() == View.VISIBLE ? etCardFlag.getText().toString() : "");
 
-        register.setTCCMC(tvChoosePark.getText().toString());
         register.setJGDD(tvAgencyAddress.getText().toString());
         register.setJGDH(tvAgencyPhone.getText().toString());
 
@@ -581,6 +582,17 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
         register.setZID(mCase.getID());
         register.setXZJGSJ(GetUTCUtil.setEndTime(tvWriteTime.getHint().toString(), endTime, Config.UTC_FRISTREGISTER));
         register.setQSSJ(GetUTCUtil.setEndTime(tvWriteTime.getHint().toString(), endTime, Config.UTC_FRISTREGISTER));
+        if(llCarPark.getVisibility() == View.GONE  || park == null){
+            register.setTCCID("");
+            register.setTCCMC("");
+        }else if(TextUtils.isEmpty(park.getId())){
+            register.setTCCID("");
+            register.setTCCMC(tvChoosePark.getText().toString());
+        }else{
+            register.setTCCID(park.getId());
+            register.setTCCMC(tvChoosePark.getText().toString());
+        }
+
         register.setID(instrumentID);
         register.setZH(mCase.getZH());
         register.setZFZH1(mCase.getZFZH1());
@@ -664,6 +676,12 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
     public void getID(String id) {
         if (TextUtils.isEmpty(id) || "null".equals(id)) return;
         this.instrumentID = id;
+    }
+
+    @Override
+    public void setPark(Park park) {
+        tvChoosePark.setText(park.getName());
+        this.park = park;
     }
 
     @Override

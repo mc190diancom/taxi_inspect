@@ -63,6 +63,7 @@ public class DetainCarDecideQ extends ParentQ {
     private String QSRQZ;
     private String QSSJ;
     private String ZID;
+    private String TCCID;
 
     public String getID() {
         return ID;
@@ -272,6 +273,14 @@ public class DetainCarDecideQ extends ParentQ {
         this.ZID = ZID;
     }
 
+    public String getTCCID() {
+        return TCCID;
+    }
+
+    public void setTCCID(String TCCID) {
+        this.TCCID = TCCID;
+    }
+
     public DetainCarDecideQ() {
     }
 
@@ -309,6 +318,7 @@ public class DetainCarDecideQ extends ParentQ {
         dest.writeString(this.QSRQZ);
         dest.writeString(this.QSSJ);
         dest.writeString(this.ZID);
+        dest.writeString(this.TCCID);
     }
 
     protected DetainCarDecideQ(Parcel in) {
@@ -339,6 +349,7 @@ public class DetainCarDecideQ extends ParentQ {
         this.QSRQZ = in.readString();
         this.QSSJ = in.readString();
         this.ZID = in.readString();
+        this.TCCID = in.readString();
     }
 
     public static final Creator<DetainCarDecideQ> CREATOR = new Creator<DetainCarDecideQ>() {
@@ -352,5 +363,4 @@ public class DetainCarDecideQ extends ParentQ {
             return new DetainCarDecideQ[size];
         }
     };
-
 }

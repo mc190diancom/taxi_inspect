@@ -96,6 +96,7 @@ public class FristRegisterQ extends ParentQ {
     private String KYBZP_BZ;
     private String QT;
     private String QT_BZ;
+    private String TCCID;
 
     public String getZH() {
         return ZH;
@@ -428,6 +429,14 @@ public class FristRegisterQ extends ParentQ {
         this.QT_BZ = QT_BZ;
     }
 
+    public String getTCCID() {
+        return TCCID;
+    }
+
+    public void setTCCID(String TCCID) {
+        this.TCCID = TCCID;
+    }
+
 
     @Override
     public int describeContents() {
@@ -479,6 +488,7 @@ public class FristRegisterQ extends ParentQ {
         dest.writeString(this.KYBZP_BZ);
         dest.writeString(this.QT);
         dest.writeString(this.QT_BZ);
+        dest.writeString(this.TCCID);
     }
 
     protected FristRegisterQ(Parcel in) {
@@ -525,6 +535,7 @@ public class FristRegisterQ extends ParentQ {
         this.KYBZP_BZ = in.readString();
         this.QT = in.readString();
         this.QT_BZ = in.readString();
+        this.TCCID = in.readString();
     }
 
     public static final Creator<FristRegisterQ> CREATOR = new Creator<FristRegisterQ>() {

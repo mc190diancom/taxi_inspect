@@ -68,6 +68,7 @@
             android:layout_weight="1"
             android:background="@drawable/weizhang_long"
             android:gravity="center"
+            android:enabled="false"
             android:hint="请输入执法人员"
             android:textColor="#303030"
             android:textSize="14sp" />
