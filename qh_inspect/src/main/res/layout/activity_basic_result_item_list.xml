@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_id"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="行为ID"
+            android:textColor="#00acef"
+            android:textSize="14sp" />
+
+         <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_leibie"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="检查类别"
+            android:textColor="#00acef"
+            android:textSize="14sp" />
+        
+        
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_daima"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:gravity="center"
+            android:text="检查编码"
+            android:textColor="#00acef"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_neirong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="检查内容"
+            android:textColor="#00acef"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="#dddddd" />
+    <include layout="@layout/common_list" />
+
+</LinearLayout>

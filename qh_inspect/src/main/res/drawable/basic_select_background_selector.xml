@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+     <item android:state_checked="true" android:drawable="@drawable/separation_line_short"/>    
+    <item  android:drawable="@drawable/separation_line_basic"/>
+
+</selector>

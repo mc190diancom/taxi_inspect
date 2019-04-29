@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/legwork_header" />
+
+    <RadioGroup
+        android:id="@+id/rg_writ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_no1"
+            style="@style/RadioButtonStyle"
+            android:text="@string/live_check_record2"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view1"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no2"
+            style="@style/RadioButtonStyle"
+            android:text="@string/register_notice"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view2"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no3"
+            style="@style/RadioButtonStyle"
+            android:text="@string/detain_car_form"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view3"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no4"
+            style="@style/RadioButtonStyle"
+            android:text="@string/live_transcript"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view4"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no5"
+            style="@style/RadioButtonStyle"
+            android:text="@string/talk_notice"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view5"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no6"
+            style="@style/RadioButtonStyle"
+            android:text="@string/detain_car_decide"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view6"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/rb_no7"
+            style="@style/RadioButtonStyle"
+            android:text="@string/administrative_punish_decide"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view7"
+            style="@style/FullCommonLineStyle"
+            android:visibility="gone"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_print"
+        style="@style/SureButtonStyle"
+        android:text="@string/print" />
+</LinearLayout>

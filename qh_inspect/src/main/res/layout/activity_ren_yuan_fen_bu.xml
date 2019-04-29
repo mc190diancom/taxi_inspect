@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:clickable="true" />
+
+    <LinearLayout
+        android:id="@+id/ll_show_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fenbu_background"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/choose"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="大队"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="#dddddd" />
+
+            <EditText
+                android:id="@+id/car_number_two"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="请输入要查询的大队名称"
+                android:padding="5dp"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="#dddddd" />
+
+            <ImageButton
+                android:id="@+id/search_btn"
+                android:layout_width="22dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/search_fenbu" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/show_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_show_location"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone" >
+    </ListView>
+
+    <LinearLayout 
+        android:id="@+id/ll_bottom_renyuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/image_yujing_above"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/xiangxiazhankai" 
+            android:visibility="gone" />
+	    <LinearLayout
+	        android:id="@+id/ll_bottom_renyuans"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
+	        android:orientation="horizontal"
+	        android:padding="10dp" >
+	        <ImageView
+	            android:layout_width="20dp"
+	            android:layout_height="20dp"
+	            android:src="@drawable/zhifarenyuan"
+	            android:visibility="gone" />
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="5dp"
+	            android:gravity="center"
+	            android:text="当前执法人员数量为："
+	            android:textSize="14sp" />
+	
+	        <TextView
+	            android:id="@+id/renyuan_number"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:text="24"
+	            android:textSize="14sp" />
+	     </LinearLayout>
+	        <ListView
+	           android:id="@+id/list_RenYuanDetails"
+	           android:layout_width="match_parent"
+	           android:layout_height="match_parent"
+	           android:visibility="gone" >
+	       </ListView>
+	 </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_reduce_map"
+        android:layout_width="35dp"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ditu_background"
+        android:orientation="vertical" >
+
+       <ImageButton
+           android:id="@+id/add_map"
+           android:layout_width="wrap_content"
+           android:layout_height="35dp"
+           android:layout_gravity="center"
+           android:background="@android:color/transparent"
+           android:src="@drawable/jia_ditu" />
+
+       <View
+           android:layout_width="wrap_content"
+           android:layout_height="1dp"
+           android:background="@drawable/ditu_sepration" />
+
+       <ImageButton
+           android:id="@+id/reduce_map"
+           android:layout_width="wrap_content"
+           android:layout_height="35dp"
+           android:layout_gravity="center"
+           android:background="@android:color/transparent"
+           android:src="@drawable/jian_ditu" />
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/aim_location_return"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/ditu_background"
+        android:src="@drawable/dingwei_hangye" />
+</RelativeLayout>

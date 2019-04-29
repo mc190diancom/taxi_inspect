@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <include layout="@layout/legwork_header" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/industry" />
+
+        <TextView
+            android:id="@+id/tv_industry"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/industry_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/license" />
+
+        <EditText
+            android:id="@+id/et_car_license"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_license_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="开始时间" />
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="请选择开始时间" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="结束时间" />
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="请选择结束时间" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <Button
+        android:id="@+id/btn_search"
+        style="@style/SureButtonStyle"
+        android:text="@string/search" />
+</LinearLayout>

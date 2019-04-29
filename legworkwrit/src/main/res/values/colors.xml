@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--日期控件-->
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="pickerview_bgColor_overlay">#60000000</color>
+
+    <color name="colorFF3939">#FF3939</color>
+    <color name="colorPrimary">#3FA862</color>
+    <color name="colorPrimaryDark">#3FA862</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_blue">#41C3D6</color>
+    <color name="dark_gray">#333333</color>
+    <color name="gray">#E3E3E3</color>
+    <color name="divide_color">#dddddd</color>
+    <color name="title_btn_color">#B2f8f8f8</color>
+    <color name="color999">#999999</color>
+    <color name="color333">#333333</color>
+    <color name="lucency">#00000000</color>
+    <color name="gray_white">#d3d3d3</color>
+    <color name="blue_64">#ff0064d2</color>
+    <color name="red98">#ffff9899</color>
+    <color name="bg_color">#eeeeee</color>
+    <color name="black">#000000</color>
+    <color name="redfb29">#FB2929</color>
+    <color name="redff33">#FF3333</color>
+    <color name="gradD6">#D6D6D6</color>
+    <color name="gradcb">#ffcbcbcb</color>
+
+
+</resources>

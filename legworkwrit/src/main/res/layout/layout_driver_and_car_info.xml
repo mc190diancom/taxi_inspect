@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/driver_and_car_info" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/driver_name" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/driver_name_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_license" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_license_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_color" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_color_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_model" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_model_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/brand_model" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/brand_model_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/frame_number" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/frame_number_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/kilometers" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/kilometers_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+</LinearLayout>

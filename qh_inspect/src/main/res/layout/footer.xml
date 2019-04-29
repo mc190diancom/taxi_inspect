@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="48dip"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/left_btn_foot"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="28px"
+        android:layout_weight="2"
+        android:background="@drawable/weizhang_enforcement"
+        android:text="转执法稽查"
+        android:textColor="#ffffff"
+        android:textSize="15sp" 
+        />
+
+    <Button
+        android:id="@+id/center_btn_foot"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="28px"
+        android:layout_weight="2"
+        android:background="@drawable/weizhang_enforcement"
+        android:text="转轨迹查询"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/right_btn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@drawable/weizhang_query"
+        android:text="返回"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/legwork_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/web_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_print"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/print_tv_shape"
+            android:gravity="center"
+            android:text="@string/print"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_current_choose_printer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前连接的打印机：无"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</LinearLayout>

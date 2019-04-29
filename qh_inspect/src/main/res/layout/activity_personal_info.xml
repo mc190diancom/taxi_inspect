@@ -1,0 +1,173 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ededed"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/image_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="证件头像"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/header"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/mine_image_short" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/next_big" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="执法证号"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/zhifa_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="5845622122"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="手机号"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="13985695842"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="性别"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="男"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="所属区域"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/area_belong"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="北京二执法大队"
+                android:textColor="#303030"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

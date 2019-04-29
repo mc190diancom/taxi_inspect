@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#ededed" />
+
+        <TextView
+            android:id="@+id/tv_chepai"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="车牌" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="25dp"
+            android:background="#ededed" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="车牌" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="25dp"
+            android:background="#ededed" />
+
+        <TextView
+            android:id="@+id/tv_yujing"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="车牌" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#ededed" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ededed" />
+
+</LinearLayout>

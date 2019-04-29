@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        >
+
+        <SurfaceView
+            android:id="@+id/surfaceViwes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/idcard_rightlyaouts"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:visibility="visible" >
+        </SurfaceView>
+        
+
+
+        <ImageView
+            android:id="@+id/backimageViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/idcard_rightlyaouts"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:visibility="invisible"/>
+
+
+        <RelativeLayout
+            android:id="@+id/idcard_rightlyaouts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/white"
+            >
+
+
+            <ImageButton
+                android:id="@+id/reset_btns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/reset"
+                android:visibility="invisible" />
+
+
+            <ImageButton
+                android:id="@+id/backbtns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/backcamare"/>
+            
+            
+            <TextView android:id="@+id/back_and_reset_texts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/backbtns"
+                android:text="返回"
+                android:textSize="13dip"
+                />
+            
+
+            <ImageButton
+                android:id="@+id/takepic_btns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+				android:layout_below="@+id/backbtns"
+				android:layout_marginTop="20dip"
+				android:background="@drawable/takepic"
+				/>
+            
+
+            <ImageButton
+                android:id="@+id/confirm_btns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+				android:layout_below="@+id/backbtns"
+				android:layout_marginTop="20dip"
+				android:background="@drawable/recognition"
+                android:visibility="invisible"/>            
+
+            <TextView android:id="@+id/take_and_confirm_texts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/confirm_btns"
+                android:text="拍照"
+                android:textSize="13dip"/>            
+
+            <ImageButton
+                android:id="@+id/lightons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+				android:layout_below="@+id/confirm_btns"
+				android:layout_marginTop="20dip"
+				android:background="@drawable/lighton"
+                android:visibility="visible" />
+            
+
+            <ImageButton
+                android:id="@+id/lightoffs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+				android:layout_below="@+id/confirm_btns" 
+				android:layout_marginTop="20dip"  
+				android:background="@drawable/lightoff"          
+                android:visibility="invisible"/>
+            
+            <TextView android:id="@+id/light_on_off_texts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lightoffs"
+                android:layout_centerHorizontal="true"
+                android:text="开闪光灯"
+                android:textSize="13dip"
+                />
+            
+            <ImageButton
+                android:id="@+id/cutons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lightoffs" 
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dip"
+                android:visibility="invisible"
+                android:background="@drawable/cuton"
+                />    
+                
+            <ImageButton
+                android:id="@+id/cutoffs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lightoffs" 
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/cutoff"
+                />   
+                
+            <TextView android:id="@+id/cut_on_off_texts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cutoffs"
+                android:layout_centerHorizontal="true"
+                android:text="关闭裁切"
+                android:textSize="13dip"                
+                />            
+            
+        </RelativeLayout>
+        
+        <ImageView android:id="@+id/toplefts1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageView android:id="@+id/toprights1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />        
+        
+        <ImageView android:id="@+id/bottomlefts1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageView android:id="@+id/bottomrights1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />     
+            
+        <ImageView android:id="@+id/leftcuts1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        
+		<ImageView android:id="@+id/rightcuts1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        
+    </RelativeLayout>
+
+</FrameLayout>

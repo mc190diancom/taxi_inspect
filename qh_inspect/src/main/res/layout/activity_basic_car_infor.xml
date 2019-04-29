@@ -1,0 +1,526 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="车辆信息"
+            android:textColor="@color/jiean_btn_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/path_query_tv"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
+            android:text="轨迹查询"
+            android:textColor="@color/jiean_btn_color"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/separation_line_short" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <include layout="@layout/mybackground_three" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="车        号"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/number_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="京B5896"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="所属公司"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="首汽公司"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="厂        牌"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/company_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="XXX"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="车辆类型"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/type_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="小客车"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="车辆型号"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/model_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="上海大众"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="车身颜色"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/color_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="白色"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="单  双  班"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/dan_shuang_ban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="单班"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="营运证号"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/operating_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="545415223"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="车  架  号"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/frame_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="52223614"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="行驶里程"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/travel_mileage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="58458万公里"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="经营许可证"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/permit_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="京589522"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="运营状态"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="正常运营"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="行驶证编号"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_two" />
+
+                <TextView
+                    android:id="@+id/driving_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="589852522320"
+                    android:textColor="@color/basic_car_info_color"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/mybackground_four" />
+            </LinearLayout>
+
+            <include layout="@layout/mybackground_one" />
+
+            <include layout="@layout/footer" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

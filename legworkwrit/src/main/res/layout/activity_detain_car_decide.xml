@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <include layout="@layout/legwork_header" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:maxLines="1"
+                    android:text="@string/litigant_with_holder" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_litigant"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/litigante_hint"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="扣押依据&#8195;" />
+
+                <TextView
+                    android:id="@+id/tv_violation_content"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="@string/violation_content_hint"
+                    android:text="非法客运" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_step_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="13.5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="因当事人涉嫌未经许可擅自"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_step_organizations"
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_width="140dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_rectangle"
+                        android:drawableEnd="@drawable/ic_down"
+                        android:gravity="center"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="13.5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_step_industry"
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_width="110dp"
+                        android:layout_height="21dp"
+                        android:background="@drawable/bg_rectangle"
+                        android:drawableEnd="@drawable/ic_down"
+                        android:gravity="center"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="网络预约"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_marginStart="10dp"
+                        android:text="出租汽车客运经营，根据《北京市查处"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="13.5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="非法客运若干规定》"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_step_type"
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_width="85dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_rectangle"
+                        android:drawableEnd="@drawable/ic_down"
+                        android:gravity="center"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="第四条"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_marginStart="10dp"
+                        android:text="的规定。"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_step_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="13.5dp"
+                android:lineSpacingExtra="13.5dp"
+                android:text="@string/step2"
+                android:textColor="@color/color333"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/litigant_address" />
+
+                <TextView
+                    android:id="@+id/tv_litigant_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/please_input_litigant_address"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_current_address_with_litigant"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="扣车地址&#8195;" />
+
+                <TextView
+                    android:id="@+id/tv_deduction_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/deduction_address_hint"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_current_address_with_deducation"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_height="wrap_content"
+                    android:text="扣车时间&#8195;" />
+
+                <TextView
+                    android:id="@+id/tv_deducation_time"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="请选择扣车时间" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="车&#160;&#160;牌&#160;&#160;号&#8195;" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_license"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/car_license_hint"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <com.miu30.common.util.FullListView
+                android:id="@+id/list_show_car_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:visibility="gone" >
+            </com.miu30.common.util.FullListView>
+
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="车辆品牌&#8195;" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_brand"
+                    style="@style/CommonContentEditTextStyle"
+                    android:ellipsize="end"
+                    android:hint="@string/car_brand_hint"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="车身颜色&#8195;" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_color"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/car_color_hint"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="车辆类型&#8195;" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_model"
+                    style="@style/CommonContentEditTextStyle"
+                    android:ellipsize="end"
+                    android:hint="@string/car_type_hint"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="车&#160;&#160;架&#160;&#160;号&#8195;" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_frame"
+                    style="@style/CommonContentEditTextStyle"
+                    android:ellipsize="end"
+                    android:hint="@string/car_frame_number_hint"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_car_info2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_info2" />
+
+                    <TextView
+                        android:id="@+id/tv_car_info2"
+                        style="@style/CommonContentTextViewWithDropDownStyle"
+                        android:text="选填"
+                        android:textColor="@color/redff33"/>
+
+                </LinearLayout>
+
+                <View style="@style/CommonLineStyle" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_decide_car_item"/>
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_height="wrap_content"
+                    android:text="@string/car_owner" />
+
+                <TextView
+                    android:id="@+id/tv_car_owner"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:text="其他" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_car_owner"
+                style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="占位信息啊"
+                    android:visibility="invisible" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_owner_name"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/please_input_car_owner"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider_car_owner"
+                style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_height="wrap_content"
+                    android:text="@string/park" />
+
+                <TextView
+                    android:id="@+id/tv_choose_park"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:ellipsize="end"
+                    android:hint="@string/park_hint"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="机关地址&#8195;" />
+
+                <TextView
+                    android:id="@+id/tv_agency_address"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:ellipsize="end"
+                    android:hint="请输入机关地址"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="机关电话&#8195;" />
+
+                <TextView
+                    android:id="@+id/tv_agency_phone"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="请输入机关电话"
+                    android:inputType="number"
+                    android:maxLength="11" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <RadioGroup
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:checkedButton="@+id/rbtn_yes">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="文书是否送达" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/no" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_instrument_send_date"
+                style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_height="wrap_content"
+                    android:text="文书送达日期" />
+
+                <TextView
+                    android:id="@+id/tv_instrument_send_date"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="请选择送达日期" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_instrument_send_date"
+                style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="21dp"
+                android:paddingTop="25dp">
+
+                <Button
+                    android:id="@+id/btn_preview"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_weight="1"
+                    android:text="@string/preview" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/save" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

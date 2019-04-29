@@ -1,0 +1,160 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dddddd"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/leibie_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="检查类别"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/check_leibie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/weizhang_long"
+                    android:drawableRight="@drawable/weizhang_next"
+                    android:gravity="center_vertical"
+                    android:hint="请选择检查类别"
+                    android:paddingLeft="10dp"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="代       码"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/leibie_daima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center_vertical"
+                    android:hint="请输入代码"
+                    android:paddingLeft="10dp"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="检查内容"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/leibie_neirong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center_vertical"
+                    android:hint="请输入检查内容"
+                    android:paddingLeft="10dp"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/leibie_hide"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/weizhang_query"
+                android:gravity="center"
+                android:text="隐藏"
+                android:textColor="#ffffff"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/leibie_query"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/weizhang_query"
+                android:gravity="center"
+                android:text="查询"
+                android:textColor="#ffffff"
+                android:textSize="19sp" />
+        </LinearLayout>
+       
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#fff"
+        android:orientation="vertical" >
+ <include layout="@layout/checkitemleibieadapterheader"/>
+
+        <include layout="@layout/common_list" />
+    </LinearLayout>
+
+</LinearLayout>

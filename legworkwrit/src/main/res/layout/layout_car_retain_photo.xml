@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/car_retain_photo" />
+
+    <TextView
+        android:id="@+id/tv_four_corner_photo_drop"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@android:color/white"
+        android:drawableEnd="@drawable/ic_down"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="@string/four_corner_photo"
+        android:textColor="#666666"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line_corner_photo_drop"
+        style="@style/CommonLineStyle" />
+
+    <LinearLayout
+        android:id="@+id/ll_four_corner_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingBottom="18dp"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@android:color/white"
+                android:contentDescription="@null"
+                android:scaleType="center"
+                android:src="@drawable/ic_add_64" />
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_marginTop="7dp"
+                android:text="@string/car_front_photo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@android:color/white"
+                android:contentDescription="@null"
+                android:scaleType="center"
+                android:src="@drawable/ic_add_64" />
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_marginTop="7dp"
+                android:text="@string/car_after_photo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@android:color/white"
+                android:contentDescription="@null"
+                android:scaleType="center"
+                android:src="@drawable/ic_add_64" />
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_marginTop="7dp"
+                android:text="@string/car_left_photo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@android:color/white"
+                android:contentDescription="@null"
+                android:scaleType="center"
+                android:src="@drawable/ic_add_64" />
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_marginTop="7dp"
+                android:text="@string/car_right_photo" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_car_kilometers_drop"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@android:color/white"
+        android:drawableEnd="@drawable/ic_down"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="@string/car_kilometers"
+        android:textColor="#666666"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line_car_kilometers_drop"
+        style="@style/CommonLineStyle" />
+
+    <LinearLayout
+        android:id="@+id/ll_car_kilometers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="18dp"
+        android:paddingTop="7dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="285dp"
+            android:layout_height="114dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_add_128" />
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_kilometers_photo" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_frame_number_drop"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@android:color/white"
+        android:drawableEnd="@drawable/ic_down"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="@string/car_frame_number"
+        android:textColor="#666666"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line_frame_number_drop"
+        style="@style/CommonLineStyle" />
+
+    <LinearLayout
+        android:id="@+id/ll_frame_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="285dp"
+            android:layout_height="114dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_add_128" />
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_frame_number_photo" />
+    </LinearLayout>
+
+</LinearLayout>

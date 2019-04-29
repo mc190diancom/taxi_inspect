@@ -1,0 +1,392 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:layout_centerInParent="true" >
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:id="@+id/ll_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="60dp"
+            android:background="#a000"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/guiji_shu_new"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/guiji_kong" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/guiji_zhong" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/guiji_shiji_new" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ll_lw_Show"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/ll_hide"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/dianji_show" />
+
+        
+        <LinearLayout
+            android:id="@+id/ll_lw_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/ll_lw_Show"
+            android:background="@drawable/guiji_heng_new"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="规划路线" />
+
+                <ToggleButton
+                    android:id="@+id/toggle_One"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_btn"
+                    android:layout_marginLeft="5dp"
+                    android:checked="true"
+                    android:textOff=""
+                    android:textOn="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="路网匹配" />
+
+                <ToggleButton
+                    android:id="@+id/toggle_Two"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_btn"
+                    android:layout_marginLeft="5dp"
+                    android:checked="true"
+                    android:textOff=""
+                    android:textOn="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_show"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="60dp"
+            android:background="#a000"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/guiji_heng_new"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/guiji_kong"
+                    android:gravity="center_vertical"
+                    android:text="空     车"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/guiji_zhong"
+                    android:gravity="center_vertical"
+                    android:text="载      客"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/guiji_shiji_new"
+                    android:gravity="center_vertical"
+                    android:text="参考轨迹"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/guiji_next"
+                android:drawablePadding="8dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <CheckBox
+            android:id="@+id/chekBox_One"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/guiji_shu_new"
+            android:checked="true"
+            android:text="规划路线"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/chekBox_Two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="路网匹配"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_show_main1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/ll_show_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_carid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@drawable/guiji_qidian_huan"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@drawable/guiji_zhongdian_huan"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingTop="10dp" >
+
+            <TextView
+                android:id="@+id/tv_path"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#fe9900"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_better"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#1c59cc"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_different"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#070707"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+	        android:id="@+id/add_reduce_map"
+	        android:layout_width="35dp"
+	        android:layout_height="71dp"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginBottom="145dp"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/ditu_background"
+	        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/map_add"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/jia_ditu" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@drawable/ditu_sepration" />
+
+        <ImageButton
+            android:id="@+id/map_reduce"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/jian_ditu" />
+    </LinearLayout>
+   <ImageButton
+        android:id="@+id/aim_location"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="145dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ditu_background"
+        android:src="@drawable/dingwei_hangye"/>
+    
+    
+</RelativeLayout>

@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "28.0.3"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.miu360.inspect"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode Integer.parseInt(releaseTime())
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+        multiDexEnabled true
+
+        ndk { abiFilters "armeabi-v7a" }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("qh.key")
+            storePassword "1971214"
+            keyAlias "qh"
+            keyPassword "1971214"
+            v2SigningEnabled false
+        }
+        debug {
+            storeFile file("qh.key")
+            storePassword "1971214"
+            keyAlias "qh"
+            keyPassword "1971214"
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+        inspect_release {
+            buildConfigField "String", "IP", "\"10.252.2.67\""
+            buildConfigField "String", "PORT", "\":9875/\""
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    if (buildType.name == inspect_release) {
+                        // 输出apk名称为app_v1.0_2015-xx-xx_xxxx.apk
+                        outputFileName = "出租稽查正式${buildType.name}_${defaultConfig.versionCode}.apk"
+                    }
+                }
+            }
+            debuggable true;
+        }
+        inspect_debug {
+            buildConfigField "String", "IP", "\"10.252.2.68\""
+            buildConfigField "String", "PORT", "\":9877/\""
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    // 输出apk名称为app_v1.0_2015-xx-xx_xxxx.apk
+                    if (buildType.name == inspect_debug) {
+                        outputFileName = "出租稽查测试_${buildType.name}_${defaultConfig.versionCode}.apk"
+                    }
+                }
+            }
+
+            debuggable true;
+        }
+
+        inspect_demo {
+            buildConfigField "String", "IP", "\"47.94.58.226\""
+            buildConfigField "String", "PORT", "\":9877/\""
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    if (buildType.name == inspect_demo) {
+                        // 输出apk名称为app_v1.0_2015-xx-xx_xxxx.apk
+                        outputFileName = "出租稽查Demo${buildType.name}_${defaultConfig.versionCode}.apk"
+                    }
+                }
+            }
+
+            debuggable false;
+        }
+        /*release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }*/
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation project(':pullToRefreshLibrary')
+    implementation project(':viewPagerlibrary')
+    implementation project(':legworkwrit')
+    implementation project(':library')
+    implementation 'com.android.support:support-v4:22.2.1'
+    implementation 'com.google.code.gson:gson:2.2.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}

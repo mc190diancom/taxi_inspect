@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/check_seize_info" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/deduction_time" />
+
+        <TextView
+            android:id="@+id/tv_deducation_time"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/deduction_time_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/deduction_address" />
+
+        <TextView
+            android:id="@+id/tv_deducation_address"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:drawableEnd="@null"
+            android:ellipsize="end"
+            android:hint="@string/deduction_address_hint"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/tv_current_address_with_deducation"
+            style="@style/CommonContentTextViewWithButton"
+            android:text="@string/current_position" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/escort_time" />
+
+        <TextView
+            android:id="@+id/tv_escort_time"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/escort_time_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:layout_height="wrap_content"
+            android:text="@string/storage_car_park" />
+
+        <TextView
+            android:id="@+id/tv_storage_car_park"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:ellipsize="end"
+            android:hint="@string/storage_car_park_hint"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

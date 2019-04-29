@@ -1,0 +1,222 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="出租汽车稽查系统"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="V1.0版本"
+        android:textColor="#969696"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="#dddddd" />
+
+    <TextView
+        android:id="@+id/features"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:drawableRight="@drawable/weizhang_next"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:text="功能介绍"
+        android:textColor="#303030"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <TextView
+        android:id="@+id/question_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:drawableRight="@drawable/weizhang_next"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:text="常见问题与反馈"
+        android:textColor="#303030"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:id="@+id/ll_banben"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="检查新版本"
+            android:textColor="#303030"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/banben"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="5dp"
+            android:gravity="right|center_vertical"
+            android:text=""
+            android:textColor="#303030"
+            android:textSize="15sp" />
+        
+        <ImageView
+            android:id="@+id/iv_red_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_red_circle"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="8dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/weizhang_next"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+    <LinearLayout 
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+	    <LinearLayout 
+	        android:layout_width="wrap_content"
+	        android:layout_height="45dp"
+	        android:layout_weight="1"
+	        android:orientation="vertical">
+	        
+	        <TextView 
+		        android:id="@+id/update_Description"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:text="正在下载..."
+		        android:textSize="14sp"/>
+	        
+	        <ProgressBar 
+	            android:id="@+id/update_Progress"
+		        android:layout_width="match_parent"
+		        android:layout_height="15dp"
+		        style="@android:style/Widget.ProgressBar.Horizontal"
+		        android:max="100"/>
+	    </LinearLayout>
+	    
+	    <Button 
+	        android:id="@+id/update_cancle"
+	        android:layout_width="65dp"
+	        android:layout_height="match_parent"
+	        android:layout_margin="5dp"
+	        android:text="取消下载"
+	        android:background="@drawable/waiqin_hangye"
+            android:gravity="center"
+            android:textColor="#ffffff"
+	        android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="技术支持"
+            android:textColor="#303030"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:text="北京奇华通讯有限公司"
+            android:textColor="#303030"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="联系客服"
+            android:textColor="#303030"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:text="010-68373388-850"
+            android:textColor="#303030"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+</LinearLayout>

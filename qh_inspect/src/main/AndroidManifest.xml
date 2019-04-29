@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.miu360.inspect"
+    android:versionCode="20180912"
+    android:versionName="1.0.8"> <!-- 0.9.9 1.0.4 -->
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- 摄影机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name="com.miu360.taxi_check.App"
+        android:allowBackup="true"
+        android:icon="@drawable/taxi_heade"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Vj3sNF8XEUKHmP2bNHfdirQHGIhpNBlk" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+
+        <!--
+        <activity
+            android:name="wintone.idcard.android.WintoneIDCardMainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="wintone.idcard.android.IDCardBean"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="wintone.idcard" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="wintone.idcard.android.AuthService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="wintone.idcard.authService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="wintone.idcard.android.RecogService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="wintone.idcard.recogService" />
+            </intent-filter>
+        </service>
+        -->
+
+        <activity
+            android:name="com.miu360.taxi_check.ui.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.PathQueryActivity"
+            android:label="@string/title_activity_path_query"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.PathQueryActivity2"
+            android:label="@string/title_activity_path_query"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryActivity"
+            android:label="@string/title_activity_wei_zhang_query"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangInfoActivity"
+            android:label="@string/title_activity_wei_zhang_info"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryResultInfoActivity"
+            android:label="@string/title_activity_wei_zhang_query_result_info"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicInfoActivity"
+            android:label="@string/title_activity_basic_info"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultActivity"
+            android:label="@string/title_activity_basic_result"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicCarInforActivity"
+            android:label="@string/title_activity_basic_car_infor"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.SelectLocationActivity"
+            android:label="@string/title_activity_basic_car_infor"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.DriverInfoActivity"
+            android:label="@string/title_activity_driver_info"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CompanyInfoActivity"
+            android:label="@string/title_activity_company_info"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultCarActivity"
+            android:label="@string/title_activity_basic_result_car"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultCompanyActivity"
+            android:label="@string/title_activity_basic_result_people"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CreateCaseActivity"
+            android:label="@string/title_activity_setting"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CamerassActivity"
+            android:label="@string/title_activity_setting"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CompanyDetailInfoActivity"
+            android:label="@string/title_activity_company_detail_info"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.PathActivity"
+            android:label="@string/title_activity_path"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.PathActivity2"
+            android:label="@string/title_activity_path"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ChangePersonalInfoActivity"
+            android:label="@string/title_activity_change_password"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ChangPhoneNumberActivity"
+            android:label="@string/title_activity_chang_phone_number"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.FindRecordActivity"
+            android:label="@string/title_activity_find_record"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WarningInspectActivity"
+            android:label="@string/title_activity_warning"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.InspectRecordDetailActivity"
+            android:label="@string/title_activity_inspect_record_detail"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.VehiclePositionActivity"
+            android:label="@string/title_activity_vehicle_position"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CheckItemLookActivity"
+            android:label="@string/title_activity_check_item_look"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.RenYuanFenBuActivity"
+            android:label="@string/title_activity_ren_yuan_fen_bu"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.LawInpsectActivity"
+            android:label="@string/title_activity_law_inpsect"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.IdcardScanActivity"
+            android:label="@string/title_activity_idcard_scan"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ChangePassWordActivity"
+            android:label="@string/title_activity_law_inpsect"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ClipActivity"
+            android:label="@string/title_activity_law_inpsect"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.LawInpsectSelectLocationActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.HistoryInspcetRecordActivity"
+            android:label="@string/title_activity_law_inpsect"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.HistoryIDScanActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.QueryQrRecordActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <service android:name="com.miu360.taxi_check.service.LocationService" />
+        <service android:name="com.miu360.taxi_check.service.DownloadService" />
+
+        <activity
+            android:name="com.miu360.taxi_check.ui.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.FeedBackActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.FastInspectWeiFaInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ChckItemLeiBieActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.VehicleCheckActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CheckEarlyWarningActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity"
+            android:label="@string/title_activity_checkearly"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CameraWarningDetailInfoActivity"
+            android:label="@string/title_activity_camera"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.YuJinPushListActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicCompanyInfoLvyouActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.LvYouPeopleInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.LvyouPeopleActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicCarInfoLvyouActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultLvYouCarActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultLvYouYehuActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ShengJiPeopleInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ShengJiPeopleActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ShengJiCarDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultHaiYunYehuActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicCarInfoWeiXiuActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultShuiYunYehuActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicResultWeiXiuYehuActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicYeHuInfoHaiYunActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicYeHuInfoShuiYunActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangHuoYunDangerousInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangHuoYunInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangLvYouInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryHuoYunDangerousResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryHuoYunResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryLvYouResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryShengJiResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryShuiYunResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangQueryZuLinResultInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangShengJiInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangShuiYunAndWeiXiuInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.WeiZhangZuLinInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.OtherActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.FaGuiActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CheckItemListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.ShengJiCarActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.BasicShengjiCompanyInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportCompanyDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.FaGuiDetailListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CheckDetailWeiFaActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportCompanyActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportPeopleInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportPeopleActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportCarDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsTrasportCarInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.DangerousGoodsTrasportPeopleInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.DangerousGoodsTrasportPeopleActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.DangerousGoodsTrasportCarDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsDangerousTrasportCarInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.DangerousGoodsTrasportCompanyDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.GoodsDangerousTrasportCompanyActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CarRentaCarDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CarRentaCarInfolActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CarRentaCompanyDetailInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.miu360.taxi_check.ui.CarRentaCompanyInfoActivity"
+            android:label="@string/title_activity_feed_back"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.google.zxing.client.android.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- Allow web apps to launch Barcode Scanner by linking to http://zxing.appspot.com/scan. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="zxing.appspot.com"
+                    android:path="/scan"
+                    android:scheme="http" />
+            </intent-filter>
+            <!-- We also support a Google Product Search URL. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.google.com"
+                    android:path="/m/products/scan"
+                    android:scheme="http" />
+            </intent-filter>
+            <!-- And the UK version. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.google.co.uk"
+                    android:path="/m/products/scan"
+                    android:scheme="http" />
+            </intent-filter>
+            <!-- Support zxing://scan/?... like iPhone app -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="scan"
+                    android:path="/"
+                    android:scheme="zxing" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="com.miu360.taxi_check.service.PushService" />
+        <service android:name="com.miu360.taxi_check.service.PushCameraService" />
+
+        <activity
+            android:name="com.miu360.taxi_check.ui.QRcodeActivity"
+            android:label="@string/title_activity_qrcode"></activity>
+        <activity
+            android:name=".ZhiFaJianChaJiLutableActivity"
+            android:label="@string/title_activity_zhi_fa_jian_cha_ji_lutable"></activity>
+        <activity
+            android:name=".FaZhiBanQueayActivity"
+            android:label="@string/title_activity_fa_zhi_ban_queay"></activity>
+        <activity
+            android:name=".FaZhiBanListActivity"
+            android:label="@string/title_activity_fa_zhi_ban_list"></activity>
+        <activity android:name="com.miu360.taxi_check.ui.LawInpsect2Activity"></activity>
+        <activity android:name="com.miu360.taxi_check.ui.CaseHistoryListActivity"></activity>
+    </application>
+
+</manifest>

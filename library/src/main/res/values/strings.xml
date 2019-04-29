@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unknown_error">未知错误</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_title">提示</string>
+
+
+    <string name="tip_content_title">可组合选择文书:</string>
+    <string name="tip_content_writ1">1.现场检查笔录(路检)&#8195;先行登记通知书</string>
+    <string name="tip_content_writ12">&#8195;扣押车辆交接单</string>
+    <string name="tip_content_writ2">2.现场检查笔录(路检)&#8195;扣押车辆决定书</string>
+    <string name="tip_content_writ22">&#8195;现场笔录&#8195;扣押车辆交接单</string>
+    <string name="tip_content_writ3">3.现场检查笔录(路检)&#8195;谈话通知书</string>
+    <string name="tip_content_notice">注: 选择文书时不可进行交叉组合</string>
+    <string name="tip_i_know">我知道了</string>
+    <string name="tip">提示</string>
+    <string name="rule_tip">文书选择规则？</string>
+    <string name="alphabet_and_number">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
+</resources>

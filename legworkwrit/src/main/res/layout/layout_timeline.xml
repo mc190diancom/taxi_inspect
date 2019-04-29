@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="时间轴"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_i_know"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_timeline_button"
+        android:paddingBottom="5dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="5dp"
+        android:text="我知道了"
+        android:textColor="@color/white" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -1,0 +1,304 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="选择行业"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/choose_hangye_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:drawableRight="@drawable/weizhang_next"
+                android:hint="请选择行业类型"
+                android:paddingLeft="10dp"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="检查主体"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_jcx"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:drawableRight="@drawable/weizhang_next"
+                android:editable="false"
+                android:gravity="center_vertical"
+                android:hint="请选择检查主体"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="司机姓名"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/driverName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="请输入司机姓名"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="车牌号码"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/car_name"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:drawableRight="@drawable/weizhang_next"
+                android:gravity="center"
+                android:text="京"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#dddddd" />
+
+            <TextView
+                android:id="@+id/car_name_tow"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:drawableRight="@drawable/weizhang_next"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/vname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="请输入车牌号码"
+                android:imeOptions="actionDone"
+                android:maxLength="6"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="是否启用"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:background="@android:color/transparent" >
+
+                <RadioButton
+                    android:id="@+id/rb_qiyong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" 
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                     android:textColor="#666666"
+                      android:textSize="14sp"
+                      android:checked="true"
+                    android:text="启用"/>
+                
+                 <RadioButton
+                      android:id="@+id/rb_buqiyong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                     android:textSize="14sp"
+                     android:textColor="#666666" 
+                    android:text="不启用"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="稽查开始时间"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="请选择稽查开始时间"
+                android:paddingLeft="10dp"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="稽查结束时间"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/endTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="请选择稽查结束时间"
+                android:imeOptions="actionDone"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_submit_btn"
+        android:gravity="center"
+        android:text="查询"
+        android:textColor="#ffffff"
+        android:textSize="19sp" />
+
+</LinearLayout>

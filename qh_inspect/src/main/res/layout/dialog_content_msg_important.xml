@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_content"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:text="风第三方\r\n的所发生的丰盛的的房顶上丰东股份第\r\n三个的非官方的施工方"
+    android:textColor="#666666"
+    android:textSize="18sp" />

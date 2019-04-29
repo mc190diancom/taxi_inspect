@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    buildTypes {
+        debug {
+
+        }
+
+        release {
+
+        }
+        inspect_release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+        }
+        inspect_debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+        inspect_demo {
+
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        disable "ResourceType"
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.aar'], dir: 'libs')
+    implementation project(':library')
+    //implementation 'com.contrarywind:Android-PickerView:4.1.6'
+    //tools
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //implementation files('libs/eprinterdriver.jar')
+}

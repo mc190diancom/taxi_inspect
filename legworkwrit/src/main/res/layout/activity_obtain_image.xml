@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_switcher"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <ImageButton
+            android:id="@+id/ibtn_take_photo"
+            android:layout_width="143dp"
+            android:layout_height="143dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_take_photo"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/tv_album"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="39dp"
+            android:gravity="center"
+            android:text="相册上传"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/ibtn_album"
+            android:layout_width="68dp"
+            android:layout_height="82dp"
+            android:layout_above="@+id/tv_album"
+            android:layout_alignEnd="@id/tv_album"
+            android:layout_alignStart="@id/tv_album"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/ic_album"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/ibtn_back"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="80dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/ic_back_photo"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/tv_upload_state"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignEnd="@+id/ibtn_upload"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/ibtn_upload"
+            android:layout_marginBottom="28dp"
+            android:gravity="center"
+            android:text="上传"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/ibtn_upload"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_above="@+id/tv_upload_state"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="53dp"
+            android:layout_toEndOf="@+id/ibtn_back"
+            android:background="@drawable/ic_upload"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+</ViewSwitcher>

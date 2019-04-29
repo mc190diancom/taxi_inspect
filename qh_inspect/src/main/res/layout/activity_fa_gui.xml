@@ -1,0 +1,229 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="行业类别"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hylb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center_vertical"
+            android:hint="请选择行业"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:text="巡游车"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="检查主体"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hylx"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center_vertical"
+            android:hint="请选择该行业类型"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:text="出租车经营者"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="检查类别"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/jclb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center_vertical"
+            android:hint="请选择检查类别"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:text="全部"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="是否非法"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/isFeiFa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center_vertical"
+            android:hint="请选择是否非法"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:text="合法"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout> -->
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="代       码"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="请输入查询代码"
+            android:imeOptions="actionNext"
+            style="@style/character"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="检查内容"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/jcnr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="请输入检查内容"
+            android:imeOptions="actionDone"
+            android:paddingLeft="10dp"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd" />
+    <TextView
+        android:id="@+id/query"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/basic_query"
+        android:gravity="center"
+        android:text="查询"
+        android:textColor="#fffefe"
+        android:textSize="19sp" />
+     
+</LinearLayout>

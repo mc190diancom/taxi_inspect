@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/sort"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="10"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="日期:"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="12"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="编号:"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+                
+                 <TextView
+                    android:id="@+id/bh"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="13"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View 
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F8F8F8"/>
+            
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+               <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="车牌号:"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/vname"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="12"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="驾驶员:"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+                
+                 <TextView
+                    android:id="@+id/driver"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="13"
+                    android:drawableRight="@drawable/next_big"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+                 
+                 
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+               <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="行业:"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/industry"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="12"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+
+                 <TextView
+                    android:id="@+id/result"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:text="无"
+                    android:textColor="#7A7A7A"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <View 
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#F8F8F8"/>
+        </LinearLayout>
+        
+    </LinearLayout> 
+ <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/sort"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="10"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/vname"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="11"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/driverName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/hylb"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="旅游客运"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/check_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2015-08-10 10:36"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+                 <TextView
+                     android:id="@+id/normal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="正常"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>  -->
+</LinearLayout>

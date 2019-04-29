@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/driver_and_car_info" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_license" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_license"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_license_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <com.miu30.common.util.FullListView
+        android:id="@+id/list_show_car_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:visibility="gone" >
+    </com.miu30.common.util.FullListView>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/driver_name" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_driver_name"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/driver_name_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_color" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_color"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_color_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_model" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_model"
+            style="@style/CommonContentEditTextStyle"
+            android:ellipsize="end"
+            android:hint="@string/car_model_hint"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/brand_model" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_brand_model"
+            style="@style/CommonContentEditTextStyle"
+            android:ellipsize="end"
+            android:hint="@string/brand_model_hint"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/frame_number" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_frame"
+            style="@style/CommonContentEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:hint="@string/frame_number_hint"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1" />
+
+        <ImageButton
+            android:id="@+id/ib_shaomiao_frame"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            android:scaleType="center"
+            android:src="@drawable/weizhang_check" />
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/kilometers" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_kilometers"
+            style="@style/CommonContentEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:digits="0.123456789"
+            android:hint="@string/kilometers_hint"
+            android:maxLines="1" />
+
+        <ImageButton
+            android:id="@+id/ib_shaomiao_kilometers"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            android:scaleType="center"
+            android:src="@drawable/weizhang_check" />
+    </LinearLayout>
+
+</LinearLayout>

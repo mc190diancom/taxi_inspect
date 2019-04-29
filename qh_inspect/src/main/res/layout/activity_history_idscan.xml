@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+    
+    <include layout="@layout/common_list"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="司机姓名："
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="王小明"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="司机性别："
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="男"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="从业资格证号："
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3333333"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="扫描时间："
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3333333"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,384 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dddddd"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#fff"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="行为编码"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/bianma"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="检查类别"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/jclb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="违法行为"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/wfxw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="违法情形"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/wfqx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+                
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="适用法规"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/syfg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="违法条款"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/wftk"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="处罚条款"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/cftk"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="处罚明细"
+                    android:textColor="#41c3d6"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+
+                <TextView
+                    android:id="@+id/fggd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:minLines="2"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#dddddd" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

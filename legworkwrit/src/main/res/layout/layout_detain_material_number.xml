@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/detain_material_number" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/top_light" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/price_meter" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/empty_ticket" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/false_certificate" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/bill" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#F4F4F4" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/personal_belong" />
+
+        <EditText
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/personal_belong_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/accord_rule" />
+
+        <TextView
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/accord_rule_hint" />
+
+    </LinearLayout>
+
+</LinearLayout>

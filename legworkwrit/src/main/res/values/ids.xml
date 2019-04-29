@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="car_front_tag" type="id" />
+    <item name="car_after_tag" type="id" />
+    <item name="car_left_tag" type="id" />
+    <item name="car_right_tag" type="id" />
+    <item name="car_kilometers_tag" type="id" />
+    <item name="car_frame_tag" type="id" />
+</resources>

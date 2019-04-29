@@ -1,0 +1,348 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="稽查行业"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/inspect_hangye"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:drawableRight="@drawable/weizhang_next"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:paddingRight="8dp"
+                    android:text="巡游车"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="案件性质"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/case_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:drawableRight="@drawable/weizhang_next"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:paddingRight="8dp"
+                    android:text="正常"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="车牌号码"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/vehicle_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:maxLength="8"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                 >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="驾  驶  员"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/driver_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="准驾证号"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/driver_licence_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:inputType="number"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="开始时间"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/check_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="结束时间"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/over_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" 
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="稽查结果"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/inspect_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/weizhang_long"
+                    android:gravity="center"
+                    android:hint="至少填写一项"
+                    android:text="正常"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="快       捷"
+                    android:textColor="#303030"
+                    android:textSize="14sp" />
+
+                <CheckBox 
+                    android:id="@+id/check_currentday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="当天"
+                    android:button="@null" 
+                    android:drawableLeft="@drawable/select_hischk_item"/>
+
+                 <CheckBox 
+                    android:id="@+id/check_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="一周"
+                    android:button="@null" 
+                    android:drawableLeft="@drawable/select_hischk_item"/>
+                 
+                  <CheckBox 
+                    android:id="@+id/check_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="一月"
+                    android:button="@null" 
+                    android:drawableLeft="@drawable/select_hischk_item"/>
+                  
+                   <CheckBox 
+                    android:id="@+id/check_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="所有"
+                    android:button="@null" 
+                    android:drawableLeft="@drawable/select_hischk_item"/>
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/query"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/basic_query"
+                    android:gravity="center"
+                    android:text="查询"
+                    android:textColor="#fff"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

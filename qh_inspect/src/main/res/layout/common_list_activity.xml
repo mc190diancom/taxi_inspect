@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:background="#00acef"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="车牌号"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="当前位置"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="预警原因"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <include layout="@layout/common_list" />
+    </LinearLayout>
+
+</LinearLayout>

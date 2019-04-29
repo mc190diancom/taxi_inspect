@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_test"
+    style="@style/A4Style"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:ignore="all">
+
+    <TextView
+        style="@style/InstrumentTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北京市交通执法总队谈话通知书" />
+
+    <TextView
+        style="@style/InstrumentSubTitleStyle"
+        android:text="京交法（  ）字" />
+
+    <View style="@style/InstrumentBoldLineStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32px"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/InstrumentBoldContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当&#160;&#160;事&#160;&#160;人：" />
+
+        <TextView
+            style="@style/InstrumentBoldContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="488px"
+            android:text="车号：" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/InstrumentBoldContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="涉嫌违法事由：" />
+
+        <CheckBox
+            style="@style/InstrumentContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="未按规定使用标志灯" />
+
+        <CheckBox
+            style="@style/InstrumentContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="不正确使用计价器" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/InstrumentSealStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="143px"
+            android:text="行政机关（印章）" />
+
+        <TextView
+            style="@style/InstrumentSealStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="84px"
+            android:layout_marginTop="10px"
+            android:text="二〇&#8195;&#8195;年&#8195;&#8195;月&#8195;&#8195;日" />
+
+        <TextView
+            style="@style/InstrumentSignStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:text="签字人签字：" />
+
+        <TextView
+            style="@style/InstrumentSignStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20px"
+            android:text="20&#8195;&#8195;年&#8195;&#8195;月&#8195;&#8195;日" />
+
+        <View style="@style/InstrumentBoldLineStyle" />
+
+        <TextView
+            style="@style/InstrumentRemarksStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8px"
+            android:text="备注：本通知书一式两份，一份交当事人，一份由行政机关留存" />
+    </LinearLayout>
+
+</LinearLayout>

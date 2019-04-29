@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_leibie"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="仪容仪表"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/jiancha_daima"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:gravity="center"
+            android:text="YCZ0113"
+            android:textColor="#333333"
+            android:textSize="14sp" 
+            android:visibility="gone"/>
+
+        
+
+        <TextView
+            android:id="@+id/jiancha_neirong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="外省市危险货物外省市危险货物省市危险货物"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="#dddddd" />
+
+        <!-- <RadioGroup -->
+        <!-- android:layout_width="wrap_content" -->
+        <!-- android:layout_height="match_parent" -->
+        <!-- android:layout_gravity="center" -->
+        <!-- android:orientation="horizontal" > -->
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:gravity="center" >
+
+            <CheckBox
+                android:id="@+id/jiancha_weifa"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/checkitemweifachecked"
+                android:button="@null"
+                android:checked="true"
+                android:paddingTop="5dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="#dddddd" />
+        <!-- </RadioGroup> -->
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="#dddddd" />
+
+</LinearLayout>

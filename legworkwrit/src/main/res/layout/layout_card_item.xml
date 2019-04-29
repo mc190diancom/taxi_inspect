@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_container_card_cyzgz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/certificate_number" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_cyzgz"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_card_cyzgz"
+                android:inputType="number"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note1"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/gradcb"
+                android:maxLength="5"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_container_card_driver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/card_driver" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_driver"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_card_driver"
+                android:inputType="number"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note2"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/gradcb"
+                android:maxLength="5"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_card_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/card_service" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_service"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_card_service"
+                android:inputType="number"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note3"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/gradcb"
+                android:maxLength="5"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_card_transport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/card_transport" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_transport"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_card_transport"
+                android:inputType="number"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note4"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/gradcb"
+                android:maxLength="5"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_card_flag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/card_flag" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_flag"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_card_flag"
+                android:inputType="text"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note5"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:paddingStart="10dp"
+                android:maxLength="5"
+                android:layout_marginStart="20dp"
+                android:textColorHint="@color/gradcb"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/card_other" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_other"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_other"
+                android:inputType="text"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_card_note6"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edit_note"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:paddingStart="10dp"
+                android:maxLength="5"
+                android:layout_marginStart="20dp"
+                android:textColorHint="@color/gradcb"
+                android:textSize="14sp"
+                android:hint="@string/note_hint"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

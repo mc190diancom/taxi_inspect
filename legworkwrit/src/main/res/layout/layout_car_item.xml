@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_car_info"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/ll_container_vname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_number" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_vname"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_car_license"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <com.miu30.common.util.FullListView
+            android:id="@+id/list_show_car_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:visibility="gone" >
+        </com.miu30.common.util.FullListView>
+
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_cjh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_frame_number_with_holder" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_cjh"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_car_cjh"
+                android:inputType="text"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_car_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/vehicle_color" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_color"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_car_color"
+                android:inputType="text" />
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_car_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_brand" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_brand"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_car_brand"
+                android:inputType="text"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_car_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_model_title" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_model"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="@string/please_input_car_model"
+                android:inputType="text"
+                android:maxLength="20"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_car_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_card" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_cardId"
+                style="@style/CommonContentEditTextStyle"
+                android:inputType="number"
+                android:maxLength="20"
+                android:hint="@string/please_input_car_cardID"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container_car_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:layout_height="wrap_content"
+                android:text="@string/car_no" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_car_no"
+                style="@style/CommonContentEditTextStyle"
+                android:inputType="number"
+                android:maxLength="20"
+                android:hint="@string/please_input_car_no"/>
+        </LinearLayout>
+        <View
+            style="@style/CommonLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_note"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_edit_note"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:textColorHint="@color/gradcb"
+            android:paddingStart="10dp"
+            android:maxLength="5"
+            android:textSize="14sp"
+            android:hint="@string/note_hint"/>
+
+    </LinearLayout>
+
+</LinearLayout>

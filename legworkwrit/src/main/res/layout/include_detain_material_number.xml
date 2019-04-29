@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        style="@style/CommonTitleTextViewStyle"
+        android:text="@string/detain_material_number" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/top_light" />
+
+        <TextView
+            android:id="@+id/tv_top_light"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:text="@string/goods_hint_default"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/price_meter" />
+
+        <TextView
+            android:id="@+id/tv_price_meter"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:text="@string/goods_hint_default"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/empty_ticket" />
+
+        <TextView
+            android:id="@+id/tv_empty_ticket"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:text="@string/goods_hint_default"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/false_certificate" />
+
+        <TextView
+            android:id="@+id/tv_false_certificate"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:text="@string/goods_hint_default"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/bill" />
+
+        <TextView
+            android:id="@+id/tv_bill"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:text="@string/goods_hint_default"
+            android:hint="@string/please_choose_number" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#F4F4F4" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/personal_belong" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_personal_belong"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/personal_belong_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/accord_rule" />
+
+        <EditText
+            android:id="@+id/et_accord_rule"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:ellipsize="end"
+            android:maxLength="14"
+            android:hint="@string/accord_rule_hint"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:text="押运员1&#8195;" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_escort1"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="请输入押送人员姓名"
+                android:inputType="text"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <View style="@style/CommonLineStyle" />
+
+
+        <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+            <TextView
+                style="@style/CommonDesTextViewStyle"
+                android:text="押运员2&#8195;" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_escort2"
+                style="@style/CommonContentEditTextStyle"
+                android:hint="请输入押送人员姓名"
+                android:inputType="text" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

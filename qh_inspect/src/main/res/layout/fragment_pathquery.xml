@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@android:style/Theme.NoTitleBar.Fullscreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="车牌号码"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/et_car_number_one"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/weizhang_short"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="京"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/et_car_number_two"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/weizhang_short"
+            android:drawableRight="@drawable/weizhang_next"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="B"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_car_number"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/weizhang_long"
+            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:gravity="left|center_vertical"
+            android:hint="请输入车牌号"
+            android:inputType="textVisiblePassword"
+            android:singleLine="true"
+            android:maxLength="6"
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="快        捷        "
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/weizhang_long"
+            android:drawableRight="@drawable/arrow_down_float"
+            android:gravity="center"
+            android:paddingRight="5dp"
+            android:text="最近半小时"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <CheckBox
+        android:visibility="gone"
+        android:id="@+id/chekBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:checked="false"
+        android:text="选择时间"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/llDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" >
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="开始时间"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/et_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/weizhang_long"
+                android:gravity="center"
+                android:hint="2016-03-09  20:35:00"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" >
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="结束时间"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/et_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/weizhang_long"
+                android:gravity="center"
+                android:hint="2016-03-09  20:45:00"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16sp"
+        android:layout_marginTop="60dp"
+        android:background="#00a7d7"
+        android:text="查询"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

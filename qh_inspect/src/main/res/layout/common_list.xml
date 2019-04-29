@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+<!--     <ImageView 
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#00acef"/> -->
+ <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@drawable/list_divider"           
+        android:layout_alignParentTop="true"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:layout_marginTop="-1dp"
+        android:listSelector="@drawable/list_item_bg"
+        android:overScrollMode="never" />
+
+ 
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/empty_box"
+        android:gravity="center"
+        android:text="这里空空如也"
+        android:textColor="@color/gray"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="重新加载"
+        android:visibility="gone" />
+
+</RelativeLayout>

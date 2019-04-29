@@ -1,0 +1,4 @@
+<resources>
+    <!-- 选项文字大小 -->
+    <dimen name="pickerview_textsize">20sp</dimen>
+</resources>

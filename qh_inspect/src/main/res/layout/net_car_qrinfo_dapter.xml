@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+         <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车牌号："
+                    android:textColor="#010101"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/VName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#010101"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车辆所有人："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/CarOwn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车型："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/CarModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车辆颜色："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/CarColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="平台名称："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/PlatformName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车辆注册日期："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车架号："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/VIN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="发动机号："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/EngineNO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="车辆状态："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/CarState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="防伪码："
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/SecurityCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#444444"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout> -->
+</LinearLayout>

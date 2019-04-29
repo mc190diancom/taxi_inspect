@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <include layout="@layout/legwork_header" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/choose_write" />
+
+                <TextView
+                    android:id="@+id/tv_choose_write"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="@string/choose_write_hint" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/choose_write"
+                    android:visibility="invisible" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_supervision_card"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/input_supervision_hint"
+                    android:inputType="number"
+                    android:maxLength="20" />
+
+            </LinearLayout>
+
+            <com.miu30.common.util.FullListView
+                android:id="@+id/list_show_driverName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:visibility="gone" >
+            </com.miu30.common.util.FullListView>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/litigant" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_litigant"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/litigante_hint"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <RadioGroup
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:checkedButton="@id/rbtn_man">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/gender" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/man" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="60dp"
+                    android:text="@string/woman" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/litigant_address" />
+
+
+                <TextView
+                    android:id="@+id/tv_inspect_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/please_input_litigant_address"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_select_inspect_address"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/punish_time" />
+
+                <TextView
+                    android:id="@+id/tv_punish_time"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="@string/input_punish_time" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/punish_address" />
+
+                <TextView
+                    android:id="@+id/tv_punish_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/input_punish_address"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_select_punish_address"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/car_license" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_car_number"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/car_license_hint" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/illegal_content" />
+
+                <TextView
+                    android:id="@+id/tv_Illegal_content"
+                    style="@style/CommonContentEditTextStyle"
+                    android:drawableEnd="@drawable/ic_right"
+                    android:ellipsize="end"
+                    android:hint="@string/illegal_content_hint"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/illegal_rules" />
+
+                <TextView
+                    android:id="@+id/tv_Illegal_rules"
+                    style="@style/CommonContentEditTextStyle"
+                    android:drawableEnd="@drawable/ic_right"
+                    android:ellipsize="end"
+                    android:hint="@string/illegal_rules_hint"
+                    android:maxLines="1" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <RadioGroup
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:checkedButton="@id/rbtn_sure">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="是否送达文书" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_sure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="60dp"
+                    android:text="@string/no" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+            <View style="@style/CommonLineStyle" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_send_time"
+                style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/instrument_send_time" />
+
+                <TextView
+                    android:id="@+id/tv_send_time"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:hint="@string/instrument_send_time_hint" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="21dp"
+                android:paddingTop="25dp">
+
+                <Button
+                    android:id="@+id/btn_preview"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_weight="1"
+                    android:text="@string/preview" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/save" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

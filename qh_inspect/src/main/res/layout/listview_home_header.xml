@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.miu360.taxi_check_viewPager.BannerViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+        <ImageView 
+            android:id="@+id/one_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:visibility="gone"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:background="#a000"
+            android:padding="5dp" >
+
+            <com.miu360.taxi_check_viewPager.PointView
+                android:id="@+id/indicator"
+                android:layout_width="70dp"
+                android:layout_height="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:padding="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_notice_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                 />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="315dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_inspect"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_jicha_button_selector"
+                android:text="执法稽查" />
+
+            <Button
+                android:id="@+id/btn_jichu"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_jichu_button_selector"
+                android:text="基础信息" />
+
+            <Button
+                android:id="@+id/btn_weizhang"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_weizhang_button_selector"
+                android:text="违法信息" />
+
+            <Button
+                android:id="@+id/btn_genzong"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_zhuizong_button_selector"
+                android:text="车辆定位" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
+
+            <Button
+                android:id="@+id/btn_case_create"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_case_create_selector"
+                android:text="案件创建" />
+
+            <Button
+                android:id="@+id/btn_record_question"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_question_record_selector"
+                android:text="询问笔录" />
+
+            <Button
+                android:id="@+id/btn_case_list"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_case_list_selector"
+                android:text="案件列表" />
+
+            <Button
+                android:id="@+id/btn_writ_print"
+                style="@style/HomeButton"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/item_writ_print_selector"
+                android:text="文书打印" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp" >
+
+            <Button
+                android:id="@+id/btn_yujing"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_yujing_button_selector"
+                android:text="稽查预警" />
+
+            <Button
+                android:id="@+id/btn_fenbu"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_fenbu_button_selector"
+                android:text="人员分布" />
+
+            <Button
+                android:id="@+id/btn_tongji"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_tongji_button_selector"
+                android:text="稽查记录" />
+
+            <Button
+                android:id="@+id/btn_qita"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_qita_button_selector"
+                android:text="其他" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="26dp" >
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="预警信息"
+            android:textColor="#00acec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/line"
+        android:orientation="horizontal"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="60dp"
+            android:layout_height="14dp"
+            android:gravity="center"
+            android:text="车牌号"
+            android:textColor="#00adec"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="14dp"
+            android:gravity="center"
+            android:text="当前位置"
+            android:textColor="#00adec"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:gravity="center"
+            android:text="预警原因"
+            android:textColor="#00adec"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

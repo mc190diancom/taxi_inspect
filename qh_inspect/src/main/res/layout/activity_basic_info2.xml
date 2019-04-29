@@ -1,0 +1,370 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:gravity="left|center_vertical"
+                        android:text="类        别"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/Practitioners"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/weizhang_long"
+                        android:drawableRight="@drawable/weizhang_next"
+                        android:gravity="center"
+                        android:paddingRight="5dp"
+                        android:text="营运车辆"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/l1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="姓        名"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/saomiao_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="center"
+                            android:src="@drawable/weizhang_check" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="准驾证号"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/number_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:inputType="number"
+                            android:maxLength="6" 
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/saomiao_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="center"
+                            android:src="@drawable/weizhang_check" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="身份证号"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/ID_number_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/weizhang_long"
+                            android:digits="0123456789xX"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:maxLength="18"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/saomiao_three"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="center"
+                            android:src="@drawable/weizhang_check"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/l2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="left|center_vertical"
+                            android:text="车牌号码"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/carNumber_one"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/weizhang_short"
+                            android:drawableRight="@drawable/right_next"
+                            android:gravity="center"
+                            android:paddingRight="5dp"
+                            android:text="京"
+                            android:textColor="#3f3f3f"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/number_car_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:maxLength="8"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="营运证号"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/operating_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="单位名称"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/l3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="立  户  号"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/account_num"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center_vertical"
+                            android:text="业户名称"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/weizhang_long"
+                            android:gravity="center"
+                            android:hint="至少填写一项"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/basic_query_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/basic_query"
+            android:text="查询"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/basic_query"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

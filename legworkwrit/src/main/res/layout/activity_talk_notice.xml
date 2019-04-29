@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/legwork_header" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/litigant" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_litigant"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/litigante_hint"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/agency_address" />
+
+        <TextView
+            android:id="@+id/tv_agency_address"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/agency_address_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/agency_phone" />
+
+        <TextView
+            android:id="@+id/tv_agency_phone"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/agency_phone_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/car_license" />
+
+        <com.miu30.common.util.ClearEditText
+            android:id="@+id/et_car_license"
+            style="@style/CommonContentEditTextStyle"
+            android:hint="@string/car_license_hint"/>
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/illegal" />
+
+        <TextView
+            android:id="@+id/tv_illegal_reason"
+            style="@style/CommonContentTextViewWithRightStyle"
+            android:hint="@string/illegal_reasons_hint"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <RadioGroup
+        style="@style/CommonHorizontalLinearLayoutStyle"
+        android:checkedButton="@id/rbtn_sure">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="是否送达文书" />
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:layout_marginStart="20dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/rbtn_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:layout_marginStart="60dp"
+            android:text="@string/no" />
+
+        <RadioButton
+            android:id="@+id/rbtn_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <View style="@style/CommonLineStyle" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_send_time"
+        style="@style/CommonHorizontalLinearLayoutStyle">
+
+        <TextView
+            style="@style/CommonDesTextViewStyle"
+            android:text="@string/instrument_send_time" />
+
+        <TextView
+            android:id="@+id/tv_send_time"
+            style="@style/CommonContentTextViewWithDropDownStyle"
+            android:hint="@string/instrument_send_time_hint" />
+
+    </LinearLayout>
+
+    <View style="@style/CommonLineStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="21dp"
+        android:paddingTop="25dp">
+
+        <Button
+            android:id="@+id/btn_preview"
+            style="@style/CommonButtonStyle"
+            android:layout_width="0dp"
+            android:layout_marginStart="28dp"
+            android:layout_weight="1"
+            android:text="@string/preview" />
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/CommonButtonStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="@string/save" />
+
+    </LinearLayout>
+
+</LinearLayout>

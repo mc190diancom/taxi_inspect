@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/weizhang_head" >
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="20dp"
+        android:layout_height="35dp"
+        android:gravity="left"
+        android:layout_centerVertical="true"
+        android:background="@drawable/weizhang_back" />
+    <TextView 
+        android:id="@+id/head_title"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="违法信息"
+        android:textSize="56px"/>
+
+</RelativeLayout>

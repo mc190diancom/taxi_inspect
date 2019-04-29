@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/legwork_header" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/carry_out_time" />
+
+                <TextView
+                    android:id="@+id/tv_start_time"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:hint="@string/please_choose_start_time" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/start" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_timeline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:background="@drawable/ic_question"
+                    android:contentDescription="@null" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/carry_out_time"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:hint="@string/please_choose_end_time" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/end" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/carry_out_address" />
+
+                <TextView
+                    android:id="@+id/tv_implement_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/carry_out_address_hint"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_select_implement_address"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/litigant" />
+
+                <com.miu30.common.util.ClearEditText
+                    android:id="@+id/et_inspect"
+                    style="@style/CommonContentEditTextStyle"
+                    android:hint="@string/litigante_hint"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/litigant_address" />
+
+                <TextView
+                    android:id="@+id/tv_inspect_address"
+                    style="@style/CommonContentEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:hint="@string/please_input_litigant_address"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tv_select_inspect_address"
+                    style="@style/CommonContentTextViewWithButton"
+                    android:text="@string/current_position" />
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <RadioGroup
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:checkedButton="@id/rbtn_yes">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/has_witness" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:layout_marginStart="60dp"
+                    android:text="@string/no" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                android:id="@+id/ll_witness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="@string/arrival_person" />
+
+                    <com.miu30.common.util.ClearEditText
+                        android:id="@+id/et_researchers_present"
+                        style="@style/CommonContentEditTextStyle"
+                        android:hint="@string/arrival_person_hint"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <View style="@style/CommonLineStyle" />
+
+                <RadioGroup
+                    style="@style/CommonHorizontalLinearLayoutStyle"
+                    android:checkedButton="@id/rbtn_man">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="@string/gender" />
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/man" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_man"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:layout_marginStart="60dp"
+                        android:text="@string/woman" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_woman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <View style="@style/CommonLineStyle" />
+
+                <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="@string/phone" />
+
+                    <com.miu30.common.util.ClearEditText
+                        android:id="@+id/et_phone"
+                        style="@style/CommonContentEditTextStyle"
+                        android:hint="@string/phone_hint"
+                        android:inputType="number"
+                        android:maxLength="11" />
+
+                </LinearLayout>
+
+                <View style="@style/CommonLineStyle" />
+
+                <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="@string/id_card" />
+
+                    <com.miu30.common.util.ClearEditText
+                        android:id="@+id/et_card"
+                        style="@style/CommonContentEditTextStyle"
+                        android:digits="0123456789Xx"
+                        android:maxLength="18"
+                        android:hint="@string/id_card_hint"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+                <View style="@style/CommonLineStyle" />
+
+                <LinearLayout style="@style/CommonHorizontalLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CommonDesTextViewStyle"
+                        android:text="@string/arrival_person_address" />
+
+                    <TextView
+                        android:id="@+id/tv_show_address"
+                        style="@style/CommonContentEditTextStyle"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:hint="@string/input_select_address"
+                        android:maxLines="1" />
+
+                    <TextView
+                        android:id="@+id/tv_select_show_address"
+                        style="@style/CommonContentTextViewWithButton"
+                        android:text="@string/current_position" />
+                </LinearLayout>
+
+                <View style="@style/CommonLineStyle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/read_documents" />
+
+                <TextView
+                    android:id="@+id/tv_select_documents"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:layout_height="wrap_content"
+                    android:text="@string/documents" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <LinearLayout
+                style="@style/CommonHorizontalLinearLayoutStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/CommonDesTextViewStyle"
+                    android:text="@string/force_step" />
+
+                <TextView
+                    android:id="@+id/tv_step"
+                    style="@style/CommonContentTextViewWithDropDownStyle"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other" />
+
+            </LinearLayout>
+
+            <View style="@style/CommonLineStyle" />
+
+            <com.miu30.common.util.ClearEditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_force_step_content"
+                android:gravity="top|start"
+                android:hint="@string/input_step_hint"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLength="270"
+                android:padding="10dp"
+                android:textColor="@color/color333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_step_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="13.5dp"
+                android:lineSpacingExtra="13.5dp"
+                android:text="@string/live_step2"
+                android:textColor="@color/color333"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="21dp"
+                android:paddingTop="25dp">
+
+                <Button
+                    android:id="@+id/btn_preview"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_weight="1"
+                    android:text="@string/preview" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    style="@style/CommonButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/save" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

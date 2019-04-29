@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:id="@+id/dialog_content"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_vertical"
+	    android:gravity="center"
+	    android:text=""
+	    android:textColor="#666666"
+	    android:textSize="14sp"
+	    android:scrollbars="vertical"
+	    android:singleLine="false" />
+    
+    <LinearLayout
+	      android:id="@+id/select"
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:gravity="center_horizontal"
+	      android:orientation="horizontal"
+	      android:visibility="gone" >
+        <CheckedTextView
+             android:id="@+id/select_1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:drawableLeft="@drawable/selector_invoice"
+             android:drawablePadding="5dp"
+             android:gravity="center_vertical"
+             android:text="简易案件"
+             android:textSize="13sp" />
+           
+        <CheckedTextView
+             android:id="@+id/select_2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:drawableLeft="@drawable/selector_invoice"
+             android:drawablePadding="5dp"
+             android:layout_marginLeft="25dp"
+             android:gravity="center_vertical"
+             android:text="一般案件"
+             android:checked="true"
+             android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>
