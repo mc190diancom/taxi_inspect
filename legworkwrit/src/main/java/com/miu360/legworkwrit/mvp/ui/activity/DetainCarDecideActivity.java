@@ -22,7 +22,6 @@ import com.miu30.common.ui.entity.DriverInfo;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu30.common.util.ClearEditText;
 import com.miu30.common.util.FullListView;
-import com.miu30.common.util.UIUtils;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;
 import com.miu360.legworkwrit.di.component.DaggerDetainCarDecideComponent;
