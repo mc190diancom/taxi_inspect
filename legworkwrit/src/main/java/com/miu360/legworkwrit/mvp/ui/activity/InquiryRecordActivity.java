@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.config.Config;
 import com.miu30.common.util.UIUtils;
 import com.miu360.legworkwrit.R;

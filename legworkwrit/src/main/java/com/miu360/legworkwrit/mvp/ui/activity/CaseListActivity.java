@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.MiuBaseApp;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
 import com.miu360.legworkwrit.R;

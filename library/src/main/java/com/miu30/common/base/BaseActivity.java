@@ -1,11 +1,11 @@
-package com.miu360.legworkwrit.mvp.ui.base;
+package com.miu30.common.base;
 
 import android.app.KeyguardManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v4.app.FragmentActivity;
 
-import com.miu360.legworkwrit.mvp.ui.widget.MyProgressDialog;
+import com.miu30.common.ui.widget.MyProgressDialog;
 
 import java.lang.ref.SoftReference;
 

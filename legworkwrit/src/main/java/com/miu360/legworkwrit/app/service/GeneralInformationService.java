@@ -14,7 +14,7 @@ import com.miu30.common.data.UserPreference;
 import com.miu30.common.ui.entity.HYTypeQ;
 import com.miu30.common.ui.entity.HyRyFg;
 import com.miu30.common.ui.entity.VehicleInfo;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.utils.RxUtils;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.data.WifiPreference;

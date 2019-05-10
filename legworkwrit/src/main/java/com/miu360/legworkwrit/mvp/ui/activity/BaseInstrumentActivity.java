@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jess.arms.mvp.IPresenter;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.config.Config;
 import com.miu30.common.util.CommonDialog;
 import com.miu30.common.util.UIUtils;

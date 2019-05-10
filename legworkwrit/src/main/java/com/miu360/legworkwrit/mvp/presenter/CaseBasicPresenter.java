@@ -6,15 +6,13 @@ import android.widget.Toast;
 
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.jess.arms.utils.ArmsUtils;
-import com.miu30.common.MiuBaseApp;
 import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
 import com.miu30.common.config.Config;
 import com.miu30.common.util.CommonDialog;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.utils.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.CaseBasicContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;

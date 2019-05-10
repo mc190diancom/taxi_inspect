@@ -9,6 +9,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import com.jess.arms.mvp.IPresenter;
+import com.miu30.common.base.BaseMvpActivity;
 
 /**
  * 作者：wanglei on 2018/9/21.

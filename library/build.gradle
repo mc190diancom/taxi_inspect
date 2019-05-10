@@ -10,6 +10,16 @@ android {
         minSdkVersion 17
         targetSdkVersion 27
 
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        javaCompileOptions {
+
+            annotationProcessorOptions {
+                arguments = [moduleName:project.getName() ]
+            }
+        }
     }
 
     sourceSets {
@@ -26,10 +36,12 @@ android {
         inspect_release {
             buildConfigField "String", "IP", "\"10.252.2.67\""
             buildConfigField "String", "PORT", "\":9875/\""
+            buildConfigField "boolean", "LOG_DEBUG", "false"
         }
         inspect_debug {
             buildConfigField "String", "IP", "\"10.252.2.68\""
             buildConfigField "String", "PORT", "\":9877/\""
+            buildConfigField "boolean", "LOG_DEBUG", "true"
         }
         inspect_demo {
 
@@ -54,4 +66,8 @@ dependencies {
     api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     //工具类
     api 'com.blankj:utilcode:1.13.10'
+
+    api 'com.alibaba:arouter-api:1.3.1'
+
+    annotationProcessor'com.alibaba:arouter-compiler:1.1.4'
 }

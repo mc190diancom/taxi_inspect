@@ -1,35 +1,28 @@
 package com.miu360.taxi_check.service;
 
 import android.app.IntentService;
-import android.app.Notification;
-import android.app.Notification.Style;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
+import android.support.v4.content.FileProvider;
+
+import com.miu360.inspect.BuildConfig;
+import com.miu360.inspect.R;
+import com.miu360.taxi_check.common.Config;
+import com.miu360.taxi_check.common.MsgConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.Callable;
-
-import com.lubao.lubao.async.AsyncUtil;
-import com.lubao.lubao.async.Callback;
-import com.lubao.lubao.async.Result;
-import com.miu360.inspect.R;
-import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
 
 /**
  * 开启服务下载升级apk
@@ -195,13 +188,20 @@ public class DownloadService extends IntentService {
 	 */
 	private void installApk() {
 		File apkfile = new File(Config.PATH + versioin + ".apk");
+
 		if (!apkfile.exists()) {
 			return;
 		}
 		// 通过Intent安装APK文件
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+			i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			Uri contentUri = FileProvider.getUriForFile(DownloadService.this, BuildConfig.APPLICATION_ID+".fileProvider", apkfile);
+			i.setDataAndType(contentUri, "application/vnd.android.package-archive");
+		}else{
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
+		}
 		startActivity(i);
 	}
 

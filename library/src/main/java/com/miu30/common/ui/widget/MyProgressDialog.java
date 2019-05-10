@@ -1,4 +1,4 @@
-package com.miu360.legworkwrit.mvp.ui.widget;
+package com.miu30.common.ui.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -7,7 +7,8 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 
-import com.miu360.legworkwrit.mvp.ui.base.BaseActivity;
+import com.miu30.common.base.BaseActivity;
+
 
 public abstract class MyProgressDialog extends Dialog {
     private Context context;

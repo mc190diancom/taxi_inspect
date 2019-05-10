@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.App;
 import com.jess.arms.base.BaseApplication;
@@ -14,6 +15,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.Preconditions;
 import com.miu30.common.data.UserPreference;
+import com.miu360.library.BuildConfig;
 
 
 public class MiuBaseApp extends MultiDexApplication implements App {
@@ -43,6 +45,11 @@ public class MiuBaseApp extends MultiDexApplication implements App {
         Utils.init(this);
         if (mAppDelegate != null)
             this.mAppDelegate.onCreate(this);
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(self);
     }
 
     /**

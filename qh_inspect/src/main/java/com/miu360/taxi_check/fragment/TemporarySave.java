@@ -11,7 +11,7 @@ import com.miu360.taxi_check.BaseFragment;
 import com.miu360.taxi_check.common.Config;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.data.InfoPerference;
-import com.miu360.taxi_check.data.Inspector;
+import com.miu30.common.ui.entity.Inspector;
 import com.miu360.taxi_check.ui.LawInpsectActivity;
 import com.miu30.common.util.Store2SdUtil;
 import com.miu360.taxi_check.view.ListViewHolder;

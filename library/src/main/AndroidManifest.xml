@@ -10,6 +10,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
+        <!-- arms配置 -->
+        <meta-data
+            android:name="com.miu30.common.app.GlobalConfiguration"
+            android:value="ConfigModule" />
+
         <activity
             android:name="com.miu30.common.ui.LawSelectLocationActivity"
             android:screenOrientation="portrait"/>

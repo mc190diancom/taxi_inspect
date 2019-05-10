@@ -38,7 +38,6 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,7 +86,7 @@ import com.miu360.taxi_check.common.isNull;
 import com.miu360.taxi_check.data.HistoryData;
 import com.miu360.taxi_check.data.HttpRequest;
 import com.miu360.taxi_check.data.InfoPerference;
-import com.miu360.taxi_check.data.Inspector;
+import com.miu30.common.ui.entity.Inspector;
 import com.miu360.taxi_check.data.UserData;
 import com.miu30.common.data.UserPreference;
 import com.miu360.taxi_check.data.WeiZhanData;
@@ -550,7 +549,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 						|| !(TextUtils.isEmpty(driver_name_et.getText().toString()))
 						|| !(TextUtils.isEmpty(licences_lihu.getText().toString()))
 						|| !(TextUtils.isEmpty(company_name_et.getText().toString()))) {
-					Store2SdUtil.getInstance(LawInpsectActivity.this).addOut(getInspector(), Config.FILE_NAME);
+					Store2SdUtil.getInstance(LawInpsectActivity.this).addOut(getInspector(), Config.FILE_NAME,Inspector.class);
 				}
 			}
 		};
@@ -3360,7 +3359,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 							File files = new File(Config.PATH + Config.FILE_NAME);
 							files.delete();
 						}
-						Store2SdUtil.getInstance(LawInpsectActivity.this).addOut(getInspector(), Config.FILE_NAME);
+						Store2SdUtil.getInstance(LawInpsectActivity.this).addOut(getInspector(), Config.FILE_NAME,Inspector.class);
 
 					} catch (Exception e) {
 						e.printStackTrace();
