@@ -1,7 +1,6 @@
 package com.miu30.common.data;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.miu30.common.MiuBaseApp;
@@ -17,12 +16,10 @@ import com.miu30.common.util.JacksonUtil;
 import com.miu360.library.R;
 
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.miu30.common.base.BaseData.parseArrayResult;
-import static com.miu30.common.base.BaseData.parseObjectResult;
 import static com.miu30.common.base.BaseData.parseObjectResult2;
 import static com.miu30.common.base.BaseData.trimEmptyToNull;
 

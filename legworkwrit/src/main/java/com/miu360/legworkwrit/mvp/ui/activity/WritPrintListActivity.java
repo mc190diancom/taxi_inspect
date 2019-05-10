@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.config.Config;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;

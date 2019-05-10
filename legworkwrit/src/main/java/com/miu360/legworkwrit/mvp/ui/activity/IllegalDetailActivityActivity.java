@@ -19,6 +19,7 @@ import android.widget.ListView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.ui.entity.JCItem;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;

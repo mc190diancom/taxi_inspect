@@ -11,17 +11,14 @@ import android.widget.Toast;
 
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.miu30.common.MiuBaseApp;
 import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
 import com.miu30.common.config.Config;
-import com.miu30.common.data.UserPreference;
-import com.miu30.common.ui.entity.DriverInfo;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu30.common.util.CommonDialog;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.utils.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.DetainCarDecideContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
@@ -32,7 +29,6 @@ import com.miu360.legworkwrit.mvp.model.entity.DetainCarDecideQ;
 import com.miu360.legworkwrit.mvp.model.entity.InstrumentStateReq;
 import com.miu360.legworkwrit.mvp.model.entity.Park;
 import com.miu360.legworkwrit.mvp.model.entity.UTC;
-import com.miu360.legworkwrit.mvp.model.entity.WifiRequestParams;
 import com.miu360.legworkwrit.util.DialogUtil;
 import com.miu360.legworkwrit.util.GetUTCUtil;
 import com.miu360.legworkwrit.util.MapUtil;
@@ -50,7 +46,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 

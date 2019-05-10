@@ -1,4 +1,4 @@
-package com.miu360.legworkwrit.mvp.ui.activity;
+package com.miu30.common.base;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,6 @@ import com.jess.arms.mvp.IView;
 import com.jess.arms.utils.ArmsUtils;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu30.common.util.Windows;
-import com.miu360.legworkwrit.mvp.ui.base.BaseActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.simple.eventbus.EventBus;
@@ -31,7 +30,6 @@ import butterknife.Unbinder;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
 
-import static com.jess.arms.integration.AppManager.APPMANAGER_MESSAGE;
 import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
 public abstract class BaseMvpActivity<P extends IPresenter> extends BaseActivity implements IActivity, ActivityLifecycleable, IView {

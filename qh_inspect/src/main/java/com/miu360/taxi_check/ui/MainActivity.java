@@ -34,7 +34,7 @@ import com.miu30.common.util.DownLoadUtil;
 import com.miu30.common.util.FileUtil;
 import com.miu30.common.util.Store2SdUtil;
 import com.miu360.inspect.R;
-import com.miu360.legworkwrit.app.EventBusTags;
+import com.miu30.common.app.EventBusTags;
 import com.miu360.legworkwrit.app.service.GeneralInformationService;
 import com.miu360.legworkwrit.mvp.model.entity.Case;
 import com.miu360.legworkwrit.util.WritTemplateUtil;
@@ -48,7 +48,7 @@ import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.YuJingPreference;
 import com.miu360.taxi_check.data.CameraPreference;
 import com.miu360.taxi_check.data.InfoPerference;
-import com.miu360.taxi_check.data.Inspector;
+import com.miu30.common.ui.entity.Inspector;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.data.WeiFaCheckPreference;
 import com.miu360.taxi_check.data.WeiZhanData;
@@ -247,12 +247,12 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnChe
 		}
 		// 把inspector.txt数据写入temp.txt作为长久保存
 		if (inspectors.size() != 0) {
-			Store2SdUtil.getInstance(MainActivity.this).addOut(inspectors.get(0), Config.FILE_NAME2);
+			Store2SdUtil.getInstance(MainActivity.this).addOut(inspectors.get(0), Config.FILE_NAME2,Inspector.class);
 			inspectors.clear();
 		}
 		// case.txt数据写入cases.txt作为长久保存
 		if (mCase != null) {
-			Store2SdUtil.getInstance(MainActivity.this).addOut(mCase, com.miu30.common.config.Config.CASE_TEMPS);
+			Store2SdUtil.getInstance(MainActivity.this).addOut(mCase, com.miu30.common.config.Config.CASE_TEMPS,Case.class);
 			mCase = null;
 		}
 

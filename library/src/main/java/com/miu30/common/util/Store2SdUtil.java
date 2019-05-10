@@ -8,8 +8,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.miu30.common.config.Config;
+import com.miu30.common.ui.entity.Inspector;
 
 import android.content.Context;
 import android.os.Environment;
@@ -65,8 +69,8 @@ public class Store2SdUtil {
 	/**
 	 * 添加对象
 	 */
-	public <T> boolean addOut(T t, String fileName) {
-		ArrayList<T> arrayList = readInArrayObject(fileName);
+	public <T> boolean addOut(T t, String fileName,Class<T> cls) {
+		ArrayList<T> arrayList = readInArrayObject(fileName,cls);
 		if (arrayList == null)
 			arrayList = new ArrayList<>();
 		arrayList.add(t);
@@ -74,7 +78,6 @@ public class Store2SdUtil {
 		writeJson(json, fileName);
 		return true;
 	}
-
 
 	/**
 	 * 添加对象组，对象传进来转换成json
@@ -98,9 +101,23 @@ public class Store2SdUtil {
 	/**
 	 * 读取对象组
 	 */
-	private <T> ArrayList<T> readInArrayObject(String fileName) {
+	private <T> ArrayList<T> readInArrayObject1(String fileName) {
 		return gson.fromJson(getJsonByFileName(fileName), new TypeToken<ArrayList<T>>() {
 		}.getType());
+	}
+
+	/**
+	 * 转成list
+	 */
+	private <T> ArrayList<T> readInArrayObject(String fileName, Class<T> cls) {
+		ArrayList<T> list = new ArrayList<>();
+		if (gson != null) {
+			JsonArray array = new JsonParser().parse(getJsonByFileName(fileName)).getAsJsonArray();
+			for (final JsonElement elem : array) {
+				list.add(gson.fromJson(elem, cls));
+			}
+		}
+		return list;
 	}
 
 	/**

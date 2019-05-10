@@ -92,23 +92,25 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+    /*Manifest.permission.SEND_SMS,                 //短信权限
+    Manifest.permission.READ_SMS,
+     Manifest.permission.READ_CONTACTS,            //读取联系人
+    Manifest.permission.RECORD_AUDIO              //录音权限*/
     private void requestPermissions() {
         String[] permissions = new String[]{
-                Manifest.permission.READ_CONTACTS,            //读取联系人
+
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,   //访问存储卡
                 Manifest.permission.READ_PHONE_STATE,         //获取手机状态
                 Manifest.permission.ACCESS_FINE_LOCATION,     //定位权限
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.SEND_SMS,                 //短信权限
-                Manifest.permission.READ_SMS,
                 Manifest.permission.CAMERA,                   //照相机权限
-                Manifest.permission.RECORD_AUDIO              //录音权限
+
         };
 
         new PermissionManager(this) {
             @Override
             protected void success() {
-
+                queryVsCode();
             }
 
             @Override
@@ -148,7 +150,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         UserPreference pref = new UserPreference(self);
         String passWordCheck = pref.getString("user_psw", null);
         registerMsgReceiver();
-        queryVsCode();
+
         loginBtn.setOnClickListener(this);
     }
 
@@ -362,7 +364,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     }
 
     protected void onResume() {
-        queryVsCode();
+        //queryVsCode();
         super.onResume();
     }
 

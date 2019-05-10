@@ -16,7 +16,7 @@ import com.miu30.common.util.CommonDialog;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
 import com.miu360.legworkwrit.R;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.utils.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.AdministrativePenaltyContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;

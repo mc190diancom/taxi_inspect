@@ -5,12 +5,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.miu30.common.MiuBaseApp;
+import com.miu30.common.base.BaseActivity;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;
-import com.miu360.legworkwrit.mvp.ui.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.miu30.common.MiuBaseApp.self;
 
 public class PhotoActivity extends BaseActivity {
 

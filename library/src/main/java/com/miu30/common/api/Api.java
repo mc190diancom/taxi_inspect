@@ -1,4 +1,4 @@
-package com.miu360.legworkwrit.mvp.model.api;
+package com.miu30.common.api;
 
 /**
  * ================================================

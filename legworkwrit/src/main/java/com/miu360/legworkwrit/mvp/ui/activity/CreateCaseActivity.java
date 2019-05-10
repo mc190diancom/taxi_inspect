@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.config.Config;
 import com.miu30.common.ui.LawSelectLocationActivity;
 import com.miu30.common.ui.entity.AddMsg;

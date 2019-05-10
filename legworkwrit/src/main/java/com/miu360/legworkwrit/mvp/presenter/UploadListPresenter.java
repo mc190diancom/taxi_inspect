@@ -13,7 +13,7 @@ import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
 import com.miu30.common.config.Config;
 import com.miu30.common.util.UIUtils;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.utils.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.UploadListContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;

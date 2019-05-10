@@ -15,6 +15,7 @@ import android.widget.ViewSwitcher;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.config.Config;
 import com.miu30.common.util.UIUtils;
 import com.miu360.legworkwrit.R;

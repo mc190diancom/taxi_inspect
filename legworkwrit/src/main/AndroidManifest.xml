@@ -12,12 +12,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application>
-        <activity android:name=".mvp.ui.activity.PhotoActivity"
-            android:screenOrientation="portrait"/>
-        <!-- arms配置 -->
-        <meta-data
-            android:name="com.miu360.legworkwrit.app.GlobalConfiguration"
-            android:value="ConfigModule" />
+        <activity
+            android:name=".mvp.ui.activity.PhotoActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -96,6 +93,8 @@
         <activity android:name=".mvp.ui.activity.CaseBlListActivity" />
 
         <service android:name=".app.service.GeneralInformationService" />
+
+        <activity android:name=".mvp.ui.activity.demo1Activity"/>
     </application>
 
 </manifest>

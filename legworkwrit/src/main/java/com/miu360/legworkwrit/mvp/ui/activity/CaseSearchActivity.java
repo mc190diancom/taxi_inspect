@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.base.BaseMvpActivity;
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.R2;
 import com.miu360.legworkwrit.di.component.DaggerCaseSearchComponent;

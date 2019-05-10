@@ -8,7 +8,7 @@ import com.miu30.common.config.Config;
 import com.miu30.common.data.FilePreference;
 import com.miu30.common.ui.entity.Template;
 import com.miu30.common.util.FileUtil;
-import com.miu360.legworkwrit.app.MyErrorHandleSubscriber;
+import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.mvp.model.api.service.MyApis;
 
 import java.io.File;

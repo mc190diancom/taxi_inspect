@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
@@ -30,6 +31,7 @@ import com.miu30.common.async.Callback;
 import com.miu30.common.async.ExceptionHandler;
 import com.miu30.common.async.Result;
 import com.miu30.common.config.Config;
+import com.miu30.common.config.Constance;
 import com.miu30.common.config.MsgConfig;
 import com.miu30.common.data.CommonData;
 import com.miu30.common.data.UserPreference;

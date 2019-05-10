@@ -6,7 +6,7 @@ import android.util.Log;
 import com.jess.arms.mvp.IView;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.miu30.common.async.Result;
-import com.miu360.legworkwrit.app.MyRetryWithDelay;
+import com.miu30.common.app.MyRetryWithDelay;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
 import io.reactivex.Observable;
