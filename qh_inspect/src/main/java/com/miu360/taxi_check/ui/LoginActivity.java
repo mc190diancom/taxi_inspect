@@ -1,5 +1,6 @@
 package com.miu360.taxi_check.ui;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -26,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -34,6 +36,7 @@ import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
 import com.miu30.common.data.UserPreference;
 import com.miu30.common.util.MyProgressDialog;
+import com.miu30.common.util.PermissionManager;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
@@ -79,6 +82,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         setContentView(R.layout.activity_login);
         initView();
         // checkGps();
+        requestPermissions();
         UserPreference pref = new UserPreference(self);
         remenberPswCb.setChecked(pref.getIsChecked());
         if (remenberPswCb.isChecked()) {
@@ -86,6 +90,37 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
             user_name.setText(pref.getString("user_name", null));
             remenberPswCb.setChecked(true);
         }
+    }
+
+    private void requestPermissions() {
+        String[] permissions = new String[]{
+                Manifest.permission.READ_CONTACTS,            //读取联系人
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,   //访问存储卡
+                Manifest.permission.READ_PHONE_STATE,         //获取手机状态
+                Manifest.permission.ACCESS_FINE_LOCATION,     //定位权限
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.SEND_SMS,                 //短信权限
+                Manifest.permission.READ_SMS,
+                Manifest.permission.CAMERA,                   //照相机权限
+                Manifest.permission.RECORD_AUDIO              //录音权限
+        };
+
+        new PermissionManager(this) {
+            @Override
+            protected void success() {
+
+            }
+
+            @Override
+            protected void failure() {
+                finish();
+            }
+
+            @Override
+            protected void error(Throwable throwable) {
+                ToastUtils.showShort("请求权限出错");
+            }
+        }.requestPermissions(permissions);
     }
 
     private void checkGps() {
@@ -224,7 +259,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                             pref.setString("user_name", user_name.getText().toString());
                             pref.setString("user_psw", user_psw.getText().toString());
                             pref.setString("login_id", info.getRode());
-                            if(!TextUtils.isEmpty(info.getUserName())){
+                            if (!TextUtils.isEmpty(info.getUserName())) {
                                 pref.setString("user_name_update_info", info.getUserName());
                             }
                             Intent target = new Intent();
