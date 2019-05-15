@@ -4,8 +4,16 @@
 
     <application>
         <activity android:name=".mvp.ui.activity.prestoreSignActivity" />
-        <activity android:name=".mvp.ui.activity.testActivity" />
-        <activity android:name=".mvp.ui.activity.TestActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ElectronicSignatureActivity">
+
+        </activity>
+        <activity android:name=".mvp.ui.activity.AuthorizationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

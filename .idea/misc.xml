@@ -35,25 +35,4 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
-  <component name="SvnBranchConfigurationManager">
-    <option name="myConfigurationMap">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="branchUrls">
-                <list>
-                  <option value="https://192.168.2.131/svn/inspect/android/AndroidStudio" />
-                  <option value="https://192.168.2.131/svn/inspect/android/qh_inspect" />
-                  <option value="https://192.168.2.131/svn/inspect/android/tags" />
-                  <option value="https://192.168.2.131/svn/inspect/android/upload" />
-                </list>
-              </option>
-              <option name="trunkUrl" value="https://192.168.2.131/svn/inspect/android/trunk" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
 </project>
