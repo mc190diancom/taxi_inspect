@@ -9,6 +9,7 @@
     <include layout="@layout/elecsign_header" />
 
     <LinearLayout
+        android:id="@+id/ll_authorization"
         android:layout_width="match_parent"
         android:layout_height="46.5dp"
         android:layout_marginTop="7dp"
@@ -49,6 +50,7 @@
         android:background="@drawable/horizontal_divider" />
 
     <LinearLayout
+        android:id="@+id/ll_my_signature"
         android:layout_width="match_parent"
         android:layout_height="46.5dp"
         android:background="@android:color/white"
@@ -79,6 +81,28 @@
             android:layout_marginStart="9dp"
             android:background="@drawable/ic_go"
             android:contentDescription="@null" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:showText="false"
+            android:switchMinWidth="47dp"
+            android:textOff=""
+            android:textOn=""
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track_selector"
+            app:critical_track="@drawable/switch_track_ceitical"
+            app:state="state_critical" />
 
     </LinearLayout>
 

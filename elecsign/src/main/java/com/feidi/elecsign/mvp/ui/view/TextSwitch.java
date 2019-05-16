@@ -36,6 +36,8 @@ import com.feidi.elecsign.R;
  * @attr ref android.R.styleable#TextSwitch_unchecked_textColor   //开关未选中文字的颜色
  */
 public class TextSwitch extends View implements Checkable {
+    private static final int DEFAULT_ANIMATOR_DURATION = 250;
+
     private CharSequence mTextOn;
     private CharSequence mTextOff;
     private Drawable mThumbDrawable;
@@ -43,17 +45,25 @@ public class TextSwitch extends View implements Checkable {
 
     private TextPaint mTextPaint;
 
-    private float mThumbPosition;
+    /**
+     * 滑块位置距离左边的百分比
+     * 0  表示滑块在最左边
+     * 1  表示滑块在最右边
+     */
+    private float mThumbPositionPercent;
+    //左边文本的颜色
     private int mLeftTextColor;
+    //右边文本的颜色
     private int mRightTextColor;
-    /**
-     * 选中时文本的颜色
-     */
+    //选中时文本的颜色
     private int mCheckedTextColor;
-    /**
-     * 未选中时文本的颜色
-     */
+    //未选中时文本的颜色
     private int mUncheckedTextColor;
+    /**
+     * 动画集合，包括：
+     * 滑块滑动的动画
+     * 文本颜色渐变的动画
+     */
     private AnimatorSet mAnimatorSet;
 
     private Layout mOnLayout;
@@ -85,7 +95,7 @@ public class TextSwitch extends View implements Checkable {
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.density = getResources().getDisplayMetrics().density;
         mTextPaint.setTextSize(textSize);
-        mThumbPosition = mChecked ? 0 : 1;
+        mThumbPositionPercent = mChecked ? 0 : 1;
         mLeftTextColor = mChecked ? mCheckedTextColor : mUncheckedTextColor;
         mRightTextColor = mChecked ? mUncheckedTextColor : mCheckedTextColor;
 
@@ -176,7 +186,7 @@ public class TextSwitch extends View implements Checkable {
         //绘制滑块
         if (mThumbDrawable != null) {
             canvas.save();
-            int left = (int) ((getMeasuredWidth() - mThumbDrawable.getIntrinsicWidth()) * mThumbPosition);
+            int left = (int) ((getMeasuredWidth() - mThumbDrawable.getIntrinsicWidth()) * mThumbPositionPercent);
             canvas.translate(left, 0);
             mThumbDrawable.draw(canvas);
             canvas.restore();
@@ -230,7 +240,7 @@ public class TextSwitch extends View implements Checkable {
         int leftTextTargetColor = checked ? mCheckedTextColor : mUncheckedTextColor;
         int rightTextTargetColor = checked ? mUncheckedTextColor : mCheckedTextColor;
 
-        ValueAnimator thumbPositionAnimator = ValueAnimator.ofFloat(mThumbPosition, targetPosition);
+        ValueAnimator thumbPositionAnimator = ValueAnimator.ofFloat(mThumbPositionPercent, targetPosition);
         thumbPositionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -255,7 +265,7 @@ public class TextSwitch extends View implements Checkable {
         });
 
         mAnimatorSet = new AnimatorSet();
-        mAnimatorSet.setDuration(250);
+        mAnimatorSet.setDuration(DEFAULT_ANIMATOR_DURATION);
         mAnimatorSet.playTogether(thumbPositionAnimator, leftTextColorAnimator, rightTextColorAnimator);
         mAnimatorSet.start();
     }
@@ -267,7 +277,7 @@ public class TextSwitch extends View implements Checkable {
     }
 
     private void setThumbPosition(float newPosition) {
-        mThumbPosition = newPosition;
+        mThumbPositionPercent = newPosition;
         invalidate();
     }
 

@@ -1,6 +1,7 @@
 package com.feidi.elecsign.mvp.ui.widget;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -19,14 +20,24 @@ public class ElecsignHeader {
     ImageButton ibtnLeft;
     @BindView(R2.id.tv_title)
     TextView tvTitle;
+    @BindView(R2.id.tv_left)
+    TextView tvLeft;
+    @BindView(R2.id.tv_right)
+    TextView tvRight;
 
     public ElecsignHeader() {
 
     }
 
+    public void init(final Activity activity) {
+        this.init(activity, "");
+    }
+
     public void init(final Activity activity, String title) {
         ButterKnife.bind(this, activity);
-        tvTitle.setText(title);
+        if (!TextUtils.isEmpty(title)) {
+            tvTitle.setText(title);
+        }
 
         ibtnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +45,42 @@ public class ElecsignHeader {
                 activity.finish();
             }
         });
+    }
+
+    public void setLeftTextViewVisibility(int visibility) {
+        if (tvLeft.getVisibility() != visibility) {
+            tvLeft.setVisibility(visibility);
+        }
+    }
+
+    public void setLeftTextViewText(CharSequence text) {
+        if (!TextUtils.isEmpty(text)) {
+            tvLeft.setText(text);
+        }
+    }
+
+    public void setLeftTextViewOnClickListener(View.OnClickListener listener) {
+        if (listener != null) {
+            tvLeft.setOnClickListener(listener);
+        }
+    }
+
+    public void setRightTextViewVisibility(int visibility) {
+        if (tvRight.getVisibility() != visibility) {
+            tvRight.setVisibility(visibility);
+        }
+    }
+
+    public void setRightTextViewText(CharSequence text) {
+        if (!TextUtils.isEmpty(text)) {
+            tvRight.setText(text);
+        }
+    }
+
+    public void setRightTextViewOnClickListener(View.OnClickListener listener) {
+        if (listener != null) {
+            tvRight.setOnClickListener(listener);
+        }
     }
 
 }

@@ -54,14 +54,14 @@ public class ElectronicSignatureActivity extends BaseMvpActivity<ElectronicSigna
         new ElecsignHeader().init(self, "电子签名");
     }
 
-    @OnClick(R2.id.iv_authorization)
+    @OnClick(R2.id.ll_authorization)
     public void goAuthorization(View view) {
         ActivityUtils.startActivity(AuthorizationActivity.class);
     }
 
-    @OnClick(R2.id.iv_my_signature)
+    @OnClick(R2.id.ll_my_signature)
     public void goMySignature(View view) {
-
+        ActivityUtils.startActivity(MySignatureActivity.class);
     }
 
 }

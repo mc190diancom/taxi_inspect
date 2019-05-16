@@ -2,8 +2,7 @@ package com.feidi.elecsign.mvp.presenter;
 
 import android.app.Application;
 
-import com.feidi.elecsign.mvp.contract.AuthorizationContract;
-import com.feidi.elecsign.util.DialogUtils;
+import com.feidi.elecsign.mvp.contract.SignatureContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -18,7 +17,7 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 05/14/2019 18:22
+ * Created by MVPArmsTemplate on 05/16/2019 13:55
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -27,7 +26,7 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
  * ================================================
  */
 @ActivityScope
-public class AuthorizationPresenter extends BasePresenter<AuthorizationContract.Model, AuthorizationContract.View> {
+public class SignaturePresenter extends BasePresenter<SignatureContract.Model, SignatureContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -38,12 +37,8 @@ public class AuthorizationPresenter extends BasePresenter<AuthorizationContract.
     AppManager mAppManager;
 
     @Inject
-    public AuthorizationPresenter(AuthorizationContract.Model model, AuthorizationContract.View rootView) {
+    public SignaturePresenter(SignatureContract.Model model, SignatureContract.View rootView) {
         super(model, rootView);
-    }
-
-    public void showAuthDescriptionDialog() {
-        DialogUtils.showAuthDescriptionDialog(mAppManager.getCurrentActivity());
     }
 
     @Override
