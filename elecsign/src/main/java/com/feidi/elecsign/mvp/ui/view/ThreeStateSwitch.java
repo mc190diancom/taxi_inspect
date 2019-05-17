@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IntDef;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Switch;
 
@@ -26,8 +25,14 @@ public class ThreeStateSwitch extends Switch {
     /** 关闭状态 */
     public static final int STATE_OFF = 2;
 
+    private static final int TOUCH_MODE_IDLE = 0;
+    private static final int TOUCH_MODE_DOWN = 1;
+
     private Drawable mCriticalTrackDrawable;
     private Drawable mTrackDrawable;
+
+    private int mTouchMode;
+    private OnInterceptClickListener mListener;
 
     @State
     int mState;
@@ -109,7 +114,10 @@ public class ThreeStateSwitch extends Switch {
                 case STATE_CRITICAL:
                     if (mState == STATE_OFF) {
                         //关闭状态 ---->> 临界状态
-                        throw new StateSwitchException("ThreeStateSwitch can not change state STATE_OFF to STATE_CRITICAL.");
+                        if (mCriticalTrackDrawable != null) {
+                            setThumbDrawable(mCriticalTrackDrawable);
+                        }
+                        setChecked(true);
                     } else {
                         //打开状态 ---->> 临界状态
                         if (mCriticalTrackDrawable != null) {
@@ -129,14 +137,24 @@ public class ThreeStateSwitch extends Switch {
     public boolean dispatchTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (isEnabled() && isClickable()) {
+                    mTouchMode = TOUCH_MODE_DOWN;
+                }
                 break;
             case MotionEvent.ACTION_UP:
-                break;
-
-            case MotionEvent.ACTION_MOVE:
+                if (mTouchMode == TOUCH_MODE_DOWN) {
+                    //只有当开关的状态处于临界状态且设置有OnInterceptClickListener的情况下才会拦截该事件
+                    if (mState == STATE_CRITICAL && mListener != null) {
+                        mListener.intercept();
+                        return true;
+                    }
+                }
                 break;
 
             case MotionEvent.ACTION_CANCEL:
+                mTouchMode = TOUCH_MODE_IDLE;
+                break;
+            default:
                 break;
         }
 
@@ -145,7 +163,7 @@ public class ThreeStateSwitch extends Switch {
 
     @IntDef({STATE_ON, STATE_CRITICAL, STATE_OFF})
     @Retention(RetentionPolicy.SOURCE)
-    @interface State {
+    public @interface State {
 
     }
 
@@ -155,6 +173,18 @@ public class ThreeStateSwitch extends Switch {
             super(message);
         }
 
+    }
+
+    public void setOnInterceptClickListener(OnInterceptClickListener listener) {
+        this.mListener = listener;
+    }
+
+    public interface OnInterceptClickListener {
+        /**
+         * 当开关处于临界状态时，如果设置了该回调，在点击开关后将会回调该方法，并且拦截后续的事件
+         * 主要目的是实现在临界状态点击开关后需要弹窗的一个功能
+         */
+        void intercept();
     }
 
 }
