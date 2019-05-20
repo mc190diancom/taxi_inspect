@@ -96,8 +96,8 @@ public class ThreeStateSwitch extends Switch {
                         setChecked(true);
                     } else {
                         //临界状态 ---->> 打开状态
-                        if (mCriticalTrackDrawable != null) {
-                            setTrackDrawable(mCriticalTrackDrawable);
+                        if (mTrackDrawable != null) {
+                            setTrackDrawable(mTrackDrawable);
                         }
                     }
                     break;
@@ -115,7 +115,7 @@ public class ThreeStateSwitch extends Switch {
                     if (mState == STATE_OFF) {
                         //关闭状态 ---->> 临界状态
                         if (mCriticalTrackDrawable != null) {
-                            setThumbDrawable(mCriticalTrackDrawable);
+                            setTrackDrawable(mCriticalTrackDrawable);
                         }
                         setChecked(true);
                     } else {

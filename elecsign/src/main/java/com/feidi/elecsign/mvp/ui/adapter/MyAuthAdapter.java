@@ -7,6 +7,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.elecsign.R;
 import com.feidi.elecsign.mvp.model.entity.MyAuth;
 import com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch;
+import com.feidi.elecsign.util.DialogUtils;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 import com.miu30.common.MiuBaseApp;
@@ -30,7 +31,7 @@ public class MyAuthAdapter extends DefaultAdapter<MyAuth> {
             public void setData(MyAuth data, final int position) {
                 TextView tvNameAndCard = v.findViewById(R.id.tv_name_and_card);
                 TextView tvOverdue = v.findViewById(R.id.tv_overdue);
-                ThreeStateSwitch tssSwitch = v.findViewById(R.id.tss_switch);
+                final ThreeStateSwitch tssSwitch = v.findViewById(R.id.tss_switch);
 
                 tvNameAndCard.setText(MiuBaseApp.self.getResources().getString(R.string.name_and_card_format
                         , data.getName()
@@ -40,7 +41,13 @@ public class MyAuthAdapter extends DefaultAdapter<MyAuth> {
                 tssSwitch.setOnInterceptClickListener(new ThreeStateSwitch.OnInterceptClickListener() {
                     @Override
                     public void intercept() {
-                        ToastUtils.showShort("第 " + position + " 开关的状态为临界状态");
+                        DialogUtils.showCommonDialog(v.getContext(), "确认继续向李毅授权签名一个月？", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ToastUtils.showShort("你点击了确认");
+                                tssSwitch.setState(ThreeStateSwitch.STATE_ON);
+                            }
+                        });
                     }
                 });
             }
