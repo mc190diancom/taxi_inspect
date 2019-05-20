@@ -87,9 +87,12 @@ public class TextSwitch extends View implements Checkable {
         mTextOff = t.getText(R.styleable.TextSwitch_textOff);
         mThumbDrawable = t.getDrawable(R.styleable.TextSwitch_thumb);
         mChecked = t.getBoolean(R.styleable.TextSwitch_checked, false);
-        float textSize = t.getDimension(R.styleable.TextSwitch_textSize, SizeUtils.dp2px(14));
-        mCheckedTextColor = t.getColor(R.styleable.TextSwitch_checked_textColor, Color.parseColor("#FFFFFF"));
-        mUncheckedTextColor = t.getColor(R.styleable.TextSwitch_unchecked_textColor, Color.parseColor("#666666"));
+        float textSize = t.getDimension(R.styleable.TextSwitch_textSize
+                , SizeUtils.dp2px(14));
+        mCheckedTextColor = t.getColor(R.styleable.TextSwitch_checked_textColor
+                , Color.parseColor("#FFFFFF"));
+        mUncheckedTextColor = t.getColor(R.styleable.TextSwitch_unchecked_textColor
+                , Color.parseColor("#666666"));
         t.recycle();
 
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);

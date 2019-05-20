@@ -9,6 +9,12 @@ public class AuthMy {
     private String card;
     private String validity;
 
+    public AuthMy(String name, String card, String validity) {
+        this.name = name;
+        this.card = card;
+        this.validity = validity;
+    }
+
     public String getName() {
         return name;
     }
