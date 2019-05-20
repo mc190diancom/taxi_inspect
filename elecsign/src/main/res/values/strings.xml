@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">elecSign</string>
+
+    <!-- 例如：李毅（00012221） -->
+    <string name="name_and_card_format">%1$s（%2$s）</string>
 </resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="all">
+
+    <include layout="@layout/elecsign_header" />
+
+    <LinearLayout
+        android:id="@+id/ll_authorization"
+        android:layout_width="match_parent"
+        android:layout_height="46.5dp"
+        android:layout_marginTop="7dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="19dp"
+        android:paddingEnd="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="授权"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12/22"
+            android:textColor="#999999"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/iv_authorization"
+            android:layout_width="7dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/ic_go"
+            android:contentDescription="@null" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/horizontal_divider" />
+
+    <LinearLayout
+        android:id="@+id/ll_my_signature"
+        android:layout_width="match_parent"
+        android:layout_height="46.5dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="19dp"
+        android:paddingEnd="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的签名"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未签名"
+            android:textColor="#999999"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/iv_my_signature"
+            android:layout_width="7dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/ic_go"
+            android:contentDescription="@null" />
+
+    </LinearLayout>
+
+</LinearLayout>

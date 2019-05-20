@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <TextView
+        android:id="@+id/tv_name_and_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:text="李毅（00012221）" />
+
+    <TextView
+        android:id="@+id/tv_overdue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF5143"
+        android:textSize="13sp"
+        tools:text="3天后到期" />
+
+    <com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tss_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:switchMinWidth="47dp"
+        android:textOff=""
+        android:textOn=""
+        android:thumb="@drawable/switch_thumb"
+        android:track="@drawable/switch_track_selector"
+        app:critical_track="@drawable/switch_track_ceitical" />
+
+</LinearLayout>

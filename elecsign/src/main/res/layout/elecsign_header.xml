@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:background="#41C3D6">
+
+    <ImageButton
+        android:id="@+id/ibtn_left"
+        android:layout_width="8dp"
+        android:layout_height="14dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="14dp"
+        android:background="@drawable/top_tb_back"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="9dp"
+        android:layout_toEndOf="@+id/ibtn_left"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:text="返回" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="visible"
+        tools:text="标题" />
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="27dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:ignore="RelativeOverlap"
+        tools:text="保存签名" />
+
+</RelativeLayout>

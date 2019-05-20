@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <TextView
+        android:id="@+id/tv_name_and_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:text="李毅（00012221）" />
+
+    <TextView
+        android:id="@+id/tv_validity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#41C3D6"
+        android:textSize="13sp"
+        tools:text="2019-12-22前有效" />
+
+    <ImageView
+        android:id="@+id/iv_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/ic_go"
+        android:contentDescription="@null" />
+
+</LinearLayout>

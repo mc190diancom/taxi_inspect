@@ -1,11 +1,8 @@
 package com.miu30.common.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Environment;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,11 +10,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.miu30.common.config.Config;
-import com.miu30.common.ui.entity.Inspector;
 
-import android.content.Context;
-import android.os.Environment;
-import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Store2SdUtil {
 

@@ -4,8 +4,24 @@
 
     <application>
         <activity android:name=".mvp.ui.activity.prestoreSignActivity" />
-        <activity android:name=".mvp.ui.activity.testActivity" />
-        <activity android:name=".mvp.ui.activity.TestActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.ElectronicSignatureActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.AuthorizationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.SignatureActivity"
+            android:screenOrientation="sensor" />
+        <activity
+            android:name=".mvp.ui.activity.MySignatureActivity"
+            android:screenOrientation="sensor" />
     </application>
 
 </manifest>

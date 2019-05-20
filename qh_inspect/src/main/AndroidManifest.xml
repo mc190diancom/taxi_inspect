@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.miu360.inspect"
     android:versionCode="20180912"
-    android:versionName="1.0.9"> <!-- 0.9.9 1.0.4 -->
+    android:versionName="1.0.9"
+    tools:ignore="all"> <!-- 0.9.9 1.0.4 -->
 
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -62,15 +63,15 @@
             android:enabled="true"
             android:process=":remote"></service>
 
-        <provider
-            android:name="com.miu30.common.util.MyFileProvider"
-            android:authorities="${applicationId}.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+        <!--<provider-->
+            <!--android:name="com.miu30.common.util.MyFileProvider"-->
+            <!--android:authorities="${applicationId}.fileProvider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
 
         <activity
             android:name="com.miu360.taxi_check.ui.MainActivity"
@@ -79,11 +80,11 @@
         <activity
             android:name="com.miu360.taxi_check.ui.LoginActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name="com.miu360.taxi_check.ui.PathQueryActivity"
