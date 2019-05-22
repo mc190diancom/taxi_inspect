@@ -6,5 +6,26 @@
         <attr name="stuckShadowDrawable" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="TextSwitch">
+        <attr name="textOn" format="string" />
+        <attr name="textOff" format="string" />
+        <attr name="thumb" format="reference" />
+        <attr name="checked" format="boolean" />
+        <attr name="textSize" format="dimension" />
+        <attr name="checked_textColor" format="color" />
+        <attr name="unchecked_textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ThreeStateSwitch">
+        <!-- 临界状态下滑轨图片 -->
+        <attr name="critical_track" format="reference" />
+        <!-- 开关状态 -->
+        <attr name="state" format="enum">
+            <enum name="state_on" value="0" />
+            <enum name="state_critical" value="1" />
+            <enum name="state_off" value="2" />
+        </attr>
+    </declare-styleable>
+
 </resources>
 

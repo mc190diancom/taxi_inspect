@@ -1,4 +1,4 @@
-package com.feidi.elecsign.mvp.ui.widget;
+package com.miu30.common.ui.widget;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

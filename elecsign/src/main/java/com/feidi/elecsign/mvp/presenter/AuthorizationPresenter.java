@@ -7,12 +7,12 @@ import com.feidi.elecsign.mvp.model.entity.AuthMy;
 import com.feidi.elecsign.mvp.model.entity.MyAuth;
 import com.feidi.elecsign.mvp.ui.adapter.AuthMyAdapter;
 import com.feidi.elecsign.mvp.ui.adapter.MyAuthAdapter;
-import com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch;
 import com.feidi.elecsign.util.DialogUtils;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
+import com.miu30.common.ui.view.ThreeStateSwitch;
 
 import java.util.ArrayList;
 import java.util.List;

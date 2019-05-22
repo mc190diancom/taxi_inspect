@@ -25,7 +25,7 @@
         android:textSize="13sp"
         tools:text="3天后到期" />
 
-    <com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.miu30.common.ui.view.ThreeStateSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tss_switch"
         android:layout_width="wrap_content"
         android:layout_height="27dp"

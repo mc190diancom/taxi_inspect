@@ -122,11 +122,11 @@ dependencies {
     implementation project(':elecsign')
     implementation 'com.android.support:support-v4:22.2.1'
     implementation 'com.google.code.gson:gson:2.2.2'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    implementation project(':video')
 }

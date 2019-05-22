@@ -1,6 +1,7 @@
 package com.feidi.elecsign.mvp.model.entity;
 
-import com.feidi.elecsign.mvp.ui.view.ThreeStateSwitch;
+
+import com.miu30.common.ui.view.ThreeStateSwitch;
 
 /**
  * 作者：wanglei on 2019/5/17.

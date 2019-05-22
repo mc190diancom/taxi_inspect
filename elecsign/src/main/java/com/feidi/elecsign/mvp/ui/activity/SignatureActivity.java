@@ -9,9 +9,9 @@ import com.feidi.elecsign.R;
 import com.feidi.elecsign.di.component.DaggerSignatureComponent;
 import com.feidi.elecsign.mvp.contract.SignatureContract;
 import com.feidi.elecsign.mvp.presenter.SignaturePresenter;
-import com.feidi.elecsign.mvp.ui.widget.ElecsignHeader;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
+import com.miu30.common.ui.widget.IncludeHeader;
 
 
 /**
@@ -45,7 +45,7 @@ public class SignatureActivity extends BaseMvpActivity<SignaturePresenter> imple
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        ElecsignHeader header = new ElecsignHeader();
+        IncludeHeader header = new IncludeHeader();
         header.init(self);
         header.setLeftTextViewText("返回");
         header.setLeftTextViewVisibility(View.VISIBLE);

@@ -1,4 +1,4 @@
-package com.feidi.elecsign.mvp.ui.view;
+package com.miu30.common.ui.view;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.Checkable;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.feidi.elecsign.R;
+import com.miu360.library.R;
 
 /**
  * 作者：wanglei on 2019/5/15.

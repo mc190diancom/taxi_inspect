@@ -15,15 +15,14 @@ import com.feidi.elecsign.mvp.contract.AuthorizationContract;
 import com.feidi.elecsign.mvp.presenter.AuthorizationPresenter;
 import com.feidi.elecsign.mvp.ui.adapter.AuthMyAdapter;
 import com.feidi.elecsign.mvp.ui.adapter.MyAuthAdapter;
-import com.feidi.elecsign.mvp.ui.view.TextSwitch;
-import com.feidi.elecsign.mvp.ui.widget.ElecsignHeader;
-import com.feidi.elecsign.mvp.ui.widget.MultiVeriticalItemDecoration;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
+import com.miu30.common.ui.view.TextSwitch;
+import com.miu30.common.ui.widget.IncludeHeader;
+import com.miu30.common.ui.widget.MultiVeriticalItemDecoration;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
 
 /**
  * ================================================
@@ -63,7 +62,7 @@ public class AuthorizationActivity extends BaseMvpActivity<AuthorizationPresente
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        new ElecsignHeader().init(self, "授权");
+        new IncludeHeader().init(self, "授权");
 
         textSwitch.setOnCheckedChangeListener(new TextSwitch.OnCheckedChangeListener() {
             @Override

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:ignore="HardcodedText">
 
-    <include layout="@layout/elecsign_header" />
+    <include layout="@layout/include_header" />
 
     <LinearLayout
         android:layout_width="match_parent"
