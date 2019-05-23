@@ -94,7 +94,7 @@
 
         <service android:name=".app.service.GeneralInformationService" />
 
-        <activity android:name=".mvp.ui.activity.demo1Activity"/>
+        <activity android:name=".mvp.ui.activity.demo1Activity" />
     </application>
 
 </manifest>

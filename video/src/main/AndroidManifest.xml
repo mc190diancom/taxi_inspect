@@ -4,12 +4,19 @@
 
     <application>
         <activity android:name=".mvp.ui.activity.InspectWarningActivity">
+
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.TCPTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".app.services.TCPConnectService" />
+
     </application>
 
 </manifest>
