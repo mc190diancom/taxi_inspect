@@ -1,5 +1,7 @@
 package com.miu30.common.connect;
 
+import com.miu30.common.connect.entity.IMesage;
+
 import io.netty.channel.Channel;
 
 /**

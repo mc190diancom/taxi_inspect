@@ -1,4 +1,4 @@
-package com.miu30.common.connect;
+package com.miu30.common.connect.entity;
 
 /**
  * 作者：wanglei on 2019/5/23.

@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.feidi.video.R;
 import com.feidi.video.app.services.TCPConnectService;
-import com.miu30.common.connect.BindCameraRequest;
+import com.miu30.common.connect.entity.BindCameraRequest;
 import com.miu30.common.connect.ChannelManager;
-import com.miu30.common.connect.LogoutRequest;
-import com.miu30.common.connect.NettyConstants;
+import com.miu30.common.connect.entity.LogoutRequest;
+import com.miu30.common.connect.entity.NettyConstants;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;

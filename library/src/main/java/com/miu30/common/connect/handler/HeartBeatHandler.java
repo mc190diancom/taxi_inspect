@@ -1,4 +1,6 @@
-package com.miu30.common.connect;
+package com.miu30.common.connect.handler;
+
+import com.miu30.common.connect.entity.IMesage;
 
 import org.json.JSONObject;
 
