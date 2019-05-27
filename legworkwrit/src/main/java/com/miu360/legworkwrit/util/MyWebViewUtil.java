@@ -111,8 +111,10 @@ public class MyWebViewUtil {
                     @Override
                     public ObservableSource<Bitmap> apply(WebView webView) throws Exception {
                         Picture picture = webView.capturePicture();
+                        int width = picture.getWidth();
+                        int height = (int) (width * 1.414);//A4纸的高、宽比例为1.414
                         Bitmap bitmap;
-                        bitmap = Bitmap.createBitmap(picture.getWidth(), picture.getHeight(), Bitmap.Config.ARGB_8888);
+                        bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                         /*if (Build.VERSION.SDK_INT >= 22) {
                             bitmap = Bitmap.createBitmap(2382, 3369, Bitmap.Config.ARGB_8888);
                         } else {
@@ -123,11 +125,11 @@ public class MyWebViewUtil {
                         Paint paint = new Paint();
                         canvas.drawBitmap(bitmap, 0, 0, paint);
                         webView.draw(canvas);
+
                         return Observable.just(bitmap);
                     }
                 })
                 .subscribeOn(AndroidSchedulers.mainThread())
-
                 .observeOn(Schedulers.io())
                 .flatMap(new Function<Bitmap, ObservableSource<File>>() {
                     @Override

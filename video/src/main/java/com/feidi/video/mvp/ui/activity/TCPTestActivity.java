@@ -12,6 +12,7 @@ import com.feidi.video.R;
 import com.feidi.video.app.services.TCPConnectService;
 import com.miu30.common.connect.entity.BindCameraRequest;
 import com.miu30.common.connect.ChannelManager;
+import com.miu30.common.connect.entity.CancelBindCameraRequest;
 import com.miu30.common.connect.entity.LogoutRequest;
 import com.miu30.common.connect.entity.NettyConstants;
 
@@ -29,6 +30,7 @@ public class TCPTestActivity extends FragmentActivity {
     private TextView tvContent;
     private Button btnLogout;
     private Button btnBindCamera;
+    private Button btnCancelBindCamera;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class TCPTestActivity extends FragmentActivity {
         tvContent = findViewById(R.id.tv_content);
         btnLogout = findViewById(R.id.btn_logout);
         btnBindCamera = findViewById(R.id.btn_bind_camera);
+        btnCancelBindCamera = findViewById(R.id.btn_cancel_bind_camera);
 
         if (ChannelManager.getInstance().isConnected()) {
             tvState.setText("当前状态：已连接");
@@ -59,6 +62,13 @@ public class TCPTestActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 ChannelManager.getInstance().sendMessage(new BindCameraRequest("zfzh1", "666666666,777777777"));
+            }
+        });
+
+        btnCancelBindCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest("zfzh1", "666666666"));
             }
         });
 

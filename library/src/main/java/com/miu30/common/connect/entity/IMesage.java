@@ -15,4 +15,6 @@ public interface IMesage {
     int ALARM = 3;
     /** 绑定摄像头 */
     int BIND_CAMERA = 4;
+    /** 取消绑定摄像头 */
+    int CANCEL_BIND_CAMERA = 5;
 }

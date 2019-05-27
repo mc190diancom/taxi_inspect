@@ -170,7 +170,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                 } else {
                     UIUtils.toast(self, "用户名或密码不能为空", Toast.LENGTH_SHORT);
                 }
-
                 break;
         }
 

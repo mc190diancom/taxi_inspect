@@ -10,12 +10,13 @@
     <include layout="@layout/include_header" />
 
     <com.miu30.common.ui.view.TextSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/textSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_switch_inspect_warning"
-        app:checked="true"
+        app:checked="false"
         app:textOff="移动摄像头预警"
         app:textOn="可疑车辆范围预警"
         app:textSize="14sp"

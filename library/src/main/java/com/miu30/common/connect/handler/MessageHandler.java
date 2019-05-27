@@ -43,6 +43,13 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case IMesage.ALARM:
                 UIUtils.toast(MiuBaseApp.self, "接收到报警信息", Toast.LENGTH_LONG);
                 break;
+            case IMesage.CANCEL_BIND_CAMERA:
+                if (jsonObject.optInt("status", -1) == 0) {
+                    UIUtils.toast(MiuBaseApp.self, "取消绑定摄像头成功", Toast.LENGTH_LONG);
+                } else {
+                    UIUtils.toast(MiuBaseApp.self, "取消绑定摄像头失败", Toast.LENGTH_LONG);
+                }
+                break;
             default:
                 break;
         }

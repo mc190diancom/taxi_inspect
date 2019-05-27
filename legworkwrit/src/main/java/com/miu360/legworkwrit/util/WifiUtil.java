@@ -135,6 +135,8 @@ public class WifiUtil {
 
         int netId = manager.addNetwork(configuration);
 
+        Log.d(PrinterManager.TAG, "addNetwork , netId = " + netId);
+
         for (WifiConfiguration c : manager.getConfiguredNetworks()) {
             if (c.networkId != netId) {
                 manager.disableNetwork(netId);

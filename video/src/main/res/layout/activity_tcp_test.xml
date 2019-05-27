@@ -33,6 +33,14 @@
             android:layout_weight="1"
             android:text="绑定摄像头" />
 
+        <Button
+            android:id="@+id/btn_cancel_bind_camera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="取消绑定摄像头" />
+
     </LinearLayout>
 
     <TextView
