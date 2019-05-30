@@ -6,14 +6,14 @@
     android:orientation="vertical"
     tools:ignore="HardcodedText">
 
-    <include layout="@layout/elecsign_header" />
+    <include layout="@layout/include_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:background="@android:color/white">
 
-        <com.feidi.elecsign.mvp.ui.view.TextSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.miu30.common.ui.view.TextSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/textSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +98,8 @@
         android:id="@+id/rv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp" />
+        android:layout_marginTop="7dp"
+        android:background="@android:color/white" />
 
     <TextView
         android:layout_width="wrap_content"

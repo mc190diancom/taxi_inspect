@@ -1,4 +1,4 @@
-package com.feidi.elecsign.mvp.ui.view;
+package com.miu30.common.ui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Switch;
 
-import com.feidi.elecsign.R;
+import com.miu360.library.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -79,7 +79,7 @@ public class ThreeStateSwitch extends Switch {
      * 临界状态 ---->> 打开状态（√）
      * 打开状态 ---->> 关闭状态（√）
      * 临界状态 ---->> 关闭状态（×）
-     * 关闭状态 ---->> 临界状态（×）
+     * 关闭状态 ---->> 临界状态（√）
      * 打开状态 ---->> 临界状态（√）
      *
      * @param newState 新的状态
@@ -96,8 +96,8 @@ public class ThreeStateSwitch extends Switch {
                         setChecked(true);
                     } else {
                         //临界状态 ---->> 打开状态
-                        if (mCriticalTrackDrawable != null) {
-                            setTrackDrawable(mCriticalTrackDrawable);
+                        if (mTrackDrawable != null) {
+                            setTrackDrawable(mTrackDrawable);
                         }
                     }
                     break;
@@ -115,7 +115,7 @@ public class ThreeStateSwitch extends Switch {
                     if (mState == STATE_OFF) {
                         //关闭状态 ---->> 临界状态
                         if (mCriticalTrackDrawable != null) {
-                            setThumbDrawable(mCriticalTrackDrawable);
+                            setTrackDrawable(mCriticalTrackDrawable);
                         }
                         setChecked(true);
                     } else {

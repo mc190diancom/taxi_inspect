@@ -1,4 +1,4 @@
-package com.feidi.elecsign.mvp.ui.widget;
+package com.miu30.common.ui.widget;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.feidi.elecsign.R2;
+import com.miu360.library.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  * 作者：wanglei on 2019/5/14.
  * 邮箱：forwlwork@gmail.com
  */
-public class ElecsignHeader {
+public class IncludeHeader {
     @BindView(R2.id.ibtn_left)
     ImageButton ibtnLeft;
     @BindView(R2.id.tv_title)
@@ -25,7 +25,7 @@ public class ElecsignHeader {
     @BindView(R2.id.tv_right)
     TextView tvRight;
 
-    public ElecsignHeader() {
+    public IncludeHeader() {
 
     }
 

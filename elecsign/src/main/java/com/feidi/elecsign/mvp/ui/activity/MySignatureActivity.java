@@ -14,9 +14,9 @@ import com.feidi.elecsign.R2;
 import com.feidi.elecsign.di.component.DaggerMySignatureComponent;
 import com.feidi.elecsign.mvp.contract.MySignatureContract;
 import com.feidi.elecsign.mvp.presenter.MySignaturePresenter;
-import com.feidi.elecsign.mvp.ui.widget.ElecsignHeader;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
+import com.miu30.common.ui.widget.IncludeHeader;
 
 import butterknife.BindView;
 
@@ -67,7 +67,7 @@ public class MySignatureActivity extends BaseMvpActivity<MySignaturePresenter> i
     }
 
     private void showContentView(boolean hasSignature) {
-        ElecsignHeader header = new ElecsignHeader();
+        IncludeHeader header = new IncludeHeader();
         header.init(self);
         header.setLeftTextViewVisibility(View.VISIBLE);
         header.setLeftTextViewText("返回");

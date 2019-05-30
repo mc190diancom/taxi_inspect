@@ -92,9 +92,16 @@
 
         <activity android:name=".mvp.ui.activity.CaseBlListActivity" />
 
+        <activity android:name=".mvp.ui.activity.WifiTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".app.service.GeneralInformationService" />
 
-        <activity android:name=".mvp.ui.activity.demo1Activity"/>
     </application>
 
 </manifest>

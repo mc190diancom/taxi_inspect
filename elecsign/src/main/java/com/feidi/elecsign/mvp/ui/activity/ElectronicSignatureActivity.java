@@ -11,9 +11,9 @@ import com.feidi.elecsign.R2;
 import com.feidi.elecsign.di.component.DaggerElectronicSignatureComponent;
 import com.feidi.elecsign.mvp.contract.ElectronicSignatureContract;
 import com.feidi.elecsign.mvp.presenter.ElectronicSignaturePresenter;
-import com.feidi.elecsign.mvp.ui.widget.ElecsignHeader;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
+import com.miu30.common.ui.widget.IncludeHeader;
 
 import butterknife.OnClick;
 
@@ -51,7 +51,7 @@ public class ElectronicSignatureActivity extends BaseMvpActivity<ElectronicSigna
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        new ElecsignHeader().init(self, "电子签名");
+        new IncludeHeader().init(self, "电子签名");
     }
 
     @OnClick(R2.id.ll_authorization)

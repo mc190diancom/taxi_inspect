@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.feidi.video">
+
+    <application>
+        <activity android:name=".mvp.ui.activity.InspectWarningActivity">
+
+        </activity>
+
+        <activity android:name=".mvp.ui.activity.TCPTestActivity">
+
+        </activity>
+
+        <service android:name=".app.services.TCPConnectService" />
+
+    </application>
+
+</manifest>
