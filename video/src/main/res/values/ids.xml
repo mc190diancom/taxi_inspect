@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="id_camera_list" type="id" />
+    <item name="id_industry_or_warningtype" type="id" />
+
+</resources>

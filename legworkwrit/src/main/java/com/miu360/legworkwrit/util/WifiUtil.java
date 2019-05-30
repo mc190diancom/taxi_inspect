@@ -115,6 +115,7 @@ public class WifiUtil {
             config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
             config.status = WifiConfiguration.Status.ENABLED;
+            config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
         }
 
         config.priority = 10000;

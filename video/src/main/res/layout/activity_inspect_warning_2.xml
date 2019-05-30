@@ -63,4 +63,98 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/horizontal_divider" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_industry"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="67dp"
+            android:button="@null"
+            android:drawableRight="@drawable/checkbox_drawable_selector"
+            android:drawablePadding="7dp"
+            android:gravity="center"
+            android:text="行业"
+            android:textColor="@color/checkbox_textcolor_selector"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="9dp"
+            android:background="#DDDDDD" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/cb_warning_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="54dp"
+            android:button="@null"
+            android:drawableRight="@drawable/checkbox_drawable_selector"
+            android:drawablePadding="7dp"
+            android:gravity="center"
+            android:text="预警类别"
+            android:textColor="@color/checkbox_textcolor_selector"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ViewSwitcher
+            android:id="@+id/view_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.baidu.mapapi.map.MapView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ViewStub
+                android:id="@+id/view_stub_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inflatedId="@id/id_camera_list"
+                android:layout="@layout/layout_camera_list" />
+
+        </ViewSwitcher>
+
+        <ToggleButton
+            android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_camera_map"
+            android:checked="true"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@android:color/white"
+            android:textOff="地图"
+            android:textOn="摄像头列表"
+            android:textSize="14sp" />
+
+        <ViewStub
+            android:id="@+id/view_stub_industry_or_warningtype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inflatedId="@id/id_industry_or_warningtype"
+            android:layout="@layout/layout_industry_or_warningtype" />
+
+    </RelativeLayout>
+
 </LinearLayout>
