@@ -72,7 +72,7 @@ public class InspectWarningPresenter extends BasePresenter<InspectWarningContrac
                 .build();
     }
 
-    public RecyclerView.ItemDecoration getIndustryAndWarningTypeListDecoration() {
+    public RecyclerView.ItemDecoration getIndustryOrWarningTypeListDecoration() {
         return new MultiVeriticalItemDecoration.Builder()
                 .isDrawFristDivider(true)
                 .isDrawLastDivider(true)

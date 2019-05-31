@@ -49,7 +49,6 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
     @BindView(R2.id.cb_warning_type)
     CheckBox cbWarningType;
 
-
     private ViewStub vsCameraList;
     private ViewStub vsIndustryOrWarningType;
 
@@ -112,6 +111,7 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
     private void initCameraRecyclerView() {
         assert mPresenter != null;
+
         RecyclerView rvCamera = findViewById(vsCameraList.getInflatedId())
                 .findViewById(R.id.rv_camera);
         rvCamera.addItemDecoration(mPresenter.getCameraListDecoration());
@@ -125,7 +125,7 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
         if (isIndustryChecked || isWarningTypeChecked) {
             if (vsIndustryOrWarningType.getParent() != null) {
                 vsIndustryOrWarningType.inflate();
-                initIndustryAndWarningTypeRecyclerView();
+                initIndustryOrWarningTypeRecyclerView();
             }
 
             if (!isIndustryChecked) {
@@ -153,11 +153,11 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
     }
 
-    private void initIndustryAndWarningTypeRecyclerView() {
+    private void initIndustryOrWarningTypeRecyclerView() {
         assert mPresenter != null;
         RecyclerView rvIndustryOrWarningType = findViewById(vsIndustryOrWarningType.getInflatedId())
                 .findViewById(R.id.rv_industry_and_warningtype);
-        rvIndustryOrWarningType.addItemDecoration(mPresenter.getIndustryAndWarningTypeListDecoration());
+        rvIndustryOrWarningType.addItemDecoration(mPresenter.getIndustryOrWarningTypeListDecoration());
         rvIndustryOrWarningType.setLayoutManager(new LinearLayoutManager(self));
         industryOrWarningTypeAdapter = new IndustryOrWarningTypeAdapter(mPresenter.getIndustryOrWarningTypeInfos());
         rvIndustryOrWarningType.setAdapter(industryOrWarningTypeAdapter);
