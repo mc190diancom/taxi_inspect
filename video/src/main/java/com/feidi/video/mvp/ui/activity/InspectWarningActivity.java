@@ -18,15 +18,19 @@ import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 import android.widget.ViewSwitcher;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.video.R;
 import com.feidi.video.R2;
 import com.feidi.video.di.component.DaggerInspectWarningComponent;
 import com.feidi.video.mvp.contract.InspectWarningContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.CrimeInfo;
 import com.feidi.video.mvp.presenter.InspectWarningPresenter;
 import com.feidi.video.mvp.ui.adapter.CameraListAdapter;
+import com.feidi.video.mvp.ui.adapter.CrimeListAdapter;
 import com.feidi.video.mvp.ui.adapter.IndustryOrWarningTypeAdapter;
 import com.feidi.video.mvp.ui.adapter.OnItemClickListener;
+import com.feidi.video.mvp.ui.adapter.OnItemContentViewClickListener;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.ui.view.TextSwitch;
@@ -132,7 +136,7 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
         CameraListAdapter adapter = new CameraListAdapter(mPresenter.getCameraInfos());
         adapter.setOnItemClickListener(new OnItemClickListener<CameraInfo>() {
             @Override
-            public void onItemClick(View v, CameraInfo data, int position) {
+            public void onItemClick(View v, final CameraInfo data, int position) {
                 toggleBtn.toggle();
 
                 if (vsCrime.getParent() != null) {
@@ -141,9 +145,11 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
                     rootView.post(new Runnable() {
                         @Override
                         public void run() {
-                            initCrimeView(rootView);
+                            initCrimeView(rootView, data);
                         }
                     });
+                } else {
+                    mPresenter.updateCrimeList(data);
                 }
             }
         });
@@ -197,22 +203,44 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
     /** 犯案次数列表当前是否处于展开状态 */
     private boolean isExpend = false;
 
-    private void initCrimeView(View rootView) {
-        ImageView ivUnflod = rootView.findViewById(R.id.iv_unflod);
+    /**
+     * 初始化犯案次数列表所在的View
+     *
+     * @param rootView 根View
+     */
+    private void initCrimeView(View rootView, CameraInfo info) {
+        final ImageView ivDirection = rootView.findViewById(R.id.iv_direction);
         final View dividerView = rootView.findViewById(R.id.divider);
         final LinearLayout llContainer = rootView.findViewById(R.id.ll_container);
         final int maxHeight = rootView.getHeight() - dividerView.getHeight();
         final int minHeight = llContainer.getHeight();
 
-        ivUnflod.setOnClickListener(new View.OnClickListener() {
+        ivDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startAnimator(llContainer, dividerView, minHeight, maxHeight);
+                startAnimator(llContainer, ivDirection, dividerView, minHeight, maxHeight);
             }
         });
+
+        initCrimeRecyclerView(rootView, info);
     }
 
-    private void startAnimator(final LinearLayout llContainer, final View dividerView, int minHeight, int maxHeight) {
+    private void initCrimeRecyclerView(View rootView, CameraInfo info) {
+        assert mPresenter != null;
+        RecyclerView rvCrime = rootView.findViewById(R.id.rv_crime);
+        rvCrime.addItemDecoration(mPresenter.getCrimeDecoration());
+        rvCrime.setLayoutManager(new LinearLayoutManager(self));
+        CrimeListAdapter adapter = mPresenter.getCrimeListAdapter(info);
+        adapter.setOnLookClickListener(new OnItemContentViewClickListener<CrimeInfo>() {
+            @Override
+            public void onItemContentViewClick(View v, CrimeInfo data, int position) {
+                ToastUtils.showShort("你点击了位置为" + position + "的查看按钮");
+            }
+        });
+        rvCrime.setAdapter(adapter);
+    }
+
+    private void startAnimator(final LinearLayout llContainer, final ImageView ivDirection, final View dividerView, int minHeight, int maxHeight) {
         ValueAnimator animator;
         if (isExpend) {
             animator = ValueAnimator.ofInt(maxHeight, minHeight);
@@ -224,13 +252,15 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                isExpend = !isExpend;
+
                 if (isExpend) {
                     dividerView.setVisibility(View.VISIBLE);
+                    ivDirection.setBackgroundResource(R.drawable.ic_direction_down);
                 } else {
-                    dividerView.setVisibility(View.GONE);
+                    dividerView.setVisibility(View.INVISIBLE);
+                    ivDirection.setBackgroundResource(R.drawable.ic_direction_up);
                 }
-
-                isExpend = !isExpend;
             }
         });
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

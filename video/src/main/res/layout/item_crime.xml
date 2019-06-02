@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="17dp"
+    android:paddingTop="17dp"
+    android:paddingEnd="21dp"
+    android:paddingBottom="17dp">
+
+    <ImageView
+        android:id="@+id/item_iv_video"
+        android:layout_width="63dp"
+        android:layout_height="49dp"
+        android:background="@drawable/bg_video"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/item_tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/item_iv_video"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:text="犯案次数：2" />
+
+    <TextView
+        android:id="@+id/item_tv_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/item_iv_video"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="2dp"
+        android:layout_toEndOf="@+id/item_iv_video"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        tools:text="京BP9680" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="1dp"
+        android:layout_height="12dp"
+        android:layout_alignTop="@+id/item_tv_license"
+        android:layout_alignBottom="@id/item_tv_license"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/item_tv_license"
+        android:background="#FFDDDDDD" />
+
+    <TextView
+        android:id="@+id/item_tv_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_tv_license"
+        android:layout_alignBottom="@id/item_tv_license"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/view_divider"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        tools:text="距我170米" />
+
+    <TextView
+        android:id="@+id/item_tv_look"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:drawableRight="@drawable/ic_go_blue"
+        android:drawablePadding="9dp"
+        android:text="查看"
+        android:textColor="#0EBBD4"
+        android:textSize="13sp"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>
