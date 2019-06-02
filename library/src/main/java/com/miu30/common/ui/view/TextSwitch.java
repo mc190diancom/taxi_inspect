@@ -1,5 +1,7 @@
 package com.miu30.common.ui.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -239,6 +241,9 @@ public class TextSwitch extends View implements Checkable {
 
     @SuppressLint("NewApi")
     private void animateThumbToCheckedState(boolean checked) {
+        //准备执行动画之前，开启硬件加速
+        setLayerType(View.LAYER_TYPE_HARDWARE, null);
+
         float targetPosition = checked ? 0 : 1;
         int leftTextTargetColor = checked ? mCheckedTextColor : mUncheckedTextColor;
         int rightTextTargetColor = checked ? mUncheckedTextColor : mCheckedTextColor;
@@ -270,6 +275,14 @@ public class TextSwitch extends View implements Checkable {
         mAnimatorSet = new AnimatorSet();
         mAnimatorSet.setDuration(DEFAULT_ANIMATOR_DURATION);
         mAnimatorSet.playTogether(thumbPositionAnimator, leftTextColorAnimator, rightTextColorAnimator);
+        mAnimatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                //动画执行结束以后，关闭硬件加速
+                setLayerType(View.LAYER_TYPE_NONE, null);
+            }
+        });
         mAnimatorSet.start();
     }
 

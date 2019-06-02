@@ -1,23 +1,32 @@
 package com.feidi.video.mvp.ui.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 import android.widget.ViewSwitcher;
 
 import com.feidi.video.R;
 import com.feidi.video.R2;
 import com.feidi.video.di.component.DaggerInspectWarningComponent;
 import com.feidi.video.mvp.contract.InspectWarningContract;
+import com.feidi.video.mvp.model.entity.CameraInfo;
 import com.feidi.video.mvp.presenter.InspectWarningPresenter;
 import com.feidi.video.mvp.ui.adapter.CameraListAdapter;
 import com.feidi.video.mvp.ui.adapter.IndustryOrWarningTypeAdapter;
+import com.feidi.video.mvp.ui.adapter.OnItemClickListener;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
 import com.miu30.common.ui.view.TextSwitch;
@@ -48,9 +57,12 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
     CheckBox cbIndustry;
     @BindView(R2.id.cb_warning_type)
     CheckBox cbWarningType;
+    @BindView(R2.id.toggle)
+    ToggleButton toggleBtn;
 
     private ViewStub vsCameraList;
     private ViewStub vsIndustryOrWarningType;
+    private ViewStub vsCrime;
 
     private IndustryOrWarningTypeAdapter industryOrWarningTypeAdapter;
 
@@ -75,6 +87,7 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
         new IncludeHeader().init(self, "稽查预警");
         vsCameraList = findViewById(R.id.view_stub_camera);
         vsIndustryOrWarningType = findViewById(R.id.view_stub_industry_or_warningtype);
+        vsCrime = findViewById(R.id.view_stub_crime);
 
         cbIndustry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -116,7 +129,25 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
                 .findViewById(R.id.rv_camera);
         rvCamera.addItemDecoration(mPresenter.getCameraListDecoration());
         rvCamera.setLayoutManager(new LinearLayoutManager(self));
-        rvCamera.setAdapter(new CameraListAdapter(mPresenter.getCameraInfos()));
+        CameraListAdapter adapter = new CameraListAdapter(mPresenter.getCameraInfos());
+        adapter.setOnItemClickListener(new OnItemClickListener<CameraInfo>() {
+            @Override
+            public void onItemClick(View v, CameraInfo data, int position) {
+                toggleBtn.toggle();
+
+                if (vsCrime.getParent() != null) {
+                    vsCrime.inflate();
+                    final View rootView = findViewById(vsCrime.getInflatedId());
+                    rootView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            initCrimeView(rootView);
+                        }
+                    });
+                }
+            }
+        });
+        rvCamera.setAdapter(adapter);
     }
 
     private void checkedInner(CompoundButton button, boolean isIndustryChecked, boolean isWarningTypeChecked) {
@@ -163,36 +194,55 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
         rvIndustryOrWarningType.setAdapter(industryOrWarningTypeAdapter);
     }
 
-//    private ValueAnimator animator;
-//
-//    private void createPopupWindow() {
-//        final PopupWindow window = new PopupWindow();
-//        View view = getLayoutInflater().inflate(R.layout.layout_bottom_popoup_window, null, false);
-//        window.setContentView(view);
-//
-//        window.getContentView().findViewById(R.id.tv_test).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.e("aaa", "cli");
-//                animator.start();
-//            }
-//        });
-//
-//        window.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-//        window.setHeight(SizeUtils.dp2px(113));
-//        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        window.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
-//
-//        animator = ValueAnimator.ofInt(SizeUtils.dp2px(113), SizeUtils.dp2px(442));
-//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int value = (Integer) animation.getAnimatedValue();
-//                window.update(ViewGroup.LayoutParams.MATCH_PARENT, value);
-//            }
-//        });
-//        animator.setDuration(1000);
+    /** 犯案次数列表当前是否处于展开状态 */
+    private boolean isExpend = false;
 
-//    }
+    private void initCrimeView(View rootView) {
+        ImageView ivUnflod = rootView.findViewById(R.id.iv_unflod);
+        final View dividerView = rootView.findViewById(R.id.divider);
+        final LinearLayout llContainer = rootView.findViewById(R.id.ll_container);
+        final int maxHeight = rootView.getHeight() - dividerView.getHeight();
+        final int minHeight = llContainer.getHeight();
+
+        ivUnflod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startAnimator(llContainer, dividerView, minHeight, maxHeight);
+            }
+        });
+    }
+
+    private void startAnimator(final LinearLayout llContainer, final View dividerView, int minHeight, int maxHeight) {
+        ValueAnimator animator;
+        if (isExpend) {
+            animator = ValueAnimator.ofInt(maxHeight, minHeight);
+        } else {
+            animator = ValueAnimator.ofInt(minHeight, maxHeight);
+        }
+        animator.setDuration(250);
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (isExpend) {
+                    dividerView.setVisibility(View.VISIBLE);
+                } else {
+                    dividerView.setVisibility(View.GONE);
+                }
+
+                isExpend = !isExpend;
+            }
+        });
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int value = (Integer) animation.getAnimatedValue();
+                ViewGroup.LayoutParams params = llContainer.getLayoutParams();
+                params.height = value;
+                llContainer.setLayoutParams(params);
+            }
+        });
+        animator.start();
+    }
 
 }

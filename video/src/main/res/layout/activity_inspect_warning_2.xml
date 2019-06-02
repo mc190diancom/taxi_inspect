@@ -155,6 +155,13 @@
             android:inflatedId="@id/id_industry_or_warningtype"
             android:layout="@layout/layout_industry_or_warningtype" />
 
+        <ViewStub
+            android:id="@+id/view_stub_crime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inflatedId="@id/id_crime"
+            android:layout="@layout/layout_crime" />
+
     </RelativeLayout>
 
 </LinearLayout>

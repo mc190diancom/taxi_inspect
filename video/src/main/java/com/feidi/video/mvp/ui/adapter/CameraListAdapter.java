@@ -15,6 +15,8 @@ import java.util.List;
  * 邮箱：forwlwork@gmail.com
  */
 public class CameraListAdapter extends DefaultAdapter<CameraInfo> {
+    private OnItemClickListener<CameraInfo> onItemClickListener;
+
     public CameraListAdapter(List<CameraInfo> infos) {
         super(infos);
     }
@@ -23,8 +25,17 @@ public class CameraListAdapter extends DefaultAdapter<CameraInfo> {
     public BaseHolder<CameraInfo> getHolder(final View v, int viewType) {
         return new BaseHolder<CameraInfo>(v) {
             @Override
-            public void setData(CameraInfo data, int position) {
+            public void setData(final CameraInfo data, final int position) {
                 ((TextView) v.findViewById(R.id.item_tv_des)).setText(data.getName());
+
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onItemClick(v, data, position);
+                        }
+                    }
+                });
             }
         };
     }
@@ -32,5 +43,9 @@ public class CameraListAdapter extends DefaultAdapter<CameraInfo> {
     @Override
     public int getLayoutId(int viewType) {
         return R.layout.item_common;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener<CameraInfo> onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

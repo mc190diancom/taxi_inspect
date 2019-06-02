@@ -14,6 +14,7 @@ import java.util.List;
  * 邮箱：forwlwork@gmail.com
  */
 public class IndustryOrWarningTypeAdapter extends DefaultAdapter<String> {
+
     public IndustryOrWarningTypeAdapter(List<String> infos) {
         super(infos);
     }
@@ -22,7 +23,7 @@ public class IndustryOrWarningTypeAdapter extends DefaultAdapter<String> {
     public BaseHolder<String> getHolder(final View v, int viewType) {
         return new BaseHolder<String>(v) {
             @Override
-            public void setData(String data, int position) {
+            public void setData(final String data, final int position) {
                 ((TextView) v.findViewById(R.id.item_tv_des)).setText(data);
             }
         };
@@ -32,4 +33,7 @@ public class IndustryOrWarningTypeAdapter extends DefaultAdapter<String> {
     public int getLayoutId(int viewType) {
         return R.layout.item_common;
     }
+
+
+
 }
