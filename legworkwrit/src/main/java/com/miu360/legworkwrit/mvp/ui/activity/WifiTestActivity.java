@@ -1,22 +1,18 @@
 package com.miu360.legworkwrit.mvp.ui.activity;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 
 import com.miu360.legworkwrit.R;
 import com.miu360.legworkwrit.util.WifiUtil;
@@ -51,6 +47,7 @@ public class WifiTestActivity extends FragmentActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         receiver = new BroadcastReceiver() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -60,13 +57,15 @@ public class WifiTestActivity extends FragmentActivity {
                     switch (state) {
                         case WifiManager.WIFI_STATE_ENABLED:
                             tree.i("wifi 已打开");
-                            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED) {
-                                tree.i("未获取到定位权限");
-                            } else {
-                                tree.i("已获取到定位权限");
-                            }
+//                            scan();
+                            //开始扫描
+                            WifiUtil.getInstance().scan();
 
-                            scan();
+//                            handler.postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                }
+//                            }, 2000);
                             break;
                         case WifiManager.WIFI_STATE_ENABLING:
                             tree.i("wifi 正在打开中 .....");
@@ -83,34 +82,41 @@ public class WifiTestActivity extends FragmentActivity {
                     } else if (NetworkInfo.State.CONNECTING.equals(info.getState())) {
                         tree.i("正在连接到wifi ....");
                     }
+                } else if (WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(intent.getAction())) {
+                    tree.i("接收到已搜索到周边wifi的广播");
+                    List<ScanResult> result = WifiUtil.getInstance().getScanResult();
+
+                    if (result != null && !result.isEmpty()) {
+                        for (ScanResult s : result) {
+                            tree.i("搜索到wifi : %s", s.SSID);
+                            if ("android".equals(s.SSID)) {
+                                WifiUtil.getInstance()
+                                        .connect(WifiUtil.getInstance().createWifiInfo(s.SSID, "333666999", 3));
+                                break;
+                            }
+                        }
+                    } else {
+                        tree.i("周围没有可用wifi");
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                WifiUtil.getInstance().scan();
+                            }
+                        }, 2000);
+                    }
                 }
             }
         };
         registerReceiver(receiver, filter);
 
-        findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onClick(View v) {
-                // 1.打开wifi
+            public void run() {
                 if (!WifiUtil.getInstance().isOpen()) {
                     WifiUtil.getInstance().open();
-                } else {
-                    scan();
                 }
             }
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-
+        }).start();
     }
 
     private void scan() {
@@ -123,10 +129,7 @@ public class WifiTestActivity extends FragmentActivity {
             }
         }, 2000);
 
-        Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
-        startActivity(intent);
-
-        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+        // startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
 
         handler.postDelayed(runnable, 5000);
     }
@@ -159,6 +162,7 @@ public class WifiTestActivity extends FragmentActivity {
             tree.i("准备关闭wifi");
             WifiUtil.getInstance().close();
         }
+
         if (receiver != null) {
             unregisterReceiver(receiver);
         }
