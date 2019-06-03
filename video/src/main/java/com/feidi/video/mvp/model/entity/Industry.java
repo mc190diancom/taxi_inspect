@@ -1,23 +1,19 @@
 package com.feidi.video.mvp.model.entity;
 
 /**
- * 作者：wanglei on 2019/5/30.
+ * 作者：wanglei on 2019/6/3.
  * 邮箱：forwlwork@gmail.com
  */
-public class CameraInfo implements ISelector {
+public class Industry implements ISelector {
     private String name;
     private boolean selected;
 
-    public CameraInfo(String name) {
+    public Industry(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

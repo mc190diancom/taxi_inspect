@@ -5,12 +5,14 @@ import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.feidi.video.mvp.contract.InspectWarningContract;
+import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
 import com.feidi.video.mvp.model.entity.CrimeInfo;
+import com.feidi.video.mvp.model.entity.ISelector;
+import com.feidi.video.mvp.model.entity.Industry;
+import com.feidi.video.mvp.model.entity.WarningType;
 import com.feidi.video.mvp.ui.adapter.CrimeListAdapter;
-import com.feidi.video.mvp.ui.adapter.IndustryOrWarningTypeAdapter;
-import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
@@ -28,7 +30,7 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 05/22/2019 09:45
+ * Created by MVPArmsTemplate on 06/03/2019 13:59
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -36,8 +38,8 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
-@ActivityScope
-public class InspectWarningPresenter extends BasePresenter<InspectWarningContract.Model, InspectWarningContract.View> {
+@FragmentScope
+public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model, MoveCameraContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -47,10 +49,8 @@ public class InspectWarningPresenter extends BasePresenter<InspectWarningContrac
     @Inject
     AppManager mAppManager;
 
-    private IndustryOrWarningTypeAdapter adapter;
-
     @Inject
-    public InspectWarningPresenter(InspectWarningContract.Model model, InspectWarningContract.View rootView) {
+    public MoveCameraPresenter(MoveCameraContract.Model model, MoveCameraContract.View rootView) {
         super(model, rootView);
     }
 
@@ -97,8 +97,8 @@ public class InspectWarningPresenter extends BasePresenter<InspectWarningContrac
     }
 
     //测试数据
-    public List<CameraInfo> getCameraInfos() {
-        List<CameraInfo> infos = new ArrayList<>();
+    public List<ISelector> getCameraInfos() {
+        List<ISelector> infos = new ArrayList<>();
         infos.add(new CameraInfo("摄像头一"));
         infos.add(new CameraInfo("摄像头二"));
         infos.add(new CameraInfo("摄像头三"));
@@ -112,9 +112,9 @@ public class InspectWarningPresenter extends BasePresenter<InspectWarningContrac
         return infos;
     }
 
-    private List<String> data = new ArrayList<>();
+    private List<ISelector> data = new ArrayList<>();
 
-    public List<String> getIndustryOrWarningTypeInfos() {
+    public List<ISelector> getIndustryOrWarningTypeInfos() {
         return data;
     }
 
@@ -123,20 +123,19 @@ public class InspectWarningPresenter extends BasePresenter<InspectWarningContrac
         data.clear();
 
         if (isIndustry) {
-            data.add("无选择");
-            data.add("行业1");
-            data.add("行业2");
-            data.add("行业3");
-            data.add("行业4");
+            data.add(new Industry("无选择"));
+            data.add(new Industry("行业1"));
+            data.add(new Industry("行业2"));
+            data.add(new Industry("行业3"));
+            data.add(new Industry("行业4"));
         } else {
-            data.add("无选择");
-            data.add("交他人驾驶");
-            data.add("交他人驾驶");
-            data.add("交他人驾驶");
-            data.add("交他人驾驶");
+            data.add(new WarningType("无选择"));
+            data.add(new WarningType("交他人驾驶1"));
+            data.add(new WarningType("交他人驾驶2"));
+            data.add(new WarningType("交他人驾驶3"));
+            data.add(new WarningType("交他人驾驶4"));
         }
     }
-
 
     //------------------------------ 犯案次数相关 ---------------------------------------
     private CrimeListAdapter crimeListAdapter;

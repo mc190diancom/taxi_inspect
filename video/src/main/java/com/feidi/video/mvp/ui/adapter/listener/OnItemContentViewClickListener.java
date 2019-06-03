@@ -1,4 +1,4 @@
-package com.feidi.video.mvp.ui.adapter;
+package com.feidi.video.mvp.ui.adapter.listener;
 
 import android.view.View;
 

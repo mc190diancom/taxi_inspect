@@ -1,20 +1,20 @@
 package com.feidi.video.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.di.scope.FragmentScope;
 
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
-import com.feidi.video.mvp.contract.InspectWarningContract;
-import com.feidi.video.mvp.model.InspectWarningModel;
+import com.feidi.video.mvp.contract.MoveCameraContract;
+import com.feidi.video.mvp.model.MoveCameraModel;
 
 
 /**
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 05/22/2019 09:45
+ * Created by MVPArmsTemplate on 06/03/2019 13:59
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -23,8 +23,8 @@ import com.feidi.video.mvp.model.InspectWarningModel;
  * ================================================
  */
 @Module
-public abstract class InspectWarningModule {
+public abstract class MoveCameraModule {
 
     @Binds
-    abstract InspectWarningContract.Model bindInspectWarningModel(InspectWarningModel model);
+    abstract MoveCameraContract.Model bindMoveCameraModel(MoveCameraModel model);
 }
