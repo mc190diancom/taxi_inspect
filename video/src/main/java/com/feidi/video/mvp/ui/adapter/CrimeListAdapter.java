@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.feidi.video.R;
 import com.feidi.video.mvp.model.entity.CrimeInfo;
+import com.feidi.video.mvp.ui.adapter.listener.OnItemContentViewClickListener;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 import com.miu30.common.MiuBaseApp;

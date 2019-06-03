@@ -3,30 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical"
     tools:ignore="all">
-
-    <include layout="@layout/include_header" />
-
-    <com.miu30.common.ui.view.TextSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/textSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_switch_inspect_warning"
-        app:checked="false"
-        app:textOff="移动摄像头预警"
-        app:textOn="可疑车辆范围预警"
-        app:textSize="14sp"
-        app:thumb="@drawable/ic_switch_thumb_inspect_warning" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/divider_inspect_warning" />
 
     <LinearLayout
         android:layout_width="match_parent"

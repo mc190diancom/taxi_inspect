@@ -1,4 +1,4 @@
-package com.feidi.video.mvp.ui.activity;
+package com.feidi.video.mvp.ui.fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
@@ -21,20 +22,21 @@ import android.widget.ViewSwitcher;
 import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.video.R;
 import com.feidi.video.R2;
-import com.feidi.video.di.component.DaggerInspectWarningComponent;
-import com.feidi.video.mvp.contract.InspectWarningContract;
+import com.feidi.video.di.component.DaggerMoveCameraComponent;
+import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
 import com.feidi.video.mvp.model.entity.CrimeInfo;
-import com.feidi.video.mvp.presenter.InspectWarningPresenter;
+import com.feidi.video.mvp.model.entity.ISelector;
+import com.feidi.video.mvp.model.entity.Industry;
+import com.feidi.video.mvp.model.entity.WarningType;
+import com.feidi.video.mvp.presenter.MoveCameraPresenter;
 import com.feidi.video.mvp.ui.adapter.CameraListAdapter;
 import com.feidi.video.mvp.ui.adapter.CrimeListAdapter;
 import com.feidi.video.mvp.ui.adapter.IndustryOrWarningTypeAdapter;
-import com.feidi.video.mvp.ui.adapter.OnItemClickListener;
-import com.feidi.video.mvp.ui.adapter.OnItemContentViewClickListener;
+import com.feidi.video.mvp.ui.adapter.listener.OnItemContentSelectedChangeListener;
+import com.feidi.video.mvp.ui.adapter.listener.OnItemContentViewClickListener;
 import com.jess.arms.di.component.AppComponent;
-import com.miu30.common.base.BaseMvpActivity;
-import com.miu30.common.ui.view.TextSwitch;
-import com.miu30.common.ui.widget.IncludeHeader;
+import com.miu30.common.base.BaseMvpFragment;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
@@ -44,7 +46,7 @@ import butterknife.OnCheckedChanged;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 05/22/2019 09:45
+ * Created by MVPArmsTemplate on 06/03/2019 13:59
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -52,9 +54,8 @@ import butterknife.OnCheckedChanged;
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
-public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresenter> implements InspectWarningContract.View {
-    @BindView(R2.id.textSwitch)
-    TextSwitch textSwitch;
+@SuppressWarnings("all")
+public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> implements MoveCameraContract.View {
     @BindView(R2.id.view_switcher)
     ViewSwitcher viewSwitcher;
     @BindView(R2.id.cb_industry)
@@ -70,10 +71,14 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
     private IndustryOrWarningTypeAdapter industryOrWarningTypeAdapter;
 
-    @Override
+    public static MoveCameraFragment newInstance() {
+        MoveCameraFragment fragment = new MoveCameraFragment();
+        return fragment;
+    }
 
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerInspectWarningComponent //如找不到该类,请编译一下项目
+    @Override
+    public void setupFragmentComponent(@NonNull AppComponent appComponent) {
+        DaggerMoveCameraComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
                 .view(this)
@@ -82,16 +87,15 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_inspect_warning_2; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+    public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_move_camera, container, false);
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        new IncludeHeader().init(self, "稽查预警");
-        vsCameraList = findViewById(R.id.view_stub_camera);
-        vsIndustryOrWarningType = findViewById(R.id.view_stub_industry_or_warningtype);
-        vsCrime = findViewById(R.id.view_stub_crime);
+        vsCameraList = getActivity().findViewById(R.id.view_stub_camera);
+        vsIndustryOrWarningType = getActivity().findViewById(R.id.view_stub_industry_or_warningtype);
+        vsCrime = getActivity().findViewById(R.id.view_stub_crime);
 
         cbIndustry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -128,28 +132,33 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
     private void initCameraRecyclerView() {
         assert mPresenter != null;
-
-        RecyclerView rvCamera = findViewById(vsCameraList.getInflatedId())
+        RecyclerView rvCamera = getActivity().findViewById(vsCameraList.getInflatedId())
                 .findViewById(R.id.rv_camera);
         rvCamera.addItemDecoration(mPresenter.getCameraListDecoration());
-        rvCamera.setLayoutManager(new LinearLayoutManager(self));
+        rvCamera.setLayoutManager(new LinearLayoutManager(getActivity()));
         CameraListAdapter adapter = new CameraListAdapter(mPresenter.getCameraInfos());
-        adapter.setOnItemClickListener(new OnItemClickListener<CameraInfo>() {
+        adapter.setOnItemContentSelectedChangeListener(new OnItemContentSelectedChangeListener<ISelector>() {
             @Override
-            public void onItemClick(View v, final CameraInfo data, int position) {
-                toggleBtn.toggle();
+            public void onSelectedChange(View v, ISelector data, int position, boolean isSelected) {
+                final CameraInfo info = (CameraInfo) data;
+                if (isSelected) {
+                    ToastUtils.showShort("你选中了" + info.getName());
 
-                if (vsCrime.getParent() != null) {
-                    vsCrime.inflate();
-                    final View rootView = findViewById(vsCrime.getInflatedId());
-                    rootView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            initCrimeView(rootView, data);
-                        }
-                    });
+                    toggleBtn.toggle();
+                    if (vsCrime.getParent() != null) {
+                        vsCrime.inflate();
+                        final View rootView = getActivity().findViewById(vsCrime.getInflatedId());
+                        rootView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                initCrimeView(rootView, info);
+                            }
+                        });
+                    } else {
+                        mPresenter.updateCrimeList(info);
+                    }
                 } else {
-                    mPresenter.updateCrimeList(data);
+                    ToastUtils.showShort("你取消了选中" + info.getName());
                 }
             }
         });
@@ -182,21 +191,38 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
             industryOrWarningTypeAdapter.notifyDataSetChanged();
             //显示列表界面
-            findViewById(vsIndustryOrWarningType.getInflatedId()).setVisibility(View.VISIBLE);
+            getActivity().findViewById(vsIndustryOrWarningType.getInflatedId()).setVisibility(View.VISIBLE);
         } else {
             //行业和预警类别都未选中，则隐藏列表界面
-            findViewById(vsIndustryOrWarningType.getInflatedId()).setVisibility(View.GONE);
+            getActivity().findViewById(vsIndustryOrWarningType.getInflatedId()).setVisibility(View.GONE);
         }
 
     }
 
     private void initIndustryOrWarningTypeRecyclerView() {
         assert mPresenter != null;
-        RecyclerView rvIndustryOrWarningType = findViewById(vsIndustryOrWarningType.getInflatedId())
+        RecyclerView rvIndustryOrWarningType = getActivity().findViewById(vsIndustryOrWarningType.getInflatedId())
                 .findViewById(R.id.rv_industry_and_warningtype);
         rvIndustryOrWarningType.addItemDecoration(mPresenter.getIndustryOrWarningTypeListDecoration());
-        rvIndustryOrWarningType.setLayoutManager(new LinearLayoutManager(self));
+        rvIndustryOrWarningType.setLayoutManager(new LinearLayoutManager(getActivity()));
         industryOrWarningTypeAdapter = new IndustryOrWarningTypeAdapter(mPresenter.getIndustryOrWarningTypeInfos());
+        industryOrWarningTypeAdapter.setOnItemContentSelectedChangeListener(new OnItemContentSelectedChangeListener<ISelector>() {
+            @Override
+            public void onSelectedChange(View v, ISelector data, int position, boolean isSelected) {
+                String value;
+                if (data instanceof Industry) {
+                    value = ((Industry) data).getName();
+                } else {
+                    value = ((WarningType) data).getType();
+                }
+
+                if (isSelected) {
+                    ToastUtils.showShort("你选中了" + value);
+                } else {
+                    ToastUtils.showShort("你取消选中了" + value);
+                }
+            }
+        });
         rvIndustryOrWarningType.setAdapter(industryOrWarningTypeAdapter);
     }
 
@@ -227,9 +253,10 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
     private void initCrimeRecyclerView(View rootView, CameraInfo info) {
         assert mPresenter != null;
+
         RecyclerView rvCrime = rootView.findViewById(R.id.rv_crime);
         rvCrime.addItemDecoration(mPresenter.getCrimeDecoration());
-        rvCrime.setLayoutManager(new LinearLayoutManager(self));
+        rvCrime.setLayoutManager(new LinearLayoutManager(getActivity()));
         CrimeListAdapter adapter = mPresenter.getCrimeListAdapter(info);
         adapter.setOnLookClickListener(new OnItemContentViewClickListener<CrimeInfo>() {
             @Override
@@ -256,10 +283,10 @@ public class InspectWarningActivity extends BaseMvpActivity<InspectWarningPresen
 
                 if (isExpend) {
                     dividerView.setVisibility(View.VISIBLE);
-                    ivDirection.setBackgroundResource(R.drawable.ic_direction_down);
+                    ivDirection.setImageResource(R.drawable.ic_direction_down);
                 } else {
                     dividerView.setVisibility(View.INVISIBLE);
-                    ivDirection.setBackgroundResource(R.drawable.ic_direction_up);
+                    ivDirection.setImageResource(R.drawable.ic_direction_up);
                 }
             }
         });
