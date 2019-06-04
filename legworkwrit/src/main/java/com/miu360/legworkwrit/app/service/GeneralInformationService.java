@@ -15,7 +15,7 @@ import com.miu30.common.ui.entity.HYTypeQ;
 import com.miu30.common.ui.entity.HyRyFg;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu30.common.app.MyErrorHandleSubscriber;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.data.WifiPreference;
 import com.miu360.legworkwrit.mvp.model.api.service.MyApis;
@@ -26,7 +26,7 @@ import com.miu360.legworkwrit.mvp.model.entity.Park;
 import com.miu360.legworkwrit.mvp.model.entity.PrintTimes;
 import com.miu360.legworkwrit.mvp.model.entity.WifiConfig;
 import com.miu360.legworkwrit.mvp.model.entity.WifiRequestParams;
-import com.miu360.legworkwrit.util.MapUtil;
+import com.miu30.common.util.MapUtil;
 import com.miu360.legworkwrit.util.RequestParamsUtil;
 
 import java.util.List;

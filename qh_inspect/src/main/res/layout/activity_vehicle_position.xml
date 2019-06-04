@@ -190,7 +190,7 @@
                     android:id="@+id/company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="北京首汽集团有限公司"
+                    android:text=""
                     android:textColor="#333333"
                     android:textSize="14sp" />
             </LinearLayout>

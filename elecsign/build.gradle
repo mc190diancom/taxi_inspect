@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 19
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -28,11 +28,9 @@ android {
 
         }
         inspect_release {
-            minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "false"
         }
         inspect_debug {
-            minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "true"
         }
         inspect_demo {
@@ -40,15 +38,14 @@ android {
         }
     }
 
-    lintOptions {
+    /*lintOptions {
         disable 'InvalidPackage'
         disable "ResourceType"
         abortOnError false
-    }
+    }*/
 }
 
 dependencies {
-    api fileTree(dir: 'libs')
     implementation project(':library')
     //implementation 'com.contrarywind:Android-PickerView:4.1.6'
     //tools

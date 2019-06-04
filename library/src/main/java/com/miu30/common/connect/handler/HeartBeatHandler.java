@@ -1,5 +1,8 @@
 package com.miu30.common.connect.handler;
 
+import com.miu30.common.MiuBaseApp;
+import com.miu30.common.config.Config;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.connect.entity.IMesage;
 
 import org.json.JSONObject;
@@ -34,6 +37,7 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
 
         switch (type) {
             case IMesage.LOGIN:
+                Timber.tag("netty").i("开启心跳 , status = %s", status);
                 //登录成功，开启心跳
                 heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatTask(ctx), 0, 10, TimeUnit.SECONDS);
                 break;
@@ -58,6 +62,7 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
         ctx.fireExceptionCaught(cause);
     }
 
+    final static String zfzh = MiuBaseApp.user.getString("user_name", "0000000");
     private static class HeartBeatTask implements Runnable {
         private ChannelHandlerContext ctx;
 
@@ -69,7 +74,7 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
         public void run() {
             if (ctx != null) {
                 Timber.tag("netty").i("send heartbeat");
-                ctx.writeAndFlush(new HeartBeat("123456", 0, 0));
+                ctx.writeAndFlush(new HeartBeat(zfzh, MsgConfig.lng, MsgConfig.lat));
             }
         }
     }

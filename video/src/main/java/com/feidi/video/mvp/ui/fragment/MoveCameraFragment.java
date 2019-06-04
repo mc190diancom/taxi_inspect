@@ -3,9 +3,15 @@ package com.feidi.video.mvp.ui.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +25,15 @@ import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 import android.widget.ViewSwitcher;
 
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.video.R;
 import com.feidi.video.R2;
@@ -36,7 +51,15 @@ import com.feidi.video.mvp.ui.adapter.IndustryOrWarningTypeAdapter;
 import com.feidi.video.mvp.ui.adapter.listener.OnItemContentSelectedChangeListener;
 import com.feidi.video.mvp.ui.adapter.listener.OnItemContentViewClickListener;
 import com.jess.arms.di.component.AppComponent;
+import com.miu30.common.MiuBaseApp;
 import com.miu30.common.base.BaseMvpFragment;
+import com.miu30.common.connect.ChannelManager;
+import com.miu30.common.connect.entity.BindCameraRequest;
+import com.miu30.common.connect.entity.CancelBindCameraRequest;
+import com.miu30.common.data.UserPreference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
@@ -64,12 +87,21 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
     CheckBox cbWarningType;
     @BindView(R2.id.toggle)
     ToggleButton toggleBtn;
+    @BindView(R2.id.mapv_BaiduMap)
+    MapView mMapView;
 
     private ViewStub vsCameraList;
     private ViewStub vsIndustryOrWarningType;
     private ViewStub vsCrime;
+    private RecyclerView rvCamera;
+    private BaiduMap mBaiduMap;
+    private ArrayList<Marker> markerList = new ArrayList<>();
+
+    private CameraListAdapter mAdapter;
 
     private IndustryOrWarningTypeAdapter industryOrWarningTypeAdapter;
+    private String zfzh;
+    private CameraTCPReceiver broadCast;
 
     public static MoveCameraFragment newInstance() {
         MoveCameraFragment fragment = new MoveCameraFragment();
@@ -96,7 +128,7 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         vsCameraList = getActivity().findViewById(R.id.view_stub_camera);
         vsIndustryOrWarningType = getActivity().findViewById(R.id.view_stub_industry_or_warningtype);
         vsCrime = getActivity().findViewById(R.id.view_stub_crime);
-
+        zfzh = new UserPreference(MiuBaseApp.self).getString("user_name", "");
         cbIndustry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -110,6 +142,15 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
                 checkedInner(buttonView, cbIndustry.isChecked(), isChecked);
             }
         });
+        mBaiduMap =  mMapView.getMap();
+
+        broadCast = new CameraTCPReceiver();
+        IntentFilter filter = new IntentFilter("com.feidi.cameraInfo");
+        LocalBroadcastManager.getInstance(MiuBaseApp.self).registerReceiver(broadCast, filter);
+
+        mPresenter.getCameraInfos(zfzh);
+
+
     }
 
     @OnCheckedChanged(R2.id.toggle)
@@ -130,20 +171,19 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         }
     }
 
+    private CameraInfo currentCamera = new CameraInfo();
     private void initCameraRecyclerView() {
         assert mPresenter != null;
-        RecyclerView rvCamera = getActivity().findViewById(vsCameraList.getInflatedId())
+        rvCamera = getActivity().findViewById(vsCameraList.getInflatedId())
                 .findViewById(R.id.rv_camera);
         rvCamera.addItemDecoration(mPresenter.getCameraListDecoration());
         rvCamera.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CameraListAdapter adapter = new CameraListAdapter(mPresenter.getCameraInfos());
-        adapter.setOnItemContentSelectedChangeListener(new OnItemContentSelectedChangeListener<ISelector>() {
+        mAdapter = new CameraListAdapter(mPresenter.getCameraData());
+        mAdapter.setOnItemContentSelectedChangeListener(new OnItemContentSelectedChangeListener<ISelector>() {
             @Override
             public void onSelectedChange(View v, ISelector data, int position, boolean isSelected) {
                 final CameraInfo info = (CameraInfo) data;
                 if (isSelected) {
-                    ToastUtils.showShort("你选中了" + info.getName());
-
                     toggleBtn.toggle();
                     if (vsCrime.getParent() != null) {
                         vsCrime.inflate();
@@ -155,14 +195,29 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
                             }
                         });
                     } else {
-                        mPresenter.updateCrimeList(info);
+                        mPresenter.clearCrimeList();
                     }
-                } else {
-                    ToastUtils.showShort("你取消了选中" + info.getName());
+                    updateMakerToMap(info,position);
+
+                    //取绑之前那个摄像头，并绑定最新的摄像头
+                    if(!info.getCAMERAID().equals(currentCamera.getCAMERAID())){
+                        ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, currentCamera.getCAMERAID()));
+                        currentCamera = info;
+                        ChannelManager.getInstance().sendMessage(new BindCameraRequest(zfzh, info.getCAMERAID()));
+                    }
+                }else{
+                    ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, info.getCAMERAID()));
                 }
             }
         });
-        rvCamera.setAdapter(adapter);
+        rvCamera.setAdapter(mAdapter);
+    }
+
+    /**
+     * 选中某个摄像头，在地图中作出相应的处理
+     */
+    private void selectCameraInMap(CameraInfo info) {
+        addMakerToMap(info,sCamera);
     }
 
     private void checkedInner(CompoundButton button, boolean isIndustryChecked, boolean isWarningTypeChecked) {
@@ -212,7 +267,9 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
                 String value;
                 if (data instanceof Industry) {
                     value = ((Industry) data).getName();
-                } else {
+                } else if(data instanceof CameraInfo){
+                    value = ((CameraInfo) data).getNAME();
+                } else{
                     value = ((WarningType) data).getType();
                 }
 
@@ -302,4 +359,52 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         animator.start();
     }
 
+
+    BitmapDescriptor nCamera = BitmapDescriptorFactory.fromResource(R.drawable.camera);
+    BitmapDescriptor sCamera = BitmapDescriptorFactory.fromResource(R.drawable.select_camera);
+
+    @Override
+    public void notifyAdapter(List<CameraInfo> cameraInfos) {
+        initMaker(cameraInfos);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 初始化摄像头maker
+     */
+    private void initMaker(List<CameraInfo> cameraInfos){
+        for (int i = 0; i < cameraInfos.size(); i++) {
+            addMakerToMap(cameraInfos.get(i),nCamera);
+        }
+    }
+
+    private void addMakerToMap(CameraInfo cameraInfo,BitmapDescriptor camera) {
+        LatLng latLng = new LatLng(Double.valueOf(cameraInfo.getLAT()),Double.valueOf(cameraInfo.getLON()));
+        MarkerOptions op = new MarkerOptions().position(latLng).icon(camera).zIndex(9)
+                .draggable(false);
+        Marker marker = (Marker) mBaiduMap.addOverlay(op);
+        markerList.add(marker);
+    }
+
+    Marker lastMaker;
+    private void updateMakerToMap(CameraInfo cameraInfo,int position){
+        if(lastMaker != null){
+            lastMaker.setIcon(nCamera);
+        }
+        lastMaker = markerList.get(position);
+        lastMaker.setIcon(sCamera);
+        LatLng latLng = new LatLng(Double.valueOf(cameraInfo.getLAT()),Double.valueOf(cameraInfo.getLON()));
+        MapStatus mapStatus = new MapStatus.Builder().target(latLng).zoom(18).build();
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+
+    }
+
+    private class CameraTCPReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String message = intent.getStringExtra("Data");
+
+        }
+    }
 }

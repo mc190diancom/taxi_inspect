@@ -58,7 +58,9 @@ import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
+import com.google.zxing.client.android.CaptureActivity;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -1248,11 +1250,13 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 			}
 
 		} else if (v == shaomiao_name) {
-			Intent intent = new Intent(self, IdcardScanActivity.class);
-			startActivityForResult(intent, 33);
+			UIUtils.toast(self, "该功能暂未开启", Toast.LENGTH_SHORT);
+			/*Intent intent = new Intent(self, IdcardScanActivity.class);
+			startActivityForResult(intent, 33);*/
 
 		} else if (v == shaomiao_id) {
-			Intent intent = new Intent(self, QRcodeActivity.class);
+			//Intent intent = new Intent(self, QRcodeActivity.class);
+			Intent intent = new Intent(self, CaptureActivity.class);
 			startActivityForResult(intent, 9);
 
 		} else if (v == check_item_tv) {

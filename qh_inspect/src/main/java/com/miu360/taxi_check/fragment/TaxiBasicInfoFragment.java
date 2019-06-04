@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.zxing.client.android.CaptureActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
@@ -183,10 +184,10 @@ public class TaxiBasicInfoFragment extends BaseFragment implements OnClickListen
 		} else if (v == back) {
 			getActivity().finish();
 		} else if (v == saoMiaoOne) {
-			Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+			Intent intent = new Intent(getActivity(), CaptureActivity.class);
 			startActivityForResult(intent, 9);
 		} else if (v == saoMiaoTwo) {
-			Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+			Intent intent = new Intent(getActivity(), CaptureActivity.class);
 			startActivityForResult(intent, 9);
 		} else if (v == carNumber_one) {
 			Windows.singleChoice(act, "选择车牌", itemsOne, new OnDialogItemClickListener() {

@@ -1,4 +1,4 @@
-package com.miu360.legworkwrit.app.utils;
+package com.miu30.common.util;
 
 import android.text.TextUtils;
 import android.util.Log;

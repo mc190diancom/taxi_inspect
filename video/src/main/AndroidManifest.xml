@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.feidi.video">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />。
+
     <application>
-        <activity android:name=".mvp.ui.activity.TCPTestActivity" />
+        <activity android:name=".mvp.ui.activity.TCPTestActivity"></activity>
 
         <service android:name=".app.services.TCPConnectService" />
 
+        <activity android:name=".mvp.ui.activity.TestDActivity"></activity>
     </application>
 
 </manifest>

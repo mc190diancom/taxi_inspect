@@ -63,15 +63,15 @@
             android:enabled="true"
             android:process=":remote"></service>
 
-        <!--<provider-->
-        <!--android:name="com.miu30.common.util.MyFileProvider"-->
-        <!--android:authorities="${applicationId}.fileProvider"-->
-        <!--android:exported="false"-->
-        <!--android:grantUriPermissions="true">-->
-        <!--<meta-data-->
-        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--android:resource="@xml/file_paths" />-->
-        <!--</provider>-->
+        <provider
+            android:name="com.miu30.common.util.MyFileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <activity
             android:name="com.miu360.taxi_check.ui.MainActivity"
@@ -80,11 +80,11 @@
         <activity
             android:name="com.miu360.taxi_check.ui.LoginActivity"
             android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.miu360.taxi_check.ui.PathQueryActivity"
@@ -179,13 +179,7 @@
         <activity
             android:name="com.miu360.taxi_check.ui.WarningInspectActivity"
             android:label="@string/title_activity_warning"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.miu360.taxi_check.ui.InspectRecordDetailActivity"
             android:label="@string/title_activity_inspect_record_detail"

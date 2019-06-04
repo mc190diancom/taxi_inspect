@@ -91,13 +91,11 @@
         </receiver>
 
         <activity android:name=".mvp.ui.activity.CaseBlListActivity" />
-
-        <activity android:name=".mvp.ui.activity.WifiTestActivity">
-    w
-        </activity>
+        <activity android:name=".mvp.ui.activity.WifiTestActivity"></activity>
 
         <service android:name=".app.service.GeneralInformationService" />
 
+        <activity android:name=".mvp.ui.activity.TestAActivity"></activity>
     </application>
 
 </manifest>

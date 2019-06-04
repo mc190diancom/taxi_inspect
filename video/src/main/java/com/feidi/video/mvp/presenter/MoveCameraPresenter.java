@@ -16,10 +16,18 @@ import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
+import com.miu30.common.app.MyErrorHandleSubscriber;
+import com.miu30.common.async.Result;
+import com.miu30.common.base.BaseData;
+import com.miu30.common.data.UserPreference;
 import com.miu30.common.ui.widget.MultiVeriticalItemDecoration;
+import com.miu30.common.util.MapUtil;
+import com.miu30.common.util.RxUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -48,6 +56,9 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
     ImageLoader mImageLoader;
     @Inject
     AppManager mAppManager;
+
+    ArrayList<ISelector> data = new ArrayList<>();
+    ArrayList<ISelector> CameraData = new ArrayList<>();
 
     @Inject
     public MoveCameraPresenter(MoveCameraContract.Model model, MoveCameraContract.View rootView) {
@@ -97,8 +108,8 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
     }
 
     //测试数据
-    public List<ISelector> getCameraInfos() {
-        List<ISelector> infos = new ArrayList<>();
+    public void getCameraInfos(String zfzh) {
+        /*List<ISelector> infos = new ArrayList<>();
         infos.add(new CameraInfo("摄像头一"));
         infos.add(new CameraInfo("摄像头二"));
         infos.add(new CameraInfo("摄像头三"));
@@ -109,10 +120,34 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
         infos.add(new CameraInfo("摄像头八"));
         infos.add(new CameraInfo("摄像头九"));
         infos.add(new CameraInfo("摄像头十"));
-        return infos;
+        Map<String, String> params = new HashMap<>();
+        return infos;*/
+        Map<String, String> params = new HashMap<>();
+        params.put("ZFZH", zfzh);
+        Map<String, Object> map = new MapUtil().getMap("getCameraListByZfzh", BaseData.gson.toJson(params));
+        System.out.println("getCameraList:"+map);
+        mModel.getCameraList(map)
+                .compose(RxUtils.<Result<List<CameraInfo>>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<List<CameraInfo>>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<List<CameraInfo>> result) {
+                        System.out.println("getCameraList:"+result.getData());
+                        if (result.ok() && result.getData() != null && result.getData().size() > 0) {
+                            CameraData.clear();
+                            CameraData.addAll(result.getData());
+                            mRootView.notifyAdapter(result.getData());
+                        }
+                    }
+
+                });
     }
 
-    private List<ISelector> data = new ArrayList<>();
+    //测试数据
+    public ArrayList<ISelector> getCameraData() {
+        return CameraData;
+    }
+
 
     public List<ISelector> getIndustryOrWarningTypeInfos() {
         return data;
@@ -158,14 +193,19 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
         return crimeListAdapter;
     }
 
+    public void clearCrimeList() {
+        crimeInfos.clear();
+        crimeListAdapter.notifyDataSetChanged();
+    }
+
     public void updateCrimeList(CameraInfo cameraInfo) {
         //次数通过选择的摄像头来处理相关逻辑
 
         //以下为测试数据
         crimeInfos.clear();
-        crimeInfos.add(new CrimeInfo(1, "京BP2540", 90));
+        /*crimeInfos.add(new CrimeInfo(1, "京BP2540", 90));
         crimeInfos.add(new CrimeInfo(1, "京BP3290", 7));
-        crimeInfos.add(new CrimeInfo(3, "京BP1510", 320));
+        crimeInfos.add(new CrimeInfo(3, "京BP1510", 320));*/
         crimeListAdapter.notifyDataSetChanged();
     }
 }

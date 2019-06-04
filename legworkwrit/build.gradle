@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 19
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -28,11 +28,9 @@ android {
 
         }
         inspect_release {
-            minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "false"
         }
         inspect_debug {
-            minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "true"
         }
         inspect_demo {

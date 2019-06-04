@@ -27,6 +27,7 @@ public class Config {
     public static final String SERVER_BLLIST = SERVER + "/bllist";
     public static final String SERVER_WEBSERVICE = SERVER + "/webservice";
     public static final String SERVER_DOWNLOAD = SERVER + "/transfers";
+    public static final String SERVER_VIDEO = SERVER + "/video";
 
     public static final int LAWLOCATION = 1;
 

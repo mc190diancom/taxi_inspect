@@ -17,7 +17,7 @@ import com.miu30.common.config.Config;
 import com.miu30.common.util.FileUtil;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.app.MyErrorHandleSubscriber;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.ObtainImageContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.data.PhotoPreference;
@@ -26,7 +26,7 @@ import com.miu360.legworkwrit.mvp.model.entity.InquiryRecordPhoto;
 import com.miu360.legworkwrit.mvp.model.entity.InquiryRecordPhotoParams;
 import com.miu360.legworkwrit.mvp.model.entity.UTC;
 import com.miu360.legworkwrit.util.DialogUtil;
-import com.miu360.legworkwrit.util.MapUtil;
+import com.miu30.common.util.MapUtil;
 import com.miu360.legworkwrit.util.PictureUtil;
 import com.miu360.legworkwrit.util.TimeTool;
 

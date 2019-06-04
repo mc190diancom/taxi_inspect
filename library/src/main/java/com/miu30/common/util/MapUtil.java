@@ -1,4 +1,4 @@
-package com.miu360.legworkwrit.util;
+package com.miu30.common.util;
 
 import android.annotation.SuppressLint;
 

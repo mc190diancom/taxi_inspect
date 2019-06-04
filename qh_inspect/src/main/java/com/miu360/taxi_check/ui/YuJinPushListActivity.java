@@ -110,6 +110,14 @@ public class YuJinPushListActivity extends BaseActivity implements OnRefreshList
 
 				}
 			});
+		}else{
+			listHolder.list.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					listHolder.list.onRefreshComplete();
+				}
+			}, 300);
 		}
 
 	}

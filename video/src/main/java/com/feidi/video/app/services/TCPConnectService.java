@@ -6,7 +6,14 @@ import android.os.IBinder;
 import android.os.Process;
 import android.support.annotation.Nullable;
 
+import com.miu30.common.MiuBaseApp;
+import com.miu30.common.config.Config;
+import com.miu30.common.connect.ChannelManager;
 import com.miu30.common.connect.NettyClient;
+import com.miu30.common.connect.entity.CancelBindCameraRequest;
+import com.miu30.common.connect.entity.LogoutRequest;
+
+import timber.log.Timber;
 
 /**
  * 作者：wanglei on 2019/5/23.
@@ -23,7 +30,7 @@ public class TCPConnectService extends Service {
                 Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
                 if (client == null) {
                     client = new NettyClient();
-                    client.connect("bjqhcal.nat123.cc", 9000);
+                    client.connect(Config.IP, 9000);
                 }
             }
         }).start();
@@ -39,6 +46,10 @@ public class TCPConnectService extends Service {
 
     @Override
     public void onDestroy() {
+        Timber.tag("netty").i("注销服务");
+        if(ChannelManager.getInstance().isConnected()){
+            ChannelManager.getInstance().sendMessage(new LogoutRequest(MiuBaseApp.user.getString("user_name", "0000000")));
+        }
         if (client != null) {
             client.stop();
             client = null;

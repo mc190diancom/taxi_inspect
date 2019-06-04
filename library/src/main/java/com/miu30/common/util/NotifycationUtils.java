@@ -1,8 +1,10 @@
 package com.miu30.common.util;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.ArrayMap;
 import android.widget.RemoteViews;
@@ -31,16 +33,36 @@ public class NotifycationUtils {
 
 
     public void notificationMsg(String fileName) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            builder = new NotificationCompat.Builder(MiuBaseApp.self);
+            builder.setSmallIcon(R.drawable.taxi_heade);
+            builder.setContentTitle("下载" + fileName + "文件");
+            builder.setContentText("正在准备");
+            builder.setAutoCancel(false);
+            builder.setChannelId(MiuBaseApp.self.getPackageName());
+            manager = (NotificationManager) MiuBaseApp.self.getSystemService(Context.NOTIFICATION_SERVICE);
+            notification = builder.build();
+            notification.flags |= Notification.FLAG_NO_CLEAR;
+            NotificationChannel channel = new NotificationChannel(
+                    MiuBaseApp.self.getPackageName(),
+                    "会话类型",//这块Android9.0分类的比较完整，你创建多个这样的东西，你可以在设置里边显示那个或者第几个
+                    NotificationManager.IMPORTANCE_LOW
 
-        builder = new NotificationCompat.Builder(MiuBaseApp.self);
-        builder.setSmallIcon(R.drawable.taxi_heade);
-        builder.setContentTitle("下载" + fileName + "文件");
-        builder.setContentText("正在准备");
-        builder.setAutoCancel(false);
-        manager = (NotificationManager) MiuBaseApp.self.getSystemService(Context.NOTIFICATION_SERVICE);
-        notification = builder.build();
-        notification.flags |= Notification.FLAG_NO_CLEAR;
-        manager.notify(MSG_NOTIFICATION_ID, notification);
+            );
+            manager.createNotificationChannel(channel);
+            manager.notify(MSG_NOTIFICATION_ID, notification);
+
+        }else{
+            builder = new NotificationCompat.Builder(MiuBaseApp.self);
+            builder.setSmallIcon(R.drawable.taxi_heade);
+            builder.setContentTitle("下载" + fileName + "文件");
+            builder.setContentText("正在准备");
+            builder.setAutoCancel(false);
+            manager = (NotificationManager) MiuBaseApp.self.getSystemService(Context.NOTIFICATION_SERVICE);
+            notification = builder.build();
+            notification.flags |= Notification.FLAG_NO_CLEAR;
+            manager.notify(MSG_NOTIFICATION_ID, notification);
+        }
 
     }
 

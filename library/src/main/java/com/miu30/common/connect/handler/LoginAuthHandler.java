@@ -1,5 +1,6 @@
 package com.miu30.common.connect.handler;
 
+import com.miu30.common.MiuBaseApp;
 import com.miu30.common.connect.ChannelManager;
 import com.miu30.common.connect.entity.IMesage;
 import com.miu30.common.connect.entity.NettyConstants;
@@ -21,7 +22,7 @@ import timber.log.Timber;
 @ChannelHandler.Sharable
 public class LoginAuthHandler extends ChannelInboundHandlerAdapter {
     //测试数据
-    private String zfzh = "zfzh1";
+    private String zfzh = MiuBaseApp.user.getString("user_name", "0000000");
 
     @Override
     public void channelActive(ChannelHandlerContext channelHandlerContext) throws Exception {

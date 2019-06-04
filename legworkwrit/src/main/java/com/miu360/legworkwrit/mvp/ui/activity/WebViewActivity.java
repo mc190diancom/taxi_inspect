@@ -1,8 +1,8 @@
 package com.miu360.legworkwrit.mvp.ui.activity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,6 +43,8 @@ public class WebViewActivity extends BaseMvpActivity<WebViewActivityPresenter> i
     TextView tvPrint;
     @BindView(R2.id.tv_current_choose_printer)
     TextView tvCurrentChoosePrinter;
+    @BindView(R2.id.web_content)
+    WebView web_content;
 
     @Inject
     HeaderHolder header;
@@ -57,10 +59,12 @@ public class WebViewActivity extends BaseMvpActivity<WebViewActivityPresenter> i
                 .inject(this);
     }
 
-    @SuppressLint("NewApi")
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        WebView.enableSlowWholeDocumentDraw();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            web_content.enableSlowWholeDocumentDraw();
+        }
+        //WebView.enableSlowWholeDocumentDraw();
         return R.layout.activity_web_view;
     }
 
@@ -271,10 +275,10 @@ public class WebViewActivity extends BaseMvpActivity<WebViewActivityPresenter> i
         if (!TextUtils.isEmpty(detainCarFormQ.getZFDWQZSJ()) && detainCarFormQ.getZFDWQZSJ().length() > 13) {
             detainCarFormQ.setZFDWQZSJ(TimeTool.parseStr(detainCarFormQ.getZFDWQZSJ()));
         }
-        if (!TextUtils.isEmpty(detainCarFormQ.getYJTL()) && detainCarFormQ.getYJTL().contains("《") && detainCarFormQ.getYJTL().contains("》")) {
+        if(!TextUtils.isEmpty(detainCarFormQ.getYJTL()) && detainCarFormQ.getYJTL().contains("《") && detainCarFormQ.getYJTL().contains("》")){
             try {
-                detainCarFormQ.setYJTL(detainCarFormQ.getYJTL().substring(1, detainCarFormQ.getYJTL().length() - 1));
-            } catch (Exception e) {
+                detainCarFormQ.setYJTL(detainCarFormQ.getYJTL().substring(1,detainCarFormQ.getYJTL().length() -1));
+            }catch (Exception e){
 
             }
         }

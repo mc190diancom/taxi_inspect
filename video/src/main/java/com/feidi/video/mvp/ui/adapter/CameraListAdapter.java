@@ -19,6 +19,7 @@ public class CameraListAdapter extends BaseSingleSelectorAdapter {
 
     @Override
     public void setCheckBoxText(ISelector data, CheckBox checkBox) {
-        checkBox.setText(((CameraInfo) data).getName());
+        System.out.println("ISelector:"+data.toString());
+        checkBox.setText(((CameraInfo) data).getNAME());
     }
 }

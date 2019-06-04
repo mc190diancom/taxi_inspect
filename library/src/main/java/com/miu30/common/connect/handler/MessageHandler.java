@@ -1,13 +1,21 @@
 package com.miu30.common.connect.handler;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
 import com.miu30.common.MiuBaseApp;
+import com.miu30.common.base.BaseData;
 import com.miu30.common.connect.entity.IMesage;
+import com.miu30.common.ui.entity.AlarmInfo;
+import com.miu30.common.ui.entity.Template;
 import com.miu30.common.util.UIUtils;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -20,6 +28,8 @@ import timber.log.Timber;
  */
 @ChannelHandler.Sharable
 public class MessageHandler extends ChannelInboundHandlerAdapter {
+
+    private static final String FLAG = "com.feidi.cameraInfo";
 
     @SuppressLint("TimberArgCount")
     @Override
@@ -36,12 +46,18 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
             case IMesage.BIND_CAMERA:
                 if (jsonObject.optInt("status", -1) == 0) {
                     UIUtils.toast(MiuBaseApp.self, "绑定摄像头成功", Toast.LENGTH_LONG);
+                    Intent intent = new Intent();
+                    intent.setAction(FLAG);
+                    intent.putExtra("Data", "绑定成功");
+                    LocalBroadcastManager.getInstance(MiuBaseApp.self).sendBroadcast(intent);
                 } else {
                     UIUtils.toast(MiuBaseApp.self, "绑定摄像头失败", Toast.LENGTH_LONG);
                 }
                 break;
             case IMesage.ALARM:
-                UIUtils.toast(MiuBaseApp.self, "接收到报警信息", Toast.LENGTH_LONG);
+                AlarmInfo alarmInfo = BaseData.gson.fromJson((String) o,new TypeToken<AlarmInfo>() {
+                }.getType());
+                UIUtils.toast(MiuBaseApp.self, "接收到报警信息:"+alarmInfo, Toast.LENGTH_LONG);
                 break;
             case IMesage.CANCEL_BIND_CAMERA:
                 if (jsonObject.optInt("status", -1) == 0) {

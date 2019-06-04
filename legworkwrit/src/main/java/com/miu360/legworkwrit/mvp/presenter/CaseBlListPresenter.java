@@ -6,7 +6,7 @@ import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
 import com.miu30.common.config.Config;
 import com.miu30.common.app.MyErrorHandleSubscriber;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.CaseBlListContract;
 import com.miu360.legworkwrit.mvp.model.entity.AdministrativePenalty;
 import com.miu360.legworkwrit.mvp.model.entity.BlType;
@@ -19,7 +19,7 @@ import com.miu360.legworkwrit.mvp.model.entity.InquiryRecordPhoto;
 import com.miu360.legworkwrit.mvp.model.entity.LiveCheckRecordQ;
 import com.miu360.legworkwrit.mvp.model.entity.LiveTranscript;
 import com.miu360.legworkwrit.mvp.model.entity.TalkNoticeQ;
-import com.miu360.legworkwrit.util.MapUtil;
+import com.miu30.common.util.MapUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

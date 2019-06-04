@@ -7,9 +7,11 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 
 import com.miu30.common.MiuBaseApp;
+import com.miu360.legworkwrit.mvp.model.entity.WifiConfig;
 import com.miu360.legworkwrit.util.printer.PrinterManager;
 
 import java.lang.reflect.Method;
@@ -40,13 +42,18 @@ public class WifiUtil {
     }
 
     public void open() {
-        manager.setWifiEnabled(true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                manager.setWifiEnabled(true);
+            }
+        }).start();
     }
 
     public void close() {
-        if (manager.isWifiEnabled()) {
+       // if (manager.isWifiEnabled()) {
             manager.setWifiEnabled(false);
-        }
+        //}
     }
 
     public void scan() {
@@ -110,12 +117,24 @@ public class WifiUtil {
             config.hiddenSSID = true;
             config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
             config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
-            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);//WPA_PSK
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
             config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
             config.status = WifiConfiguration.Status.ENABLED;
+
+            /*config.status = WifiConfiguration.Status.ENABLED;
             config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+            config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            config.preSharedKey = "\"".concat(Password).concat("\"");*/
+
         }
 
         config.priority = 10000;
@@ -132,7 +151,7 @@ public class WifiUtil {
     }
 
     public void connect(WifiConfiguration configuration) {
-        Log.d(PrinterManager.TAG, "准备连接到wifi.....ssid = " + configuration.SSID);
+        Log.d(PrinterManager.TAG, "准备连接到wifi.....ssid = " + configuration);
 
         int netId = manager.addNetwork(configuration);
 

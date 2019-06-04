@@ -31,6 +31,7 @@ public class MyWebViewUtil {
 
     public static WebView getPreViewWebView(Activity context, @IdRes int id) {
         final WebView webView = (WebView) context.findViewById(id);
+
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDefaultTextEncodingName("utf-8");
@@ -230,6 +231,7 @@ public class MyWebViewUtil {
         Paint paint = new Paint();
         //设置画笔的定点位置，也就是左上角
         canvas.drawBitmap(picture, 0, webView.getMeasuredHeight(), paint);
+
         //将webview绘制在刚才创建的画板上
         webView.draw(canvas);
         File parentFile = new File(Config.PATH);

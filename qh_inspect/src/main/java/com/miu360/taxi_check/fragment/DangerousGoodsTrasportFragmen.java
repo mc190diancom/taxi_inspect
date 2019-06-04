@@ -1,15 +1,5 @@
 package com.miu360.taxi_check.fragment;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,16 +19,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.client.android.CaptureActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
+import com.miu30.common.util.MyProgressDialog;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseFragment;
 import com.miu360.taxi_check.common.ChooseInputType;
 import com.miu360.taxi_check.common.CommonDialog.OnDialogItemClickListener;
-import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.data.WeiZhanData;
 import com.miu360.taxi_check.model.Driver;
@@ -54,8 +45,17 @@ import com.miu360.taxi_check.ui.DangerousGoodsTrasportPeopleActivity;
 import com.miu360.taxi_check.ui.DangerousGoodsTrasportPeopleInfoActivity;
 import com.miu360.taxi_check.ui.GoodsDangerousTrasportCarInfoActivity;
 import com.miu360.taxi_check.ui.GoodsDangerousTrasportCompanyActivity;
-import com.miu360.taxi_check.ui.QRcodeActivity;
 import com.miu360.taxi_check.util.UIUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 public class DangerousGoodsTrasportFragmen extends BaseFragment implements OnClickListener {
 	String[] items = { "营运车辆","从业人员",  "经营业户" };
@@ -187,10 +187,10 @@ public class DangerousGoodsTrasportFragmen extends BaseFragment implements OnCli
 		} else if (v == back) {
 			getActivity().finish();
 		} else if (v == saoMiaoOne) {
-			Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+			Intent intent = new Intent(getActivity(), CaptureActivity.class);
 			startActivityForResult(intent, 9);
 		} else if (v == saoMiaoTwo) {
-			Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+			Intent intent = new Intent(getActivity(), CaptureActivity.class);
 			startActivityForResult(intent, 9);
 		} else if (v == saoMiaoThree) {
 			Intent intent = new Intent(getActivity(), CreateCaseActivity.class);

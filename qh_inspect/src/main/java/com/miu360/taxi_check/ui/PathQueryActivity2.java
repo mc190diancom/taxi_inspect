@@ -42,6 +42,7 @@ import com.miu360.taxi_check.common.VehicleStatus;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.isCommon;
 import com.miu360.taxi_check.data.HistoryData;
+import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.map.DrivingRouteOverlay;
 import com.miu360.taxi_check.map.MapUtils;
 import com.miu360.taxi_check.model.LatLngDir;
@@ -204,36 +205,7 @@ public class PathQueryActivity2 extends BaseActivity implements OnClickListener 
 		holder.rightTextBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//final MyProgressDialog pd = Windows.waiting(self);
-				mBaiduMap.snapshotScope(null,new SnapshotReadyCallback() {
-
-					@Override
-					public void onSnapshotReady(Bitmap snapshot) {
-						File file = new File(Config.PATH+"inspect.png");
-						FileOutputStream out;
-						try {
-							out = new FileOutputStream(file);
-							if (snapshot.compress(Bitmap.CompressFormat.PNG, 100, out)) {
-								out.flush();
-								out.close();
-							}
-							UIUtils.toast(self, "保存轨迹图成功！", Toast.LENGTH_SHORT);
-						} catch (FileNotFoundException e) {
-							UIUtils.toast(self, "保存轨迹图失败！", Toast.LENGTH_SHORT);
-							e.printStackTrace();
-						} catch (IOException e) {
-							UIUtils.toast(self, "保存轨迹图失败！", Toast.LENGTH_SHORT);
-							e.printStackTrace();
-						}
-						new Thread(new Runnable() {
-							@Override
-							public void run() {
-								//pd.dismiss();
-							}
-						}).start();
-					}
-
-				});
+				snapShotScope();
 			}
 		});
 		holder.leftBtn.setOnClickListener(new OnClickListener() {
@@ -266,6 +238,47 @@ public class PathQueryActivity2 extends BaseActivity implements OnClickListener 
 					ll_show_main.setVisibility(View.VISIBLE);
 					//holder.root.setVisibility(View.VISIBLE);
 				}
+			}
+		});
+
+	}
+
+	private void snapShotScope() {
+		AsyncUtil.goAsync(new Callable<Result<Void>>() {
+
+			@Override
+			public Result<Void> call() throws Exception {
+				Result<Void> r = new Result<>(Result.OK, null, null, null);
+				mBaiduMap.snapshotScope(null,new SnapshotReadyCallback() {
+
+					@Override
+					public void onSnapshotReady(Bitmap snapshot) {
+						File file = new File(Config.PATH+"inspect.png");
+						FileOutputStream out;
+						try {
+							out = new FileOutputStream(file);
+							if (snapshot.compress(Bitmap.CompressFormat.PNG, 100, out)) {
+								out.flush();
+								out.close();
+							}
+							UIUtils.toast(self, "保存轨迹图成功！", Toast.LENGTH_SHORT);
+						} catch (FileNotFoundException e) {
+							UIUtils.toast(self, "保存轨迹图失败！", Toast.LENGTH_SHORT);
+							e.printStackTrace();
+						} catch (IOException e) {
+							UIUtils.toast(self, "保存轨迹图失败！", Toast.LENGTH_SHORT);
+							e.printStackTrace();
+						}
+					}
+
+				});
+				return r;
+			}
+		}, new Callback<Result<Void>>() {
+
+			@Override
+			public void onHandle(Result<Void> result) {
+
 			}
 		});
 

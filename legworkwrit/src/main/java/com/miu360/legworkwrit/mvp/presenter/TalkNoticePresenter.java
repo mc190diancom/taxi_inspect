@@ -15,7 +15,7 @@ import com.miu30.common.util.CommonDialog;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
 import com.miu30.common.app.MyErrorHandleSubscriber;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.TalkNoticeContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.model.entity.AgencyInfo;
@@ -25,7 +25,7 @@ import com.miu360.legworkwrit.mvp.model.entity.InstrumentStateReq;
 import com.miu360.legworkwrit.mvp.model.entity.TalkNoticeQ;
 import com.miu360.legworkwrit.mvp.model.entity.UTC;
 import com.miu360.legworkwrit.util.DialogUtil;
-import com.miu360.legworkwrit.util.MapUtil;
+import com.miu30.common.util.MapUtil;
 import com.miu360.legworkwrit.util.RequestParamsUtil;
 import com.miu360.legworkwrit.util.TimeTool;
 

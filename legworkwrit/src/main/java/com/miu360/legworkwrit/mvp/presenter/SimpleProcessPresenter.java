@@ -16,7 +16,7 @@ import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
 import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu360.legworkwrit.app.service.GeneralInformationService;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.SimpleProcessContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.data.PhotoPreference;
@@ -28,7 +28,7 @@ import com.miu360.legworkwrit.mvp.model.entity.CaseStatus;
 import com.miu360.legworkwrit.mvp.model.entity.InquiryRecordPhoto;
 import com.miu360.legworkwrit.mvp.model.entity.InquiryRecordPhotoParams;
 import com.miu360.legworkwrit.util.GetUTCUtil;
-import com.miu360.legworkwrit.util.MapUtil;
+import com.miu30.common.util.MapUtil;
 import com.miu360.legworkwrit.util.RequestParamsUtil;
 import com.miu360.legworkwrit.util.TimeTool;
 

@@ -13,7 +13,9 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
+import com.miu30.common.util.FileUtil;
 import com.miu360.inspect.R;
+import com.miu360.taxi_check.App;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
 import com.miu360.taxi_check.data.HttpRequest;
@@ -89,10 +91,10 @@ public class ChangePersonalInfoActivity extends BaseActivity implements OnClickL
 		initView();
 
 		layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		File file = new File(Environment.getExternalStorageDirectory(), "ClipHeadPhoto/cache");
+		File file = new File(Environment.getExternalStorageDirectory(), "taxi_inspect");
 		if (!file.exists())
 			file.mkdirs();
-		photoSavePath = Environment.getExternalStorageDirectory() + "/ClipHeadPhoto/cache/";
+		photoSavePath = Environment.getExternalStorageDirectory() + "/taxi_inspect/";
 		photoSaveName = System.currentTimeMillis() + ".jpg";
 	}
 
@@ -168,13 +170,23 @@ public class ChangePersonalInfoActivity extends BaseActivity implements OnClickL
 			@Override
 			public void onClick(View arg0) {
 				popWindow.dismiss();
-				photoSaveName = String.valueOf(System.currentTimeMillis()) + ".jpg";
+				/*photoSaveName = String.valueOf(System.currentTimeMillis()) + ".jpg";
 				Uri imageUri = null;
 				Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-				imageUri = Uri.fromFile(new File(photoSavePath, photoSaveName));
+				imageUri = FileUtil.getFileUri(getApplicationContext(), new File(photoSavePath, photoSaveName));
+				//imageUri = Uri.fromFile(new File(photoSavePath, photoSaveName));
 				openCameraIntent.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
 				openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-				startActivityForResult(openCameraIntent, PHOTOTAKE);
+				startActivityForResult(openCameraIntent, PHOTOTAKE);*/
+
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+				if (intent.resolveActivity(App.self.getPackageManager()) != null) {
+					Uri uri = FileUtil.getFileUri(getApplicationContext(), new File(photoSavePath
+							, photoSaveName));
+					intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+					startActivityForResult(intent, PHOTOTAKE);
+				}
 			}
 		});
 		albums.setOnClickListener(new OnClickListener() {

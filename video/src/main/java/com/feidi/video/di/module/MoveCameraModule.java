@@ -1,5 +1,11 @@
 package com.feidi.video.di.module;
 
+import android.app.Activity;
+
+import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.ISelector;
+import com.feidi.video.mvp.ui.adapter.CameraListAdapter;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.di.scope.FragmentScope;
 
 import dagger.Binds;
@@ -8,6 +14,9 @@ import dagger.Provides;
 
 import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.feidi.video.mvp.model.MoveCameraModel;
+import com.miu30.common.ui.entity.DriverInfo;
+
+import java.util.ArrayList;
 
 
 /**
@@ -27,4 +36,5 @@ public abstract class MoveCameraModule {
 
     @Binds
     abstract MoveCameraContract.Model bindMoveCameraModel(MoveCameraModel model);
+
 }

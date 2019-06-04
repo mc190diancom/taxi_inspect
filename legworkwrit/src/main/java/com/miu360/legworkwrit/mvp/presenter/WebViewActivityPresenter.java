@@ -31,7 +31,7 @@ import com.miu30.common.util.MyProgressDialog;
 import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.Windows;
 import com.miu30.common.app.MyErrorHandleSubscriber;
-import com.miu360.legworkwrit.app.utils.RxUtils;
+import com.miu30.common.util.RxUtils;
 import com.miu360.legworkwrit.mvp.contract.WebViewActivityContract;
 import com.miu360.legworkwrit.mvp.data.WifiPreference;
 import com.miu360.legworkwrit.mvp.model.entity.ParentQ;
@@ -91,12 +91,12 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
 
                         WifiUtil.getInstance().scan();
 
-                        handler.postDelayed(new Runnable() {
+                       /* handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 choosePrinter();
                             }
-                        }, 1000);
+                        }, 1000);*/
                         break;
                     default:
                         PrinterManager.getInstance().cancelSearch();
@@ -124,11 +124,32 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
                         }
                     }
                 }
+            }else if(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(intent.getAction())){
+                List<ScanResult> result = WifiUtil.getInstance().getScanResult();
+                ScanTimes ++;
+                if(ScanTimes < 10 && (result == null || result.isEmpty())){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            WifiUtil.getInstance().scan();
+                        }
+                    },1000);
+                    return;
+                }
+                ArrayList<String>  showWifiSns = getWifiSn();
+                if(showWifiSns.size() >0){
+                    if(isShowd) return;
+                    isShowd = true;
+                    showWifiList(showWifiSns);
+                }
             }
         }
     };
+
     private boolean pageIsFinish;//当打印页数为最后一页
     private CommonDialog commonDialog;
+    private boolean isShowd = false;//是否已经弹出过窗
+    private int ScanTimes =0;//扫描次数
 
     @Inject
     public WebViewActivityPresenter(WebViewActivityContract.Model model, WebViewActivityContract.View rootView) {
@@ -204,6 +225,7 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         activity.registerReceiver(receiver, filter);
 
         if (!WifiUtil.getInstance().isOpen()) {
@@ -213,7 +235,10 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
 
     public void choosePrinter() {
         Log.d(PrinterManager.TAG, "choosePrinter()");
+        showWifiList(getWifiSn());
+    }
 
+    private ArrayList<String> getWifiSn() {
         ArrayList<String> showWifiSns = new ArrayList<>();
         List<ScanResult> result = WifiUtil.getInstance().getScanResult();
         if (wifiMap != null && result != null) {
@@ -226,7 +251,10 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
                 }
             }
         }
+        return showWifiSns;
+    }
 
+    private void showWifiList(ArrayList<String> showWifiSns) {
         final String[] showWifiSnsArray = showWifiSns.toArray(new String[showWifiSns.size()]);
 
         commonDialog = Windows.singleChoice(activity, "请选择需要连接的打印机", showWifiSnsArray, new CommonDialog.OnDialogItemClickListener() {
@@ -242,6 +270,7 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
     private void connectWifi(WifiConfig config) {
         this.chooseWifi = config;
 
+        System.out.println("WifiConfig:"+config.toString());
         WifiInfo connectInfo = WifiUtil.getInstance().getConnectInfo();
         if (connectInfo.getSSID().equalsIgnoreCase("\"" + chooseWifi.getSsid() + "\"")
                 || connectInfo.getSSID().equalsIgnoreCase(chooseWifi.getSsid())) {
@@ -253,6 +282,8 @@ public class WebViewActivityPresenter extends BasePresenter<WebViewActivityContr
         } else {
             WifiUtil.getInstance()
                     .connect(WifiUtil.getInstance().createWifiInfo(config.getSsid(), config.getPassword(), 3));
+           /* WifiUtil.getInstance()
+                    .connect(WifiUtil.getInstance().createWifiInfo(config.getSsid(), config.getPassword(), 3));*/
         }
     }
 

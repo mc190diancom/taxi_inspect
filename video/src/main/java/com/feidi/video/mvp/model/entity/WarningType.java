@@ -25,4 +25,12 @@ public class WarningType implements ISelector {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    @Override
+    public String toString() {
+        return "WarningType{" +
+                "type='" + type + '\'' +
+                ", selected=" + selected +
+                '}';
+    }
 }

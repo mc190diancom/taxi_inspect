@@ -7,12 +7,13 @@
 
     <ImageButton
         android:id="@+id/ibtn_left"
-        android:layout_width="8dp"
-        android:layout_height="14dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="14dp"
-        android:background="@drawable/top_tb_back"
-        android:contentDescription="@null" />
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/title_btn_bg"
+        android:scaleType="center"
+        android:src="@drawable/top_tb_back" />
 
     <TextView
         android:id="@+id/tv_left"

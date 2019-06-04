@@ -104,7 +104,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                 Manifest.permission.ACCESS_FINE_LOCATION,     //定位权限
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.CAMERA,                   //照相机权限
-
         };
 
         new PermissionManager(this) {

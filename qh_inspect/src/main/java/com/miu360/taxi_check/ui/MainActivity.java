@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.feidi.video.app.services.TCPConnectService;
 import com.google.gson.reflect.TypeToken;
 import com.jess.arms.integration.AppManager;
 import com.lidroid.xutils.ViewUtils;
@@ -111,6 +112,7 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnChe
 		startService(new Intent(self, LocationService.class));
 		startService(new Intent(self, PushService.class));
 		startService(new Intent(self, GeneralInformationService.class));
+		startService(new Intent(this, TCPConnectService.class));
 		initView();
 		if(!GpsManger.isOPen(this)){
 			Windows.confirm(self, "GPS未开启是否开启？", new OnClickListener() {
@@ -568,6 +570,8 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnChe
 		disposableCancelDownload();
 		stopService(new Intent(self, LocationService.class));
 		stopService(new Intent(self, PushService.class));
+		stopService(new Intent(self, GeneralInformationService.class));
+		stopService(new Intent(self, TCPConnectService.class));
 		new PositionPreference(self).clearPreference();
 		new MapPositionPreference(self).clearPreference();
 		new WeiFaCheckPreference(self).clearPreference();

@@ -50,8 +50,13 @@ public final class ImageTools {
 	public static void savePhotoToSDCard(Bitmap photoBitmap,String path){
 		if (checkSDCardAvailable()) {
 			File photoFile = new File(path);
+			if (!photoFile.getParentFile().exists()) {
+				photoFile.getParentFile().mkdirs();
+			}
+
 			FileOutputStream fileOutputStream = null;
 			try {
+				photoFile.createNewFile();
 				fileOutputStream = new FileOutputStream(photoFile);
 				if (photoBitmap != null) {
 					if (photoBitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)) {
