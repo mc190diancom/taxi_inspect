@@ -36,6 +36,7 @@ import com.miu360.library.R;
  * @attr ref android.R.styleable#TextSwitch_textSize              //开关文字大小
  * @attr ref android.R.styleable#TextSwitch_checked_textColor     //开关选中文字的颜色
  * @attr ref android.R.styleable#TextSwitch_unchecked_textColor   //开关未选中文字的颜色
+ * @attr ref android.R.styleable.TextSwitch_text_margin           //文字距边界的距离
  */
 public class TextSwitch extends View implements Checkable {
     private static final int DEFAULT_ANIMATOR_DURATION = 250;
@@ -67,6 +68,8 @@ public class TextSwitch extends View implements Checkable {
      * 文本颜色渐变的动画
      */
     private AnimatorSet mAnimatorSet;
+    //文字距边界的距离
+    private float mTextMargin;
 
     private Layout mOnLayout;
     private Layout mOffLayout;
@@ -90,11 +93,12 @@ public class TextSwitch extends View implements Checkable {
         mThumbDrawable = t.getDrawable(R.styleable.TextSwitch_thumb);
         mChecked = t.getBoolean(R.styleable.TextSwitch_checked, false);
         float textSize = t.getDimension(R.styleable.TextSwitch_textSize
-                , SizeUtils.dp2px(14));
+                , SizeUtils.sp2px(14));
         mCheckedTextColor = t.getColor(R.styleable.TextSwitch_checked_textColor
                 , Color.parseColor("#FFFFFF"));
         mUncheckedTextColor = t.getColor(R.styleable.TextSwitch_unchecked_textColor
                 , Color.parseColor("#666666"));
+        mTextMargin = t.getDimension(R.styleable.TextSwitch_text_margin, SizeUtils.dp2px(13));
         t.recycle();
 
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -199,7 +203,7 @@ public class TextSwitch extends View implements Checkable {
 
         //绘制左边的文字
         mTextPaint.setColor(mLeftTextColor);
-        int left = SizeUtils.dp2px(13);
+        int left = (int) mTextMargin;
         int top = (getMeasuredHeight() - mOnLayout.getHeight()) / 2;
         canvas.translate(left, top);
         mOnLayout.draw(canvas);

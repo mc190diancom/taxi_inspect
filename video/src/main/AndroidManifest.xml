@@ -10,7 +10,18 @@
 
         <service android:name=".app.services.TCPConnectService" />
 
-        <activity android:name=".mvp.ui.activity.TestDActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.SeeVideoListActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.SeeVideoActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

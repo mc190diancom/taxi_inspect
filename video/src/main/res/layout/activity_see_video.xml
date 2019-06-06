@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_header" />
+
+    <com.baidu.mapapi.map.MapView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.miu30.common.ui.view.TextSwitch xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/textSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_switch_see_video"
+        app:checked="true"
+        app:checked_textColor="#FFFFFF"
+        app:textOff="历史回放"
+        app:textOn="实时视频"
+        app:textSize="14sp"
+        app:text_margin="21dp"
+        app:thumb="@drawable/ic_switch_thumb_see_video"
+        app:unchecked_textColor="#666666" />
+
+    <View
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="#DDDDDD" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="18dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="北京大兴区荣京东街地铁口" />
+
+</LinearLayout>

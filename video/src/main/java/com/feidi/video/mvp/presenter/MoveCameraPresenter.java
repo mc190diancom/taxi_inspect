@@ -208,4 +208,5 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
         crimeInfos.add(new CrimeInfo(3, "京BP1510", 320));*/
         crimeListAdapter.notifyDataSetChanged();
     }
+
 }
