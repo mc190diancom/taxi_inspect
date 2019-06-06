@@ -14,6 +14,7 @@
         <attr name="textSize" format="dimension" />
         <attr name="checked_textColor" format="color" />
         <attr name="unchecked_textColor" format="color" />
+        <attr name="text_margin" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ThreeStateSwitch">
