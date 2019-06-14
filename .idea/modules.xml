@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/taxi_inspect.iml" filepath="$PROJECT_DIR$/taxi_inspect.iml" />
       <module fileurl="file://$PROJECT_DIR$/video/video.iml" filepath="$PROJECT_DIR$/video/video.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewPagerlibrary/viewPagerlibrary.iml" filepath="$PROJECT_DIR$/viewPagerlibrary/viewPagerlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vlclibrary/vlclibrary.iml" filepath="$PROJECT_DIR$/vlclibrary/vlclibrary.iml" />
     </modules>
   </component>
 </project>

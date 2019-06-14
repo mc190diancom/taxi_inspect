@@ -8,7 +8,7 @@ import com.baidu.location.LocationClientOption.LocationMode;
 import com.baidu.mapapi.model.LatLng;
 import com.miu360.taxi_check.App;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.Store2SdUtil;
 
 import android.app.Application;

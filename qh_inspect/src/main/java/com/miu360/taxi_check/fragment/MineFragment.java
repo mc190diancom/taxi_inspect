@@ -1,8 +1,9 @@
 package com.miu360.taxi_check.fragment;
 
+import com.feidi.elecsign.mvp.ui.activity.AuthorizationActivity;
 import com.miu360.taxi_check.BaseFragment;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.YuJingPreference;
@@ -58,6 +59,8 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 	private LinearLayout image_header;
 	@ViewInject(R.id.change_password)
 	private TextView change_password;
+	@ViewInject(R.id.tv_authorization)
+	private TextView tv_authorization;
 	@ViewInject(R.id.inspect_camera)
 	private CheckBox inspect_camera;
 	@ViewInject(R.id.sounds)
@@ -106,6 +109,7 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 		mBitMap.configDefaultLoadFailedImage(R.drawable.mine_image_big);
 		image_header.setOnClickListener(this);
 		change_password.setOnClickListener(this);
+		tv_authorization.setOnClickListener(this);
 		exit.setOnClickListener(this);
 		about.setOnClickListener(this);
 		toggle_one.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -369,23 +373,13 @@ public class MineFragment extends BaseFragment implements OnClickListener {
 							act.finish();
 						}
 					}, 200);
-					/*new Handler().postDelayed(new Runnable() {
-
-						@Override
-						public void run() {
-							//Exit();
-							UserPreference pref = new UserPreference(act);
-							pref.clearPreference();
-							Intent intent = new Intent(act, LoginActivity.class);
-							startActivity(intent);
-							act.finish();
-						}
-					}, 200);*/
-
 				}
 			});
 		} else if (v == change_password) {
 			Intent intent = new Intent(act, ChangePassWordActivity.class);
+			startActivity(intent);
+		} else if(v == tv_authorization){
+			Intent intent = new Intent(act, AuthorizationActivity.class);
 			startActivity(intent);
 		} else if (v == image_header) {
 			Intent intent = new Intent(act, ChangePersonalInfoActivity.class);

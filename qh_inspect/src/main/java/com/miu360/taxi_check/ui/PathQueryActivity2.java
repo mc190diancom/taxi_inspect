@@ -36,7 +36,7 @@ import com.lubao.lubao.async.Result;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.VehicleStatus;
 import com.miu360.taxi_check.common.Windows;

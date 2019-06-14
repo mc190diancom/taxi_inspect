@@ -38,6 +38,7 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
         switch (type) {
             case IMesage.LOGIN:
                 Timber.tag("netty").i("开启心跳 , status = %s", status);
+
                 //登录成功，开启心跳
                 heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatTask(ctx), 0, 10, TimeUnit.SECONDS);
                 break;
@@ -63,9 +64,9 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
     }
 
     final static String zfzh = MiuBaseApp.user.getString("user_name", "0000000");
+    static double lat = 0,lng = 0;
     private static class HeartBeatTask implements Runnable {
         private ChannelHandlerContext ctx;
-
         HeartBeatTask(ChannelHandlerContext ctx) {
             this.ctx = ctx;
         }
@@ -74,7 +75,15 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
         public void run() {
             if (ctx != null) {
                 Timber.tag("netty").i("send heartbeat");
-                ctx.writeAndFlush(new HeartBeat(zfzh, MsgConfig.lng, MsgConfig.lat));
+
+                if(MsgConfig.select_lat != 0){
+                    lat = MsgConfig.select_lat;
+                    lng = MsgConfig.select_lng;
+                }else if(MsgConfig.lat != 0){
+                    lat = MsgConfig.lat;
+                    lng = MsgConfig.lng;
+                }
+                ctx.writeAndFlush(new HeartBeat(zfzh, lng, lat));
             }
         }
     }

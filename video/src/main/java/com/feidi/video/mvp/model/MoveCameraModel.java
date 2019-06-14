@@ -57,5 +57,9 @@ public class MoveCameraModel extends BaseModel implements MoveCameraContract.Mod
         return mRepositoryManager.obtainRetrofitService(MyApis.class).getCameraList(map);
     }
 
+    @Override
+    public Observable<Result<String>> queryHistoryTrack(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).queryHistoryTrack(map);
+    }
 
 }

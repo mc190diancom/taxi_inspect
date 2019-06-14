@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.feidi.video.mvp.ui.activity.ArouterTestActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
@@ -25,7 +26,7 @@ import com.miu360.inspect.R;
 import com.miu360.taxi_check.App;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.model.Version;
@@ -130,7 +131,8 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
 			Intent intent = new Intent(self, FeedBackActivity.class);
 			startActivity(intent);
 		} else if (v == ll_banben) {
-			checkVersion();
+			startActivity(new Intent(self,ArouterTestActivity.class));
+			//checkVersion();
 		} else if (v == phone_number) {
 			UiTool.call(self, getString(R.string.tel_official));
 		} else if (v == features) {

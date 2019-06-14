@@ -32,7 +32,7 @@ public class ChannelManager {
     }
 
     public void sendMessage(IMesage mesage) {
-        if (channel != null) {
+        if (isConnected()) {
             channel.writeAndFlush(mesage);
         }
     }

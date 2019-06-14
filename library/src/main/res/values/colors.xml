@@ -19,4 +19,5 @@
     <color name="divide_color">#dddddd</color>
     <color name="light_blue">#41C3D6</color>
     <color name="windowBackground">#41C3D6</color>
+    <color name="pop_window">#35ACBD</color>
 </resources>

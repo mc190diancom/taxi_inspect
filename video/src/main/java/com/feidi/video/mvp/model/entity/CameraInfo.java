@@ -1,48 +1,78 @@
 package com.feidi.video.mvp.model.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * 作者：wanglei on 2019/5/30.
  * 邮箱：forwlwork@gmail.com
  */
 public class CameraInfo implements ISelector, Parcelable {
-    private String name;
-    private boolean selected;
-    private String location;
 
-    public String getLocation() {
-        return location;
+    /**
+     * DWMC : 机场队
+     * CAMERAID : 11000005001310255301
+     * NAME : T1长途车
+     * LON : 116.588015850
+     * LAT : 40.0802993660
+     */
+
+    private String DWMC;
+    private String CAMERAID;
+    private String NAME;
+    private String LON;
+    private String LAT;
+
+    public String getDWMC() {
+        return DWMC;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setDWMC(String DWMC) {
+        this.DWMC = DWMC;
     }
 
-    public CameraInfo(String name) {
-        this.name = name;
+    public String getCAMERAID() {
+        return CAMERAID;
     }
 
-    public CameraInfo(String name, String location) {
-        this.name = name;
-        this.location = location;
+    public void setCAMERAID(String CAMERAID) {
+        this.CAMERAID = CAMERAID;
     }
 
-    public String getName() {
-        return name;
+    public String getNAME() {
+        return NAME;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
+    }
+
+    public String getLON() {
+        return LON;
+    }
+
+    public void setLON(String LON) {
+        this.LON = LON;
+    }
+
+    public String getLAT() {
+        return LAT;
+    }
+
+    public void setLAT(String LAT) {
+        this.LAT = LAT;
     }
 
     @Override
     public boolean isSelected() {
-        return selected;
+        return false;
     }
 
     @Override
     public void setSelected(boolean selected) {
-        this.selected = selected;
+
     }
+
 
     @Override
     public int describeContents() {
@@ -51,13 +81,22 @@ public class CameraInfo implements ISelector, Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.name);
-        dest.writeString(this.location);
+        dest.writeString(this.DWMC);
+        dest.writeString(this.CAMERAID);
+        dest.writeString(this.NAME);
+        dest.writeString(this.LON);
+        dest.writeString(this.LAT);
+    }
+
+    public CameraInfo() {
     }
 
     protected CameraInfo(Parcel in) {
-        this.name = in.readString();
-        this.location = in.readString();
+        this.DWMC = in.readString();
+        this.CAMERAID = in.readString();
+        this.NAME = in.readString();
+        this.LON = in.readString();
+        this.LAT = in.readString();
     }
 
     public static final Parcelable.Creator<CameraInfo> CREATOR = new Parcelable.Creator<CameraInfo>() {

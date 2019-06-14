@@ -1,10 +1,10 @@
 package com.miu360.taxi_check.fragment;
 
+import com.baidu.mapapi.map.TextureMapView;
 import com.miu360.taxi_check.BaseFragment;
-import com.miu360.taxi_check.common.ELog;
 import com.miu360.taxi_check.common.GetHead;
-import com.miu360.taxi_check.common.MapPositionPreference;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.data.MapPositionPreference;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.YuJingPreference;
@@ -16,7 +16,7 @@ import com.miu360.taxi_check.model.AlarmReason;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity;
-import com.miu360.taxi_check.ui.SelectLocationActivity;
+import com.miu30.common.ui.SelectLocationActivity;
 import com.miu360.taxi_check.util.SortUtil;
 import com.miu360.taxi_check.util.UIUtils;
 
@@ -38,7 +38,6 @@ import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
@@ -87,7 +86,7 @@ public class CarDistributionFragment extends BaseFragment implements OnClickList
 	@ViewInject(R.id.my_location_tv)
 	private TextView my_location_tv;
 	@ViewInject(R.id.bmapView)
-	private MapView mMapView;
+	private TextureMapView mMapView;
 	@ViewInject(R.id.query)
 	private TextView query;
 	@ViewInject(R.id.header_ll)
@@ -235,7 +234,6 @@ public class CarDistributionFragment extends BaseFragment implements OnClickList
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				VehiclePositionModex1 info = (VehiclePositionModex1) parent.getItemAtPosition(position);
 				Intent intent = new Intent(act, CheckEarlyWarningDetailInfoActivity.class);
-				Log.e("info", "infoinfo:"+info.toString());
 				intent.putExtra("vehicleMap", info);
 				intent.putStringArrayListExtra("YuJingList", YuJingList);
 				startActivity(intent);
@@ -301,6 +299,7 @@ public class CarDistributionFragment extends BaseFragment implements OnClickList
 				}
 			}
 		});
+
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
 			@Override
@@ -420,7 +419,6 @@ public class CarDistributionFragment extends BaseFragment implements OnClickList
 				return true;
 			}
 		});
-
 		mBaiduMap.setOnMapStatusChangeListener(new OnMapStatusChangeListener() {
 			@Override
 			public void onMapStatusChangeStart(MapStatus status) {

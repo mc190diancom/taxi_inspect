@@ -40,7 +40,7 @@ import com.miu30.common.util.PermissionManager;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.model.LoginModel;

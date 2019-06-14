@@ -7,14 +7,23 @@ import android.support.v7.widget.RecyclerView;
 import com.blankj.utilcode.util.SizeUtils;
 import com.feidi.video.mvp.contract.SeeVideoListContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.VideoAddress;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
+import com.miu30.common.app.MyErrorHandleSubscriber;
+import com.miu30.common.async.Result;
+import com.miu30.common.base.BaseData;
+import com.miu30.common.data.UserPreference;
 import com.miu30.common.ui.widget.MultiVeriticalItemDecoration;
+import com.miu30.common.util.MapUtil;
+import com.miu30.common.util.RxUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -43,6 +52,7 @@ public class SeeVideoListPresenter extends BasePresenter<SeeVideoListContract.Mo
     ImageLoader mImageLoader;
     @Inject
     AppManager mAppManager;
+    private List<CameraInfo> infos = new ArrayList<>();
 
     @Inject
     public SeeVideoListPresenter(SeeVideoListContract.Model model, SeeVideoListContract.View rootView) {
@@ -60,17 +70,6 @@ public class SeeVideoListPresenter extends BasePresenter<SeeVideoListContract.Mo
 
     //测试数据
     public List<CameraInfo> getCameraInfos() {
-        List<CameraInfo> infos = new ArrayList<>();
-        infos.add(new CameraInfo("摄像头1", "北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头2", "北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头3", "北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头4", "北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头5", "北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头6", "北京大兴区荣华南路北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头7", "北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头8", "北京大兴区荣华南路北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头9", "北京大兴区荣华南路北京大兴区荣华南路"));
-        infos.add(new CameraInfo("摄像头10", "北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路北京大兴区荣华南路"));
         return infos;
     }
 
@@ -85,4 +84,44 @@ public class SeeVideoListPresenter extends BasePresenter<SeeVideoListContract.Mo
                 .build();
     }
 
+    public void getCameraInfos(String zfzh) {
+        Map<String, String> params = new HashMap<>();
+        params.put("ZFZH", zfzh);
+        Map<String, Object> map = new MapUtil().getMap("getCameraListByZfzh", BaseData.gson.toJson(params));
+        mModel.getCameraList(map)
+                .compose(RxUtils.<Result<List<CameraInfo>>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<List<CameraInfo>>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<List<CameraInfo>> result) {
+                        if (result.ok() && result.getData() != null && result.getData().size() > 0) {
+                            infos.clear();
+                            infos.addAll(result.getData());
+                            mRootView.notifyAdapter();
+                        }
+                    }
+
+                });
+    }
+
+    public void getVideoAddress(String cameraid,String zfzh) {
+        Map<String, String> params = new HashMap<>();
+        params.put("CAMERAID", cameraid);
+        params.put("ZFZH", zfzh);
+        Map<String, Object> map = new MapUtil().getMap("tokenBindCamera", BaseData.gson.toJson(params));
+        mModel.getVideoAddress(map)
+                .compose(RxUtils.<Result<VideoAddress>>applySchedulers(mRootView,true))
+                .subscribe(new MyErrorHandleSubscriber<Result<VideoAddress>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<VideoAddress> result) {
+                        if (result.getData() != null) {
+                            mRootView.getVideoAddressSuccess(result.getData().getRtspUrl());
+                        }else{
+                            mRootView.getVideoAddressSuccess(null);
+                        }
+                    }
+
+                });
+    }
 }

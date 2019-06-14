@@ -29,10 +29,17 @@ public interface MoveCameraContract {
     interface View extends IView {
 
         void notifyAdapter(List<CameraInfo> cameraInfos);
+
+        void setPostion();
+
+        void setLocationDetail(String data);
+
+        void setViewVisible();
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
         Observable<Result<List<CameraInfo>>> getCameraList(Map<String, Object> map);
+        Observable<Result<String>> queryHistoryTrack(Map<String, Object> map);
     }
 }

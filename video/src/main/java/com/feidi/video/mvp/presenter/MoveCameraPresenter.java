@@ -1,13 +1,18 @@
 package com.feidi.video.mvp.presenter;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.blankj.utilcode.util.SizeUtils;
 import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
-import com.feidi.video.mvp.model.entity.CrimeInfo;
 import com.feidi.video.mvp.model.entity.ISelector;
 import com.feidi.video.mvp.model.entity.Industry;
 import com.feidi.video.mvp.model.entity.WarningType;
@@ -19,10 +24,16 @@ import com.jess.arms.mvp.BasePresenter;
 import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
-import com.miu30.common.data.UserPreference;
+import com.miu30.common.data.MapPositionPreference;
+import com.miu30.common.ui.SelectLocationActivity;
+import com.miu30.common.ui.entity.AlarmDetailInfo;
+import com.miu30.common.ui.entity.AlarmInfo;
 import com.miu30.common.ui.widget.MultiVeriticalItemDecoration;
 import com.miu30.common.util.MapUtil;
 import com.miu30.common.util.RxUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,8 +68,11 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
     @Inject
     AppManager mAppManager;
 
-    ArrayList<ISelector> data = new ArrayList<>();
-    ArrayList<ISelector> CameraData = new ArrayList<>();
+    private ArrayList<ISelector> data = new ArrayList<>();
+    private ArrayList<ISelector> CameraData = new ArrayList<>();
+
+    private CameraTCPReceiver broadCast;
+    private ChooseLocationReceiver locationReceiver;
 
     @Inject
     public MoveCameraPresenter(MoveCameraContract.Model model, MoveCameraContract.View rootView) {
@@ -72,6 +86,25 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
         this.mAppManager = null;
         this.mImageLoader = null;
         this.mApplication = null;
+        if(broadCast != null){
+            activity.unregisterReceiver(broadCast);
+        }
+
+        if(locationReceiver != null){
+            activity.unregisterReceiver(locationReceiver);
+        }
+    }
+
+    private Activity activity;
+    public void registeBroadcast(Activity activity) {
+        this.activity = activity;
+        broadCast = new CameraTCPReceiver();
+        IntentFilter filter = new IntentFilter("com.feidi.cameraInfo");
+        activity.registerReceiver(broadCast, filter);
+
+        locationReceiver = new ChooseLocationReceiver();
+        filter = new IntentFilter(SelectLocationActivity.CHOSE_LOCATION);
+        activity.registerReceiver(locationReceiver, filter);
     }
 
     public RecyclerView.ItemDecoration getCameraListDecoration() {
@@ -107,32 +140,16 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
                 .build();
     }
 
-    //测试数据
     public void getCameraInfos(String zfzh) {
-        /*List<ISelector> infos = new ArrayList<>();
-        infos.add(new CameraInfo("摄像头一"));
-        infos.add(new CameraInfo("摄像头二"));
-        infos.add(new CameraInfo("摄像头三"));
-        infos.add(new CameraInfo("摄像头四"));
-        infos.add(new CameraInfo("摄像头五"));
-        infos.add(new CameraInfo("摄像头六"));
-        infos.add(new CameraInfo("摄像头七"));
-        infos.add(new CameraInfo("摄像头八"));
-        infos.add(new CameraInfo("摄像头九"));
-        infos.add(new CameraInfo("摄像头十"));
-        Map<String, String> params = new HashMap<>();
-        return infos;*/
         Map<String, String> params = new HashMap<>();
         params.put("ZFZH", zfzh);
         Map<String, Object> map = new MapUtil().getMap("getCameraListByZfzh", BaseData.gson.toJson(params));
-        System.out.println("getCameraList:"+map);
         mModel.getCameraList(map)
                 .compose(RxUtils.<Result<List<CameraInfo>>>applySchedulers(mRootView))
                 .subscribe(new MyErrorHandleSubscriber<Result<List<CameraInfo>>>(mErrorHandler) {
 
                     @Override
                     public void onNextResult(Result<List<CameraInfo>> result) {
-                        System.out.println("getCameraList:"+result.getData());
                         if (result.ok() && result.getData() != null && result.getData().size() > 0) {
                             CameraData.clear();
                             CameraData.addAll(result.getData());
@@ -174,39 +191,102 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
 
     //------------------------------ 犯案次数相关 ---------------------------------------
     private CrimeListAdapter crimeListAdapter;
-    private List<CrimeInfo> crimeInfos = new ArrayList<>();
-
-    public CrimeListAdapter getCrimeListAdapter(CameraInfo info) {
-        //根据CameraInfo来获取犯案次数列表
-
-        //以下为测试数据
-        if (crimeListAdapter == null) {
-            crimeInfos.add(new CrimeInfo(2, "京BP9680", 170));
-            crimeInfos.add(new CrimeInfo(6, "京BP9680", 20));
-            crimeInfos.add(new CrimeInfo(10, "京BP9680", 1000));
-            crimeInfos.add(new CrimeInfo(8, "京BP9680", 998));
-            crimeInfos.add(new CrimeInfo(3, "京BP9680", 165));
-            crimeInfos.add(new CrimeInfo(7, "京BP9680", 300));
-            crimeListAdapter = new CrimeListAdapter(crimeInfos);
-        }
-
-        return crimeListAdapter;
-    }
+    private List<AlarmInfo> crimeInfos = new ArrayList<>();
 
     public void clearCrimeList() {
         crimeInfos.clear();
         crimeListAdapter.notifyDataSetChanged();
     }
 
-    public void updateCrimeList(CameraInfo cameraInfo) {
-        //次数通过选择的摄像头来处理相关逻辑
+    //通过GPS数据解析地址
+    public void getGeoCode(double lat,double lon) {
+        Map<String, String> params = new HashMap<>();
+        params.put("lat", String.valueOf(lat));
+        params.put("lon", String.valueOf(lon));
+        Map<String, Object> map = new MapUtil().getMap("queryPositionInfo", BaseData.gson.toJson(params));
+        mModel.queryHistoryTrack(map)
+                .compose(RxUtils.<Result<String>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<String>>(mErrorHandler) {
 
-        //以下为测试数据
-        crimeInfos.clear();
-        /*crimeInfos.add(new CrimeInfo(1, "京BP2540", 90));
-        crimeInfos.add(new CrimeInfo(1, "京BP3290", 7));
-        crimeInfos.add(new CrimeInfo(3, "京BP1510", 320));*/
-        crimeListAdapter.notifyDataSetChanged();
+                    @Override
+                    public void onNextResult(Result<String> result) {
+                        System.out.println("queryPositionInfo:"+result.getData());
+                        JSONObject jobj = null;
+                        try {
+                            jobj = new JSONObject(result.getData());
+                            result.setData(jobj.optJSONObject("result").optString("formatted_address"));
+                            result.setError(Result.OK);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            result.setError(-1);
+                            result.setMsg("数据解析异常");
+                        }
+                        mRootView.setLocationDetail(result.getData());
+                    }
+
+                });
+    }
+
+    //通过GPS数据解析地址
+    public void getss(double lat,double lon) {
+        Map<String, String> params = new HashMap<>();
+        params.put("lat", String.valueOf(lat));
+        params.put("lon", String.valueOf(lon));
+        Map<String, Object> map = new MapUtil().getMap("queryPositionInfo", BaseData.gson.toJson(params));
+        mModel.queryHistoryTrack(map)
+                .compose(RxUtils.<Result<String>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<String>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<String> result) {
+
+                    }
+
+                });
+    }
+
+
+    public CrimeListAdapter getCrimeListAdapter() {
+        crimeListAdapter = new CrimeListAdapter(crimeInfos,activity);
+        return crimeListAdapter;
+    }
+
+    //将报警信息转化为指定格式传送
+    public AlarmDetailInfo turnAlarmInfo(AlarmInfo data) {
+        AlarmDetailInfo alarmDetailInfo = new AlarmDetailInfo();
+        alarmDetailInfo.setVname(data.getVehiclePlatNo());
+        alarmDetailInfo.setADK_WFXW(data.getAlarmType());
+        alarmDetailInfo.setRKSM(data.getAlarmType());
+        alarmDetailInfo.setSpeed("100");
+        alarmDetailInfo.setOccurTime(data.getOccurTime());
+        alarmDetailInfo.setLat(data.getLatitude());
+        alarmDetailInfo.setLon(data.getLongitude());
+        return alarmDetailInfo;
+    }
+
+
+    class CameraTCPReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            AlarmInfo message = intent.getParcelableExtra("data");
+            crimeInfos.add(message);
+            if(crimeListAdapter == null){
+                getCrimeListAdapter();
+            }else{
+                crimeListAdapter.notifyDataSetChanged();
+            }
+            mRootView.setViewVisible();
+        }
+    }
+
+    class ChooseLocationReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            new MapPositionPreference(activity).setString("selectPosition", intent.getStringExtra("shoudong_location"));
+            mRootView.setPostion();
+        }
     }
 
 }

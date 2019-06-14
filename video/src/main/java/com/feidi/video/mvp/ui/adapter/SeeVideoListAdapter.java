@@ -27,8 +27,8 @@ public class SeeVideoListAdapter extends DefaultAdapter<CameraInfo> {
         return new BaseHolder<CameraInfo>(v) {
             @Override
             public void setData(final CameraInfo data, final int position) {
-                ((TextView) v.findViewById(R.id.item_tv_camera_name)).setText(data.getName());
-                ((TextView) v.findViewById(R.id.item_tv_camera_location)).setText(data.getLocation());
+                ((TextView) v.findViewById(R.id.item_tv_camera_name)).setText(data.getNAME());
+                ((TextView) v.findViewById(R.id.item_tv_camera_location)).setText(data.getDWMC());
 
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -24,6 +24,7 @@ public class TCPConnectService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Timber.tag("netty").i("服务已经启动了。。。。。。。。。。。。启动了");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -49,6 +50,7 @@ public class TCPConnectService extends Service {
         Timber.tag("netty").i("注销服务");
         if(ChannelManager.getInstance().isConnected()){
             ChannelManager.getInstance().sendMessage(new LogoutRequest(MiuBaseApp.user.getString("user_name", "0000000")));
+
         }
         if (client != null) {
             client.stop();

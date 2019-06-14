@@ -23,7 +23,7 @@ import com.miu360.legworkwrit.mvp.ui.activity.CreateCaseActivity;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
 import com.miu30.common.util.MyProgressDialog;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.isNull;
 import com.miu30.common.data.UserPreference;

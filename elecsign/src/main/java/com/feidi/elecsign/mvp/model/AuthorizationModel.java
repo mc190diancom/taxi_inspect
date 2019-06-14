@@ -2,6 +2,7 @@ package com.feidi.elecsign.mvp.model;
 
 import android.app.Application;
 
+import com.feidi.elecsign.mvp.model.service.MyApis;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -11,6 +12,13 @@ import com.jess.arms.di.scope.ActivityScope;
 import javax.inject.Inject;
 
 import com.feidi.elecsign.mvp.contract.AuthorizationContract;
+import com.miu30.common.async.Result;
+import com.miu30.common.ui.entity.queryZFRYByDWMC;
+
+import java.util.List;
+import java.util.Map;
+
+import io.reactivex.Observable;
 
 
 /**
@@ -42,5 +50,10 @@ public class AuthorizationModel extends BaseModel implements AuthorizationContra
         super.onDestroy();
         this.mGson = null;
         this.mApplication = null;
+    }
+
+    @Override
+    public Observable<Result<List<queryZFRYByDWMC>>> getCheZuList(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).getCheZuList(map);
     }
 }

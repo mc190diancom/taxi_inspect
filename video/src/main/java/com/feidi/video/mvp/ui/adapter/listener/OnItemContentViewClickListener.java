@@ -9,5 +9,6 @@ import android.view.View;
 public interface OnItemContentViewClickListener<T> {
 
     void onItemContentViewClick(View v, T data, int position);
+    void onItemVideoViewClick(View v, T data, int position);
 
 }

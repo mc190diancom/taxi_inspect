@@ -7,7 +7,7 @@ import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.model.Version;
 import com.miu360.taxi_check.service.DownloadService;

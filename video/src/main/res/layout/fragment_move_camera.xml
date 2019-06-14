@@ -22,13 +22,14 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_my_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_weight="1"
             android:drawableRight="@drawable/ic_go"
             android:drawablePadding="5dp"
-            android:text="北京市大兴区宏达中路"
+            android:text=""
             android:textColor="#333333" />
 
     </LinearLayout>
@@ -96,10 +97,80 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.baidu.mapapi.map.MapView
-                android:id="@+id/mapv_BaiduMap"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+                <com.baidu.mapapi.map.TextureMapView
+                    android:id="@+id/mapv_BaiduMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:id="@+id/add_reduce_map"
+                    android:layout_width="35dp"
+                    android:layout_height="71dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="120dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ditu_background"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/add_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/jia_ditu" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@drawable/ditu_sepration" />
+
+                    <ImageButton
+                        android:id="@+id/reduce_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/jian_ditu" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/aim_location_return"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/ditu_background"
+                    android:src="@drawable/dingwei_hangye" />
+
+                <Button
+                    android:id="@+id/btn_lock"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_above="@id/add_reduce_map"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ditu_background"
+                    android:text="锁定"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/mine_position"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/mine_position"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
             <ViewStub
                 android:id="@+id/view_stub_camera"

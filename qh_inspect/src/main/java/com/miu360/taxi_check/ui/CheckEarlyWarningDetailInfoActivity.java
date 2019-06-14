@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -14,11 +17,14 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.mapapi.utils.CoordinateConverter.CoordType;
+import com.google.gson.Gson;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
+import com.miu30.common.config.Constance;
+import com.miu30.common.ui.entity.AlarmDetailInfo;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.data.HistoryData;
@@ -26,12 +32,14 @@ import com.miu30.common.data.UserPreference;
 import com.miu360.taxi_check.data.WeiZhanData;
 import com.miu360.taxi_check.model.CarPositionInfo;
 import com.miu30.common.ui.entity.VehicleInfo;
+import com.miu360.taxi_check.model.VehiclePosition;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.util.UIUtils;
 import com.miu360.taxi_check.view.HeaderHolder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +47,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@Route(path = Constance.ACTIVITY_URL_WARNINGDETAIL)
 public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements OnClickListener {
 	@ViewInject(R.id.bmapView)
 	private MapView mMapView;
@@ -76,14 +85,33 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 	ArrayList<String> Yj;
 	UserPreference pref;
 
+	@Autowired
+	AlarmDetailInfo alarmDetailInfo;
+
+	int type;//0为可疑车辆预警，1为摄像头预警
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_early_warning_detail_info);
 		info = (VehiclePositionModex1) getIntent().getSerializableExtra("vehicleMap");
+		if(info != null){
+			alarmDetailInfo = new AlarmDetailInfo();
+			alarmDetailInfo.setVname(info.getGSPDATA().getVname());
+			alarmDetailInfo.setADK_WFXW(info.getADK_WFXW());
+			alarmDetailInfo.setRKSM(info.getRKSM());
+			alarmDetailInfo.setSpeed(info.getGSPDATA().getSpeed()+"");
+			alarmDetailInfo.setOccurTime(info.getGSPDATA().getStrDate());
+			alarmDetailInfo.setLat(info.getGSPDATA().getLat());
+			alarmDetailInfo.setLon(info.getGSPDATA().getLon());
+			type = 0;
+		}else {
+			type = 1;
+			ARouter.getInstance().inject(this);
+		}
 		Yj = getIntent().getStringArrayListExtra("YuJingList");
+
 		initView();
-		mBaiduMap = mMapView.getMap();
 	}
 
 	private void initView() {
@@ -94,11 +122,69 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 		turn_law.setOnClickListener(this);
 		turn_position.setOnClickListener(this);
 		back_tv.setOnClickListener(this);
+		mBaiduMap = mMapView.getMap();
 		mMapView.showZoomControls(false);
-		initData();
+		if(0 == type){
+			initData();
+		}else{
+			showInfo();
+			getCarPositionInfo();
+		}
 	}
 
-	//BitmapDescriptor bd = BitmapDescriptorFactory.fromResource(R.drawable.taxi_warnning);
+	private void showInfo() {
+		ll_header.setVisibility(View.VISIBLE);
+		car_vname.setText(alarmDetailInfo.getVname());
+		LatLng ll = new LatLng(alarmDetailInfo.getLat(), alarmDetailInfo.getLon());
+		reverseGeoCode(car_address, ll);
+		car_alarmReason.setText(alarmDetailInfo.getADK_WFXW());
+
+		LatLng des = null;
+		CoordinateConverter cover = new CoordinateConverter();
+		cover.from(CoordType.GPS);
+		cover.coord(ll);
+		des = cover.convert();
+
+		MapStatus mapStatus = new MapStatus.Builder().target(des).zoom(16).build();
+		mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+		MarkerOptions op = new MarkerOptions().position(des).icon(bd).zIndex(9).draggable(false);
+		mBaiduMap.addOverlay(op);
+	}
+
+	private void getCarPositionInfo() {
+		if(alarmDetailInfo == null) return;
+		if(!alarmDetailInfo.getVname().startsWith("京")){
+			alarmDetailInfo.setVname(alarmDetailInfo.getVname().substring(1));
+		}
+		AsyncUtil.goAsync(new Callable<Result<String>>() {
+
+			@Override
+			public Result<String> call() throws Exception {
+				return WeiZhanData.queryCarPositionInfo(alarmDetailInfo.getVname().toUpperCase());
+			}
+		}, new Callback<Result<String>>() {
+
+			@Override
+			public void onHandle(Result<String> result) {
+				if (result.ok()) {
+					String res = result.getData();
+					if (!TextUtils.isEmpty(res) && res.indexOf("无该车辆定位信息") == -1) {
+						VehiclePosition info = new Gson().fromJson(res, VehiclePosition.class);
+						car_speed.setText(info.getSpeed() + "km/h");
+						car_time.setText(info.getStrDate());
+						corp_name.setText(info.getCorpName());
+						car_color.setText(info.getColor());
+						car_type.setText(info.getModel());
+					} else {
+						UIUtils.toast(self, "查不到此信息", Toast.LENGTH_LONG);
+					}
+				} else {
+					UIUtils.toast(self, result.getErrorMsg(), Toast.LENGTH_LONG);
+				}
+			}
+		});
+	}
+
 	BitmapDescriptor bd = BitmapDescriptorFactory.fromResource(R.drawable.yujing_ttaxi);
 	BitmapDescriptor bd1 = BitmapDescriptorFactory.fromResource(R.drawable.yujing_ttaxi1);
 	BitmapDescriptor bd2 = BitmapDescriptorFactory.fromResource(R.drawable.yujing_ttaxi2);
@@ -106,9 +192,12 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 	BitmapDescriptor bd4 = BitmapDescriptorFactory.fromResource(R.drawable.yujing_ttaxi4);
 
 	private void initData() {
-		Log.e("", info == null ? "空" : "非空");
 		final VehicleInfo infoS = new VehicleInfo();
-		infoS.setVname(info.getGSPDATA().getVname().toUpperCase());
+		if(alarmDetailInfo == null) return;
+		if(!alarmDetailInfo.getVname().startsWith("京")){
+			alarmDetailInfo.setVname(alarmDetailInfo.getVname().substring(1));
+		}
+		infoS.setVname(alarmDetailInfo.getVname().toUpperCase());
 		infoS.setStartIndex(0);
 		infoS.setEndIndex(10);
 		AsyncUtil.goAsync(new Callable<Result<List<VehicleInfo>>>() {
@@ -123,19 +212,17 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 			public void onHandle(Result<List<VehicleInfo>> result) {
 				if (result.ok()) {
 					ll_header.setVisibility(View.VISIBLE);
-					Log.e("", "res:" + result.getData().toString());
 					if (result.getData().toString().equals("[]")) {
 
 					} else {
 						iIInfo = result.getData().get(0);
-						car_vname.setText(info.getGSPDATA().getVname());
-						car_speed.setText(info.getGSPDATA().getSpeed() + "km/h");
-						LatLng ll = new LatLng(info.getGSPDATA().getLat(), info.getGSPDATA().getLon());
-						Log.e("", "res:" + ll.toString());
+						car_vname.setText(alarmDetailInfo.getVname());
+						car_speed.setText(alarmDetailInfo.getSpeed() + "km/h");
+						LatLng ll = new LatLng(alarmDetailInfo.getLat(), alarmDetailInfo.getLon());
 						reverseGeoCode(car_address, ll);
 
-						car_alarmReason.setText(info.getADK_WFXW());
-						car_time.setText(info.getGSPDATA().getStrDate());
+						car_alarmReason.setText(alarmDetailInfo.getADK_WFXW());
+						car_time.setText(alarmDetailInfo.getOccurTime());
 						LatLng des = null;
 
 						CoordinateConverter cover = new CoordinateConverter();
@@ -149,7 +236,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 						MapStatus mapStatus = new MapStatus.Builder().target(des).zoom(16).build();
 						mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
 						MarkerOptions op = new MarkerOptions().position(des).icon(bd).zIndex(9).draggable(false);
-						String s = info.getRKSM();
+						String s = alarmDetailInfo.getRKSM();
 						if(Yj !=null&&!Yj.isEmpty()){
 							for(int j=0,len = Yj.size();j<len;j++){
 								if(j==0){
@@ -188,54 +275,6 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 				}
 			}
 		});
-		// final CarCarInfo infoCar = new CarCarInfo();
-		// infoCar.setZFZH(info.getVname().toUpperCase());
-		// AsyncUtil.goAsync(new Callable<Result<String>>() {
-		//
-		// @Override
-		// public Result<String> call() throws Exception {
-		// return WeiZhanData.queryCarPositionInfo(infoCar);
-		// }
-		// }, new Callback<Result<String>>() {
-		//
-		// @Override
-		// public void onHandle(Result<String> result) {
-		// if (result.ok()) {
-		// ll_header.setVisibility(View.VISIBLE);
-		// String res = result.getData();
-		// Log.e("返回值", res);
-		// // || res.equals("{}")
-		// if (!TextUtils.isEmpty(res)) {
-		// iInfo = new Gson().fromJson(res, CarPositionInfo.class);
-		//
-		// car_vname.setText(info.getVname());
-		// car_speed.setText(info.getSpeed() + "km/h");
-		// corp_name.setText(iInfo.getName());
-		// car_color.setText(iInfo.getColor());
-		// car_type.setText(iInfo.getModel());
-		// LatLng ll = new LatLng(info.getLat(), info.getLon());
-		// reverseGeoCode(car_address, ll);
-		// car_time.setText(info.getStrDate());
-		// LatLng des = null;
-		// CoordinateConverter cover = new CoordinateConverter();
-		// cover.from(CoordType.GPS);
-		// cover.coord(ll);
-		// des = cover.convert();
-		// MapStatus mapStatus = new
-		// MapStatus.Builder().target(des).zoom(16).build();
-		// mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
-		// MarkerOptions op = new
-		// MarkerOptions().position(des).icon(bd).zIndex(9).draggable(true);
-		// mBaiduMap.addOverlay(op);
-		//
-		// } else {
-		// UIUtils.toast(self, "无返回数据", Toast.LENGTH_LONG);
-		// }
-		// } else {
-		// UIUtils.toast(self, result.getErrorMsg(), Toast.LENGTH_LONG);
-		// }
-		// }
-		// });
 	}
 
 	/**
@@ -274,7 +313,6 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 			@Override
 			public void onHandle(Result<String> result) {
 				if (result.ok()) {
-					Log.e("locationPosition", "locationPosition2");
 					tv.setText(result.getData());
 				}
 			}
@@ -287,7 +325,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 			if(pref.getBoolean("isLaw", false)){
 				Intent intent = new Intent(self, LawInpsectActivity.class);
 				intent.putExtra("CompanyName", iIInfo.getCompany());
-				intent.putExtra("Vname", info.getGSPDATA().getVname());
+				intent.putExtra("Vname", alarmDetailInfo.getVname());
 				intent.putExtra("isTurn", true);
 				startActivity(intent);
 			}else{
@@ -295,7 +333,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 			}
 		} else if(v == turn_position){
 			Intent intent = new Intent(self, VehiclePositionActivity.class);
-			intent.putExtra("Vname", info.getGSPDATA().getVname());
+			intent.putExtra("Vname", alarmDetailInfo.getVname());
 			intent.putExtra("isTurn", true);
 			startActivity(intent);
 		} else if (v == back_tv) {

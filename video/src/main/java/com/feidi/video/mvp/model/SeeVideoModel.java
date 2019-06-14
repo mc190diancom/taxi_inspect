@@ -2,6 +2,8 @@ package com.feidi.video.mvp.model;
 
 import android.app.Application;
 
+import com.feidi.video.mvp.model.entity.VideoAddress;
+import com.feidi.video.mvp.model.service.MyApis;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -11,6 +13,11 @@ import com.jess.arms.di.scope.ActivityScope;
 import javax.inject.Inject;
 
 import com.feidi.video.mvp.contract.SeeVideoContract;
+import com.miu30.common.async.Result;
+
+import java.util.Map;
+
+import io.reactivex.Observable;
 
 
 /**
@@ -42,5 +49,15 @@ public class SeeVideoModel extends BaseModel implements SeeVideoContract.Model {
         super.onDestroy();
         this.mGson = null;
         this.mApplication = null;
+    }
+
+    @Override
+    public Observable<Result<VideoAddress>> getVideoAddress(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).getVideoAddress(map);
+    }
+
+    @Override
+    public Observable<Result<String>> queryHistoryTrack(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).queryHistoryTrack(map);
     }
 }

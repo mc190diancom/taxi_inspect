@@ -38,9 +38,9 @@ import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.mapapi.utils.CoordinateConverter.CoordType;
@@ -56,8 +56,8 @@ import com.miu360.inspect.R;
 import com.miu360.taxi_check.BaseFragment;
 import com.miu360.taxi_check.common.CommonDialog.OnDialogItemClickListener;
 import com.miu360.taxi_check.common.GetHead;
-import com.miu360.taxi_check.common.MapPositionPreference;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.data.MapPositionPreference;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.YuJingPreference;
 import com.miu360.taxi_check.common.isCommon;
@@ -66,7 +66,7 @@ import com.miu360.taxi_check.data.WeiZhanData;
 import com.miu360.taxi_check.model.AlarmReason;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity;
-import com.miu360.taxi_check.ui.SelectLocationActivity;
+import com.miu30.common.ui.SelectLocationActivity;
 import com.miu360.taxi_check.util.SortUtil;
 import com.miu360.taxi_check.util.UIUtils;
 
@@ -84,7 +84,7 @@ public class YujingDistributionFragment extends BaseFragment implements OnClickL
     @ViewInject(R.id.my_location_tv)
     private TextView my_location_tv;
     @ViewInject(R.id.bmapView)
-    private MapView mMapView;
+    private TextureMapView mMapView;
     @ViewInject(R.id.query)
     private TextView query;
     @ViewInject(R.id.header_ll)

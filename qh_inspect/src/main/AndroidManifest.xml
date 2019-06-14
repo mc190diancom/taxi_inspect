@@ -120,10 +120,7 @@
             android:name="com.miu360.taxi_check.ui.BasicCarInforActivity"
             android:label="@string/title_activity_basic_car_infor"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.miu360.taxi_check.ui.SelectLocationActivity"
-            android:label="@string/title_activity_basic_car_infor"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name="com.miu360.taxi_check.ui.DriverInfoActivity"
             android:label="@string/title_activity_driver_info"

@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
+import com.feidi.video.mvp.ui.activity.SeeVideoActivity;
+import com.feidi.video.mvp.ui.activity.SeeVideoListActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.DbUtils;
@@ -102,6 +104,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener {
     private Button btn_record_question;
     private Button btn_case_list;
     private Button btn_writ_print;
+    private Button btn_video;
+
     private TextView tv_notice_bt;
     private ImageView one_image;
 
@@ -237,6 +241,15 @@ public class HomeFragment extends BaseFragment implements OnClickListener {
                 startActivity(intent);
             }
         });
+        btn_video = mHeaderView.findViewById(R.id.btn_video);
+        btn_video.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SeeVideoListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         initNewBtnItem();
 
         imgIdArray = new int[]{R.drawable.home_1, R.drawable.home_2, R.drawable.home_3, R.drawable.home_4,

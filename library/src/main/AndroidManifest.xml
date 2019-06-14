@@ -4,12 +4,12 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
+
         <!-- arms配置 -->
         <meta-data
             android:name="com.miu30.common.app.GlobalConfiguration"
@@ -17,7 +17,11 @@
 
         <activity
             android:name="com.miu30.common.ui.LawSelectLocationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.miu30.common.ui.SelectLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.miu30.common.ui.VehicleWarningDetails"></activity>
     </application>
 
 </manifest>

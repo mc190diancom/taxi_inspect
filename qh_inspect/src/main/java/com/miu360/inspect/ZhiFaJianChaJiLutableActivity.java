@@ -8,14 +8,14 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.Callback;
 import com.miu360.taxi_check.BaseActivity;
-import com.miu360.taxi_check.common.MapPositionPreference;
+import com.miu30.common.data.MapPositionPreference;
 import com.miu360.taxi_check.common.Windows;
 import com.miu30.common.data.UserPreference;
 import com.miu30.common.data.ZfryPreference;
 import com.miu360.taxi_check.model.QueryFaZhiBanResult;
 import com.miu360.taxi_check.model.QueryOneZhiFaBanModel;
 import com.miu30.common.ui.entity.queryZFRYByDWMC;
-import com.miu360.taxi_check.ui.SelectLocationActivity;
+import com.miu30.common.ui.SelectLocationActivity;
 import com.miu360.taxi_check.util.UIUtils;
 import com.miu360.taxi_check.view.HeaderHolder;
 

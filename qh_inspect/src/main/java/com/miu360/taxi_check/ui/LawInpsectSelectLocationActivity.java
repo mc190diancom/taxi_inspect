@@ -12,7 +12,7 @@ import com.lubao.lubao.async.Result;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.adapter.LocationAdapter;
 import com.miu360.taxi_check.common.GpsManger;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.isCommon;
 import com.miu360.taxi_check.data.CommonData;

@@ -12,10 +12,20 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
+import com.miu30.common.MiuBaseApp;
+import com.miu30.common.app.MyErrorHandleSubscriber;
+import com.miu30.common.async.Result;
+import com.miu30.common.base.BaseData;
+import com.miu30.common.ui.entity.queryZFRYByDWMC;
 import com.miu30.common.ui.view.ThreeStateSwitch;
+import com.miu30.common.util.JacksonUtil;
+import com.miu30.common.util.MapUtil;
+import com.miu30.common.util.RxUtils;
+import com.miu30.common.util.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -44,6 +54,8 @@ public class AuthorizationPresenter extends BasePresenter<AuthorizationContract.
     ImageLoader mImageLoader;
     @Inject
     AppManager mAppManager;
+
+    List<queryZFRYByDWMC> queryZFRYByDWMCS;
 
     @Inject
     public AuthorizationPresenter(AuthorizationContract.Model model, AuthorizationContract.View rootView) {
@@ -74,6 +86,30 @@ public class AuthorizationPresenter extends BasePresenter<AuthorizationContract.
         authMys.add(new AuthMy("呜呜", "00013021", "2019-12-22前有效"));
         authMys.add(new AuthMy("溜溜", "10012021", "2019-12-22前有效"));
         return new AuthMyAdapter(authMys);
+    }
+
+    private static String getJsonStr(Object o) {
+        BaseData.trimEmptyToNull(o);
+        return JacksonUtil.writeEntity2JsonStr(o);
+    }
+
+    /*
+     * 获取执法人员2
+     */
+    public void getZfry2() {
+        queryZFRYByDWMC info = new queryZFRYByDWMC();
+        info.setZFDWMC(MiuBaseApp.user.getString("zfdwmc", null));
+        Map<String, Object> map = new MapUtil().getMap("query_Zfry_Name", getJsonStr(info));
+        mModel.getCheZuList(map)
+                .compose(RxUtils.<Result<List<queryZFRYByDWMC>>>applySchedulers(mRootView,true))
+                .subscribe(new MyErrorHandleSubscriber<Result<List<queryZFRYByDWMC>>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<List<queryZFRYByDWMC>> listResult) {
+                        System.out.println("queryZFRYByDWMC:"+listResult.getData());
+                    }
+
+                });
     }
 
     @Override

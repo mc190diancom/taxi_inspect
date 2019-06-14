@@ -3,36 +3,38 @@ package com.feidi.video.mvp.ui.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ViewSwitcher;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.video.R;
@@ -40,7 +42,6 @@ import com.feidi.video.R2;
 import com.feidi.video.di.component.DaggerMoveCameraComponent;
 import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.feidi.video.mvp.model.entity.CameraInfo;
-import com.feidi.video.mvp.model.entity.CrimeInfo;
 import com.feidi.video.mvp.model.entity.ISelector;
 import com.feidi.video.mvp.model.entity.Industry;
 import com.feidi.video.mvp.model.entity.WarningType;
@@ -53,16 +54,26 @@ import com.feidi.video.mvp.ui.adapter.listener.OnItemContentViewClickListener;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.MiuBaseApp;
 import com.miu30.common.base.BaseMvpFragment;
+import com.miu30.common.config.Constance;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.connect.ChannelManager;
 import com.miu30.common.connect.entity.BindCameraRequest;
 import com.miu30.common.connect.entity.CancelBindCameraRequest;
+import com.miu30.common.data.MapPositionPreference;
 import com.miu30.common.data.UserPreference;
+import com.miu30.common.ui.SelectLocationActivity;
+import com.miu30.common.ui.entity.AlarmInfo;
+import com.miu30.common.util.BaiduMapGPSUtil;
+import com.miu30.common.util.UIUtils;
+import com.miu30.common.util.isCommon;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
+
+import static com.miu30.common.util.BaiduMapGPSUtil.convertBaiduToGPS;
 
 
 /**
@@ -78,7 +89,7 @@ import butterknife.OnCheckedChanged;
  * ================================================
  */
 @SuppressWarnings("all")
-public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> implements MoveCameraContract.View {
+public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> implements MoveCameraContract.View, View.OnClickListener {
     @BindView(R2.id.view_switcher)
     ViewSwitcher viewSwitcher;
     @BindView(R2.id.cb_industry)
@@ -88,7 +99,19 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
     @BindView(R2.id.toggle)
     ToggleButton toggleBtn;
     @BindView(R2.id.mapv_BaiduMap)
-    MapView mMapView;
+    TextureMapView mMapView;
+    @BindView(R2.id.add_map)
+    ImageButton addMap;
+    @BindView(R2.id.reduce_map)
+    ImageButton reduceMap;
+    @BindView(R2.id.aim_location_return)
+    ImageButton aimLocationReturn;
+    @BindView(R2.id.mine_position)
+    ImageView minePosition;
+    @BindView(R2.id.tv_my_location)
+    TextView tvMyLocation;
+    @BindView(R2.id.btn_lock)
+    TextView btnLock;
 
     private ViewStub vsCameraList;
     private ViewStub vsIndustryOrWarningType;
@@ -101,7 +124,7 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
 
     private IndustryOrWarningTypeAdapter industryOrWarningTypeAdapter;
     private String zfzh;
-    private CameraTCPReceiver broadCast;
+    private MapPositionPreference ppfer;
 
     public static MoveCameraFragment newInstance() {
         MoveCameraFragment fragment = new MoveCameraFragment();
@@ -142,14 +165,19 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
                 checkedInner(buttonView, cbIndustry.isChecked(), isChecked);
             }
         });
-        mBaiduMap =  mMapView.getMap();
+        mBaiduMap = mMapView.getMap();
+        mMapView.showZoomControls(false);
+        mBaiduMap.setMaxAndMinZoomLevel(18, 11);
 
-        broadCast = new CameraTCPReceiver();
-        IntentFilter filter = new IntentFilter("com.feidi.cameraInfo");
-        LocalBroadcastManager.getInstance(MiuBaseApp.self).registerReceiver(broadCast, filter);
-
+        aimLocationReturn.setOnClickListener(this);
+        tvMyLocation.setOnClickListener(this);
+        addMap.setOnClickListener(this);
+        reduceMap.setOnClickListener(this);
+        ppfer = new MapPositionPreference(getActivity());
+        Position();
+        setMapMoveListner();
+        mPresenter.registeBroadcast(getActivity());
         mPresenter.getCameraInfos(zfzh);
-
 
     }
 
@@ -171,7 +199,8 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         }
     }
 
-    private CameraInfo currentCamera = new CameraInfo();
+    private CameraInfo currentCamera;
+
     private void initCameraRecyclerView() {
         assert mPresenter != null;
         rvCamera = getActivity().findViewById(vsCameraList.getInflatedId())
@@ -184,28 +213,9 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
             public void onSelectedChange(View v, ISelector data, int position, boolean isSelected) {
                 final CameraInfo info = (CameraInfo) data;
                 if (isSelected) {
-                    toggleBtn.toggle();
-                    if (vsCrime.getParent() != null) {
-                        vsCrime.inflate();
-                        final View rootView = getActivity().findViewById(vsCrime.getInflatedId());
-                        rootView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                initCrimeView(rootView, info);
-                            }
-                        });
-                    } else {
-                        mPresenter.clearCrimeList();
-                    }
-                    updateMakerToMap(info,position);
-
-                    //取绑之前那个摄像头，并绑定最新的摄像头
-                    if(!info.getCAMERAID().equals(currentCamera.getCAMERAID())){
-                        ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, currentCamera.getCAMERAID()));
-                        currentCamera = info;
-                        ChannelManager.getInstance().sendMessage(new BindCameraRequest(zfzh, info.getCAMERAID()));
-                    }
-                }else{
+                    clickCameraItem(position, info);
+                } else {
+                    getActivity().findViewById(vsCrime.getInflatedId()).setVisibility(View.GONE);
                     ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, info.getCAMERAID()));
                 }
             }
@@ -213,11 +223,45 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         rvCamera.setAdapter(mAdapter);
     }
 
+    //点击相应摄像头执行操作
+    private void clickCameraItem(int position, final CameraInfo info) {
+        toggleBtn.toggle();
+
+        if (vsCrime.getParent() != null) {
+            vsCrime.inflate();
+            final View rootView = getActivity().findViewById(vsCrime.getInflatedId());
+            rootView.post(new Runnable() {
+                @Override
+                public void run() {
+                    initCrimeView(rootView, info);
+                }
+            });
+        } else {
+            mPresenter.clearCrimeList();
+        }
+        updateMakerToMap(info, position);
+
+        //取绑之前那个摄像头，并绑定最新的摄像头
+        if (currentCamera != null && !TextUtils.isEmpty(currentCamera.getCAMERAID())) {
+            ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, currentCamera.getCAMERAID()));
+        }
+        //绑定摄像头，这里因为可能取绑还未成功，所以延迟发送
+        if (currentCamera == null || (!TextUtils.isEmpty(info.getCAMERAID()) && !info.getCAMERAID().equals(currentCamera.getCAMERAID()))) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                        currentCamera = info;
+                        ChannelManager.getInstance().sendMessage(new BindCameraRequest(zfzh, "11000000001325291355"));//info.getCAMERAID()
+                }
+            },300);
+        }
+    }
+
     /**
      * 选中某个摄像头，在地图中作出相应的处理
      */
     private void selectCameraInMap(CameraInfo info) {
-        addMakerToMap(info,sCamera);
+        addMakerToMap(info, sCamera);
     }
 
     private void checkedInner(CompoundButton button, boolean isIndustryChecked, boolean isWarningTypeChecked) {
@@ -267,9 +311,7 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
                 String value;
                 if (data instanceof Industry) {
                     value = ((Industry) data).getName();
-                } else if(data instanceof CameraInfo){
-                    value = ((CameraInfo) data).getNAME();
-                } else{
+                } else {
                     value = ((WarningType) data).getType();
                 }
 
@@ -283,7 +325,9 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         rvIndustryOrWarningType.setAdapter(industryOrWarningTypeAdapter);
     }
 
-    /** 犯案次数列表当前是否处于展开状态 */
+    /**
+     * 犯案次数列表当前是否处于展开状态
+     */
     private boolean isExpend = false;
 
     /**
@@ -306,6 +350,7 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         });
 
         initCrimeRecyclerView(rootView, info);
+        getActivity().findViewById(vsCrime.getInflatedId()).setVisibility(View.GONE);
     }
 
     private void initCrimeRecyclerView(View rootView, CameraInfo info) {
@@ -314,11 +359,16 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         RecyclerView rvCrime = rootView.findViewById(R.id.rv_crime);
         rvCrime.addItemDecoration(mPresenter.getCrimeDecoration());
         rvCrime.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CrimeListAdapter adapter = mPresenter.getCrimeListAdapter(info);
-        adapter.setOnLookClickListener(new OnItemContentViewClickListener<CrimeInfo>() {
+        final CrimeListAdapter adapter = mPresenter.getCrimeListAdapter();
+        adapter.setOnLookClickListener(new OnItemContentViewClickListener<AlarmInfo>() {
             @Override
-            public void onItemContentViewClick(View v, CrimeInfo data, int position) {
-                ToastUtils.showShort("你点击了位置为" + position + "的查看按钮");
+            public void onItemContentViewClick(View v, AlarmInfo data, int position) {
+                ARouter.getInstance().build(Constance.ACTIVITY_URL_WARNINGDETAIL).withParcelable("alarmDetailInfo",mPresenter.turnAlarmInfo(data)).navigation();
+            }
+
+            @Override
+            public void onItemVideoViewClick(View v, AlarmInfo data, int position) {
+
             }
         });
         rvCrime.setAdapter(adapter);
@@ -366,20 +416,40 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
     @Override
     public void notifyAdapter(List<CameraInfo> cameraInfos) {
         initMaker(cameraInfos);
-        mAdapter.notifyDataSetChanged();
+        if(mAdapter != null){
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void setPostion() {
+        rePosition();
+    }
+
+    @Override
+    public void setLocationDetail(String data) {
+        tvMyLocation.setText(data);
+        ppfer.setString("selectPosition", data);
+    }
+
+    @Override
+    public void setViewVisible() {
+        if(getActivity().findViewById(vsCrime.getInflatedId()) != null){
+            getActivity().findViewById(vsCrime.getInflatedId()).setVisibility(View.VISIBLE);
+        }
     }
 
     /**
      * 初始化摄像头maker
      */
-    private void initMaker(List<CameraInfo> cameraInfos){
+    private void initMaker(List<CameraInfo> cameraInfos) {
         for (int i = 0; i < cameraInfos.size(); i++) {
-            addMakerToMap(cameraInfos.get(i),nCamera);
+            addMakerToMap(cameraInfos.get(i), nCamera);
         }
     }
 
-    private void addMakerToMap(CameraInfo cameraInfo,BitmapDescriptor camera) {
-        LatLng latLng = new LatLng(Double.valueOf(cameraInfo.getLAT()),Double.valueOf(cameraInfo.getLON()));
+    private void addMakerToMap(CameraInfo cameraInfo, BitmapDescriptor camera) {
+        LatLng latLng = BaiduMapGPSUtil.gpsToConvertBaidu(new LatLng(Double.valueOf(cameraInfo.getLAT()), Double.valueOf(cameraInfo.getLON())));
         MarkerOptions op = new MarkerOptions().position(latLng).icon(camera).zIndex(9)
                 .draggable(false);
         Marker marker = (Marker) mBaiduMap.addOverlay(op);
@@ -387,24 +457,178 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
     }
 
     Marker lastMaker;
-    private void updateMakerToMap(CameraInfo cameraInfo,int position){
-        if(lastMaker != null){
+
+    private void updateMakerToMap(CameraInfo cameraInfo, int position) {
+        if (lastMaker != null) {
             lastMaker.setIcon(nCamera);
         }
         lastMaker = markerList.get(position);
         lastMaker.setIcon(sCamera);
-        LatLng latLng = new LatLng(Double.valueOf(cameraInfo.getLAT()),Double.valueOf(cameraInfo.getLON()));
+        LatLng latLng = BaiduMapGPSUtil.gpsToConvertBaidu(new LatLng(Double.valueOf(cameraInfo.getLAT()), Double.valueOf(cameraInfo.getLON())));
         MapStatus mapStatus = new MapStatus.Builder().target(latLng).zoom(18).build();
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
-
     }
 
-    private class CameraTCPReceiver extends BroadcastReceiver {
+    @Override
+    public void onDestroy() {
+        if (currentCamera != null && !TextUtils.isEmpty(currentCamera.getCAMERAID())) {
+            ChannelManager.getInstance().sendMessage(new CancelBindCameraRequest(zfzh, "11000000001325291355"));//currentCamera.getCAMERAID()
+        }
+        super.onDestroy();
+    }
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String message = intent.getStringExtra("Data");
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (R.id.aim_location_return == id) {
+            Position();
+            btnLock.setVisibility(View.GONE);
+        } else if(R.id.tv_my_location == id){
+            Intent intent = new Intent(getActivity(), SelectLocationActivity.class);
+            intent.putExtra("thisAdd", tvMyLocation.getText().toString());
+            startActivity(intent);
+        } else if (v == addMap) {
+            if (mBaiduMap != null) {
+                MapStatusUpdate zoomIn = MapStatusUpdateFactory.zoomIn();
+                mBaiduMap.setMapStatus(zoomIn);
+            }
+        } else if (v == reduceMap) {
+            if (mBaiduMap != null) {
+                MapStatusUpdate zoomOut = MapStatusUpdateFactory.zoomOut();
+                mBaiduMap.setMapStatus(zoomOut);
+            }
+        }
+    }
 
+    // 这里都是代表，GPS原始坐标
+    double lat = 0.0;
+    double lon = 0.0;
+    // 百度坐标点
+    double bLat = 0.0;
+    double bLon = 0.0;
+
+    // 初始化定位
+    private void Position() {
+        if (mBaiduMap != null) {
+            if (!isCommon.outOfChina(MsgConfig.select_lat, MsgConfig.select_lng) && MsgConfig.select_lat != 0.0) {
+                LatLng CorrectLatLng = new LatLng(MsgConfig.select_lat, MsgConfig.select_lng);
+                LatLng AdjustLatLng = convertBaiduToGPS(CorrectLatLng);
+                bLat = MsgConfig.select_lat;
+                bLon = MsgConfig.select_lng;
+
+                lat = AdjustLatLng.latitude;
+                lon = AdjustLatLng.longitude;
+                MapStatus mapStatus = new MapStatus.Builder().target(CorrectLatLng).zoom(16).build();
+                mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+                minePosition.setVisibility(View.VISIBLE);
+                tvMyLocation.setText(ppfer.getString("selectPosition", ""));// &&
+            } else if (!isCommon.outOfChina(MsgConfig.lat, MsgConfig.lng) && MsgConfig.lat != 0.0) {
+                LatLng CorrectLatLng = new LatLng(MsgConfig.lat, MsgConfig.lng);
+                LatLng AdjustLatLng = convertBaiduToGPS(CorrectLatLng);
+                bLat = MsgConfig.lat;
+                bLon = MsgConfig.lng;
+                lat = AdjustLatLng.latitude;
+                lon = AdjustLatLng.longitude;
+
+                MapStatus mapStatus = new MapStatus.Builder().target(CorrectLatLng).zoom(16).build();
+                mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+                minePosition.setVisibility(View.VISIBLE);
+                if (!"".equals(ppfer.getString("selectPosition", ""))) {
+                    tvMyLocation.setText(ppfer.getString("selectPosition", ""));
+                } else {
+                    mPresenter.getGeoCode(bLat,bLon);
+                }
+            }
+        }
+    }
+
+    /**
+     * 设置地图移动监听和锁定当前位置监听
+     */
+    LatLng cucrrentLatLng;
+    public void setMapMoveListner(){
+        mBaiduMap.setOnMapStatusChangeListener(new BaiduMap.OnMapStatusChangeListener() {
+            @Override
+            public void onMapStatusChangeStart(MapStatus status) {
+            }
+
+            @Override
+            public void onMapStatusChangeStart(MapStatus mapStatus, int i) {
+
+            }
+
+            @Override
+            public void onMapStatusChangeFinish(MapStatus status) {
+                LatLng centerLatLng = status.target;
+                if (lat != 0) {
+                    btnLock.setVisibility(View.VISIBLE);
+                    cucrrentLatLng = centerLatLng;
+                }
+            }
+
+            @Override
+            public void onMapStatusChange(MapStatus status) {
+            }
+        });
+
+        btnLock.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(cucrrentLatLng == null){
+                    return;
+                }
+                MsgConfig.select_lat = cucrrentLatLng.latitude;
+                MsgConfig.select_lng = cucrrentLatLng.longitude;
+                bLat = MsgConfig.select_lat;
+                bLon = MsgConfig.select_lng;
+
+                LatLng AdjustLatLng = convertBaiduToGPS(new LatLng(bLat, bLon));
+                lat = AdjustLatLng.latitude;
+                lon = AdjustLatLng.longitude;
+                mPresenter.getGeoCode(bLat,bLon);
+                btnLock.setVisibility(View.GONE);
+            }
+        });
+    }
+
+
+    /**
+     * 重定位
+     */
+    protected void rePosition() {
+        if (MsgConfig.select_lng != 0 && MsgConfig.select_lat != 0) {
+            LatLng CorrectLatLng = new LatLng(MsgConfig.select_lat, MsgConfig.select_lng);
+            bLat = MsgConfig.select_lat;
+            bLon = MsgConfig.select_lng;
+
+            LatLng AdjustLatLng = convertBaiduToGPS(CorrectLatLng);
+            lat = AdjustLatLng.latitude;
+            lon = AdjustLatLng.longitude;
+            tvMyLocation.setText(ppfer.getString("selectPosition", ""));
+
+            MapStatus mapStatus = new MapStatus.Builder().target(CorrectLatLng).zoom(16).build();
+            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+            minePosition.setVisibility(View.VISIBLE);
+        } else {
+            if (MsgConfig.lat != 0 && MsgConfig.lng != 0) {
+                bLat = MsgConfig.lat;
+                bLon = MsgConfig.lng;
+                LatLng CorrectLatLng = new LatLng(MsgConfig.lat, MsgConfig.lng);
+                LatLng AdjustLatLng = convertBaiduToGPS(CorrectLatLng);
+                lat = AdjustLatLng.latitude;
+                lon = AdjustLatLng.longitude;
+
+                if (!"".equals(ppfer.getString("selectPosition", ""))) {
+                    tvMyLocation.setText(ppfer.getString("selectPosition", ""));
+                } else {
+                    mPresenter.getGeoCode( MsgConfig.lat, MsgConfig.lng);
+                }
+
+                MapStatus mapStatus = new MapStatus.Builder().target(CorrectLatLng).zoom(16).build();
+                mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
+                minePosition.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

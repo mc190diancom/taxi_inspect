@@ -3,4 +3,5 @@
 
     <string name="crime_count_format">犯案次数：%1$d</string>
     <string name="crime_distance_format">距我%1$d米</string>
+    <string name="real_time" >实时播放</string>
 </resources>

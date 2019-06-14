@@ -2,6 +2,14 @@ package com.feidi.elecsign.mvp.contract;
 
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+import com.miu30.common.async.Result;
+import com.miu30.common.ui.entity.queryZFRYByDWMC;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.DoubleUnaryOperator;
+
+import io.reactivex.Observable;
 
 
 /**
@@ -24,6 +32,6 @@ public interface AuthorizationContract {
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
-
+        Observable<Result<List<queryZFRYByDWMC>>> getCheZuList(Map<String, Object> map);
     }
 }

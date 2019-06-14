@@ -58,7 +58,6 @@ import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.google.zxing.client.android.CaptureActivity;
 import com.lidroid.xutils.BitmapUtils;
@@ -77,8 +76,8 @@ import com.miu360.taxi_check.adapter.LawInpsectAdapter;
 import com.miu360.taxi_check.bean.CarStateBean;
 import com.miu360.taxi_check.common.CommonDialog.OnDialogItemClickListener;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MapPositionPreference;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.data.MapPositionPreference;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.PopWindowDialog;
 import com.miu360.taxi_check.common.PositionPreference;
@@ -1473,6 +1472,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 				if (pref.getString("user_name_update_info", null).contains(prez.getString("zfry1", null))) {
 					people_one = pref.getString("user_name_update_info", null);
 					people_two = prez.getString("zfry2", null);
+					zfzh2 = prez.getString("zfzh2", "");
 				}
 			}
 			time = (System.currentTimeMillis() / 1000) + "";
@@ -1845,7 +1845,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 				if (pref.getString("user_name_update_info", null).contains(prez.getString("zfry1", null))) {
 					people_one = pref.getString("user_name_update_info", null);
 					people_two = prez.getString("zfry2", null);
-					zfzh2 = prez.getString("zfzh2", null);
+					zfzh2 = prez.getString("zfzh2", "");
 				}
 			}
 			time = (System.currentTimeMillis() / 1000) + "";

@@ -1,4 +1,4 @@
-include ':pullToRefreshLibrary', ':video'
+include ':pullToRefreshLibrary', ':video', ':vlclibrary'
 include ':elecsign'
 include ':viewPagerlibrary'
 include ':qh_inspect'

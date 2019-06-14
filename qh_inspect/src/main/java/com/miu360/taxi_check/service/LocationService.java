@@ -13,7 +13,7 @@ import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
 import com.miu30.common.data.UserPreference;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.isCommon;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.data.WeiZhanData;

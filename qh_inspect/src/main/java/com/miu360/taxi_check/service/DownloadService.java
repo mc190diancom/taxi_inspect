@@ -15,7 +15,7 @@ import android.support.v4.content.FileProvider;
 import com.miu360.inspect.BuildConfig;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.common.Config;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;

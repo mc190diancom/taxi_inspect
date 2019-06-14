@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.SizeUtils;
 import com.feidi.elecsign.R;
 import com.feidi.elecsign.R2;
@@ -16,6 +17,7 @@ import com.feidi.elecsign.mvp.contract.MySignatureContract;
 import com.feidi.elecsign.mvp.presenter.MySignaturePresenter;
 import com.jess.arms.di.component.AppComponent;
 import com.miu30.common.base.BaseMvpActivity;
+import com.miu30.common.config.Constance;
 import com.miu30.common.ui.widget.IncludeHeader;
 
 import butterknife.BindView;
@@ -35,6 +37,7 @@ import butterknife.BindView;
  * <p>
  * 我的授权
  */
+
 public class MySignatureActivity extends BaseMvpActivity<MySignaturePresenter> implements MySignatureContract.View {
     //--------------------竖屏独有的控件--------------------
     LinearLayout llSignatureHint;

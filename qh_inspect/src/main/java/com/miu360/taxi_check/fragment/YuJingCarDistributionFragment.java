@@ -3,7 +3,7 @@ package com.miu360.taxi_check.fragment;
 import com.miu360.taxi_check.BaseFragment;
 import com.miu360.taxi_check.common.ELog;
 import com.miu360.taxi_check.common.GetHead;
-import com.miu360.taxi_check.common.MsgConfig;
+import com.miu30.common.config.MsgConfig;
 import com.miu30.common.util.MyProgressDialog;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.isCommon;
@@ -12,7 +12,7 @@ import com.miu360.taxi_check.data.WeiZhanData;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity;
-import com.miu360.taxi_check.ui.SelectLocationActivity;
+import com.miu30.common.ui.SelectLocationActivity;
 import com.miu360.taxi_check.util.UIUtils;
 
 import java.text.DecimalFormat;

@@ -31,6 +31,7 @@ public class LoginAuthHandler extends ChannelInboundHandlerAdapter {
         channelHandlerContext.writeAndFlush(new LoginRequest(zfzh, "123456"));
     }
 
+    long lastTime;
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
         if (!(o instanceof String)) {
@@ -53,7 +54,10 @@ public class LoginAuthHandler extends ChannelInboundHandlerAdapter {
                 channelHandlerContext.writeAndFlush(new LogoutRequest(zfzh));
             } else {
                 Timber.tag("netty").i("登录成功");
-                channelHandlerContext.fireChannelRead(message);
+                if(System.currentTimeMillis() - lastTime > 10 * 1000){//主要是用于防止重复登录的情况
+                    channelHandlerContext.fireChannelRead(message);
+                    lastTime = System.currentTimeMillis();
+                }
             }
         } else {
             channelHandlerContext.fireChannelRead(message);

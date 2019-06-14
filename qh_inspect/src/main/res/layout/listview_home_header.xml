@@ -49,7 +49,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="315dp"
+        android:layout_height="415dp"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -131,32 +131,65 @@
             <Button
                 android:id="@+id/btn_yujing"
                 style="@style/HomeButton"
+                android:drawablePadding="5dp"
                 android:drawableTop="@drawable/item_yujing_button_selector"
                 android:text="稽查预警" />
 
             <Button
                 android:id="@+id/btn_fenbu"
                 style="@style/HomeButton"
+                android:drawablePadding="5dp"
                 android:drawableTop="@drawable/item_fenbu_button_selector"
                 android:text="人员分布" />
 
             <Button
                 android:id="@+id/btn_tongji"
                 style="@style/HomeButton"
+                android:drawablePadding="5dp"
                 android:drawableTop="@drawable/item_tongji_button_selector"
                 android:text="稽查记录" />
 
             <Button
                 android:id="@+id/btn_qita"
                 style="@style/HomeButton"
+                android:drawablePadding="5dp"
                 android:drawableTop="@drawable/item_qita_button_selector"
                 android:text="其他" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp" >
+
+            <Button
+                android:id="@+id/btn_video"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_video_selector"
+                android:text="视频查看" />
+
+            <Button
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_fenbu_button_selector"
+                android:visibility="invisible"/>
+
+            <Button
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_tongji_button_selector"
+                android:visibility="invisible"/>
+
+            <Button
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/item_qita_button_selector"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="26dp" >
+        android:layout_height="26dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_more"
@@ -185,7 +218,8 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/line"
         android:orientation="horizontal"
-        android:paddingTop="5dp" >
+        android:paddingTop="5dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView1"

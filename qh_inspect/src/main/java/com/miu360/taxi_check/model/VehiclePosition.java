@@ -22,6 +22,12 @@ public class VehiclePosition {
 	
 	private String locationStatus;
 
+	private String corpName;
+
+	private String color;
+
+    private String model;
+
 	public String getVname() {
 		return vname;
 	}
@@ -101,6 +107,28 @@ public class VehiclePosition {
 	public void setLocationStatus(String locationStatus) {
 		this.locationStatus = locationStatus;
 	}
-	
-	
+
+	public String getCorpName() {
+		return corpName;
+	}
+
+	public void setCorpName(String corpName) {
+		this.corpName = corpName;
+	}
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 }

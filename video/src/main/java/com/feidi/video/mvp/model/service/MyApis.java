@@ -1,6 +1,7 @@
 package com.feidi.video.mvp.model.service;
 
 import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.VideoAddress;
 import com.miu30.common.async.Result;
 import com.miu30.common.config.Config;
 
@@ -23,4 +24,11 @@ public interface MyApis {
     @POST(Config.SERVER_VIDEO)
     Observable<Result<List<CameraInfo>>> getCameraList(@FieldMap Map<String, Object> map);
 
+    @FormUrlEncoded
+    @POST(Config.SERVER)
+    Observable<Result<String>> queryHistoryTrack(@FieldMap Map<String, Object> map);
+
+    @FormUrlEncoded
+    @POST(Config.SERVER_VIDEO)
+    Observable<Result<VideoAddress>> getVideoAddress(@FieldMap Map<String, Object> map);
 }

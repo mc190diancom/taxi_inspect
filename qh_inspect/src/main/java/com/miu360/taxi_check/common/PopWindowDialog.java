@@ -11,6 +11,8 @@ import com.baidu.mapapi.model.LatLng;
 import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
+import com.miu30.common.config.MsgConfig;
+import com.miu30.common.data.MapPositionPreference;
 import com.miu360.inspect.R;
 import com.miu360.taxi_check.common.CommonDialog.OnDialogItemClickListener;
 import com.miu360.taxi_check.data.HistoryData;
