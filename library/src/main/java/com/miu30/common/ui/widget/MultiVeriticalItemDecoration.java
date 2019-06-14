@@ -3,6 +3,7 @@ package com.miu30.common.ui.widget;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Px;
@@ -44,6 +45,7 @@ public class MultiVeriticalItemDecoration extends RecyclerView.ItemDecoration {
     private boolean isDrawFristDivider;
 
     private Rect mBounds = new Rect();
+    private Drawable mDividerDrawable;
 
     public MultiVeriticalItemDecoration() {
         this(new Builder());
@@ -59,6 +61,14 @@ public class MultiVeriticalItemDecoration extends RecyclerView.ItemDecoration {
         this.mHeight = builder.height;
         this.isDrawFristDivider = builder.isDrawFristDivider;
         this.isDrawLastDivider = builder.isDrawLastDivider;
+
+        int[] colors;
+        if (mCenterColor == 0) {
+            colors = new int[]{mStartColor, mEndColor};
+        } else {
+            colors = new int[]{mStartColor, mCenterColor, mEndColor};
+        }
+        mDividerDrawable = new GradientDrawable(mColorOrientation, colors);
     }
 
     @Override
@@ -102,21 +112,14 @@ public class MultiVeriticalItemDecoration extends RecyclerView.ItemDecoration {
             //不需要绘制最后一个item的分隔线
             endIndex--;
         }
-        int[] colors;
-        if (mCenterColor == 0) {
-            colors = new int[]{mStartColor, mEndColor};
-        } else {
-            colors = new int[]{mStartColor, mCenterColor, mEndColor};
-        }
-        GradientDrawable drawable = new GradientDrawable(mColorOrientation, colors);
 
         for (int i = startIndex; i < endIndex; i++) {
             View child = parent.getChildAt(i);
             parent.getDecoratedBoundsWithMargins(child, mBounds);
             final int bottom = mBounds.bottom + Math.round(child.getTranslationY());
             final int top = bottom - mHeight;
-            drawable.setBounds(left, top, right, bottom);
-            drawable.draw(c);
+            mDividerDrawable.setBounds(left, top, right, bottom);
+            mDividerDrawable.draw(c);
         }
 
         c.restore();
