@@ -3,6 +3,7 @@ package com.miu30.common.ui.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -230,7 +231,11 @@ public class TextSwitch extends View implements Checkable {
             mChecked = checked;
 
             if (isAttachedToWindow() && isLaidOut()) {
-                animateThumbToCheckedState(checked);
+                try {
+                    animateThumbToCheckedState(checked);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } else {
                 // Immediately move the thumb to the new position.
                 cancelPositionAnimator();
@@ -243,8 +248,7 @@ public class TextSwitch extends View implements Checkable {
         }
     }
 
-    @SuppressLint("NewApi")
-    private void animateThumbToCheckedState(boolean checked) {
+    private void animateThumbToCheckedState(boolean checked) throws Exception{
         //准备执行动画之前，开启硬件加速
         setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
@@ -260,7 +264,8 @@ public class TextSwitch extends View implements Checkable {
             }
         });
 
-        ValueAnimator leftTextColorAnimator = ValueAnimator.ofArgb(mLeftTextColor, leftTextTargetColor);
+        ValueAnimator leftTextColorAnimator = ValueAnimator.ofInt(mLeftTextColor, leftTextTargetColor);
+        leftTextColorAnimator.setEvaluator(ArgbEvaluator.class.newInstance());
         leftTextColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -268,7 +273,8 @@ public class TextSwitch extends View implements Checkable {
             }
         });
 
-        ValueAnimator rightTextColorAnimator = ValueAnimator.ofArgb(mRightTextColor, rightTextTargetColor);
+        ValueAnimator rightTextColorAnimator = ValueAnimator.ofInt(mRightTextColor, rightTextTargetColor);
+        rightTextColorAnimator.setEvaluator(ArgbEvaluator.class.newInstance());
         rightTextColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
