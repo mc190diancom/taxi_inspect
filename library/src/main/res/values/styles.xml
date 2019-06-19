@@ -21,7 +21,7 @@
         <item name="android:padding">10dp</item>
     </style>
 
-    <style name="AppBaseTheme" parent="android:Theme.Light"/>
+    <style name="AppBaseTheme" parent="android:Theme.Light" />
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
 
@@ -67,4 +67,13 @@
         <item name="android:layout_marginStart">14dp</item>
         <item name="android:layout_marginTop">23dp</item>
     </style>
+
+    <!-- 在屏幕底部显示的Dialog的风格 -->
+    <style name="BottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
 </resources>

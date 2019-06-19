@@ -1,10 +1,15 @@
 package com.miu30.common.util;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.support.annotation.LayoutRes;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
@@ -84,7 +89,7 @@ public class Windows {
     }
 
     public static CommonDialog singleChoice2(Context ctx, String title, String[] items,
-                                            final CommonDialog.OnDialogItemClickListener onDialogItemClickListener) {
+                                             final CommonDialog.OnDialogItemClickListener onDialogItemClickListener) {
 
         final CommonDialog dialog = new CommonDialog(ctx, title, null, null, null, null, 0, null, true);
         final ListView listView = (ListView) LayoutInflater.from(ctx).inflate(R.layout.single_choise_list, null);
@@ -139,5 +144,23 @@ public class Windows {
          * } }); t.start();
          */
         return commonDialog;
+    }
+
+    /**
+     * 创建底部显示的Dialog
+     *
+     * @param context 上下文
+     * @return Dialog
+     */
+    public static Dialog createBottomDialog(Context context, @LayoutRes int layoutId) {
+        Dialog dialog = new Dialog(context, R.style.BottomDialogStyle);
+        dialog.setContentView(layoutId);
+        Window window = dialog.getWindow();
+        assert window != null;
+        WindowManager.LayoutParams attributes = window.getAttributes();
+        attributes.gravity = Gravity.BOTTOM;
+        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(attributes);
+        return dialog;
     }
 }
