@@ -71,4 +71,6 @@ dependencies {
     api rootProject.ext.dependencies["retrofit-url-manager"]
     api rootProject.ext.dependencies["lifecyclemodel"]
     implementation files('libs/netty-all-4.1.32.Final.jar')
+    //ftp
+    implementation 'commons-net:commons-net:3.6'
 }
