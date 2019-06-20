@@ -3,6 +3,7 @@ package com.miu30.common.ui.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -76,6 +77,8 @@ public class TextSwitch extends View implements Checkable {
 
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
+    private ArgbEvaluator mArgbEvaluator;
+
     public TextSwitch(Context context) {
         this(context, null);
     }
@@ -107,6 +110,11 @@ public class TextSwitch extends View implements Checkable {
         mThumbPositionPercent = mChecked ? 0 : 1;
         mLeftTextColor = mChecked ? mCheckedTextColor : mUncheckedTextColor;
         mRightTextColor = mChecked ? mUncheckedTextColor : mCheckedTextColor;
+        try {
+            mArgbEvaluator = ArgbEvaluator.class.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         this.setOnClickListener(new OnClickListener() {
             @Override
@@ -243,7 +251,6 @@ public class TextSwitch extends View implements Checkable {
         }
     }
 
-    @SuppressLint("NewApi")
     private void animateThumbToCheckedState(boolean checked) {
         //准备执行动画之前，开启硬件加速
         setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -260,7 +267,10 @@ public class TextSwitch extends View implements Checkable {
             }
         });
 
-        ValueAnimator leftTextColorAnimator = ValueAnimator.ofArgb(mLeftTextColor, leftTextTargetColor);
+        ValueAnimator leftTextColorAnimator = ValueAnimator.ofInt(mLeftTextColor, leftTextTargetColor);
+        if (mArgbEvaluator != null) {
+            leftTextColorAnimator.setEvaluator(mArgbEvaluator);
+        }
         leftTextColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -268,7 +278,10 @@ public class TextSwitch extends View implements Checkable {
             }
         });
 
-        ValueAnimator rightTextColorAnimator = ValueAnimator.ofArgb(mRightTextColor, rightTextTargetColor);
+        ValueAnimator rightTextColorAnimator = ValueAnimator.ofInt(mRightTextColor, rightTextTargetColor);
+        if (mArgbEvaluator != null) {
+            rightTextColorAnimator.setEvaluator(mArgbEvaluator);
+        }
         rightTextColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
