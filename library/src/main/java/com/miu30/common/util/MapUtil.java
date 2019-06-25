@@ -37,6 +37,13 @@ public class MapUtil {
         return parts;
     }
 
+    public static MultipartBody.Part getFilePart(File file) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("text/*"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+        return part;
+    }
+
     @SuppressLint("TimberArgCount")
     public static MultipartBody.Part getPart(File file) {
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);

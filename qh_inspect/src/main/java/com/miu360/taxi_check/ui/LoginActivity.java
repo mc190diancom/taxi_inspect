@@ -63,6 +63,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     private Button loginBtn;
     @ViewInject(R.id.cb_psw)
     private CheckBox remenberPswCb;
+    @ViewInject(R.id.tv_version_name)
+    private TextView tv_version_name;
 
     SharedPreferences preferences;
     Editor edit;
@@ -149,7 +151,25 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         UserPreference pref = new UserPreference(self);
         String passWordCheck = pref.getString("user_psw", null);
         registerMsgReceiver();
-
+        String versions = null;
+        try {
+            versions = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            if (Config.IP.equals("10.252.2.68")) {
+                tv_version_name.setText("测试v" + versions );
+            } else if (Config.IP.equals("10.252.2.67")) {
+                tv_version_name.setText("正式v" + versions );
+            } else if (Config.IP.equals("10.212.160.180")) {
+                tv_version_name.setText("测式(180)v" + versions);
+            } else if (Config.IP.equals("10.212.160.137")) {
+                tv_version_name.setText("正式(137)v" + versions );
+            } else if (Config.IP.equals("123.57.236.212")) {
+                tv_version_name.setText("外网v" + versions );
+            } else {
+                tv_version_name.setText("v" + versions );
+            }
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
         loginBtn.setOnClickListener(this);
     }
 

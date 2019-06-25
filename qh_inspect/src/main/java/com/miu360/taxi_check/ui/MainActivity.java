@@ -30,26 +30,26 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lubao.lubao.async.AsyncUtil;
 import com.lubao.lubao.async.Callback;
 import com.lubao.lubao.async.Result;
+import com.miu30.common.app.EventBusTags;
+import com.miu30.common.config.MsgConfig;
+import com.miu30.common.data.MapPositionPreference;
 import com.miu30.common.data.UserPreference;
+import com.miu30.common.ui.entity.Inspector;
 import com.miu30.common.util.DownLoadUtil;
 import com.miu30.common.util.FileUtil;
 import com.miu30.common.util.Store2SdUtil;
 import com.miu360.inspect.R;
-import com.miu30.common.app.EventBusTags;
 import com.miu360.legworkwrit.app.service.GeneralInformationService;
 import com.miu360.legworkwrit.mvp.model.entity.Case;
 import com.miu360.legworkwrit.util.WritTemplateUtil;
 import com.miu360.taxi_check.BaseActivity;
 import com.miu360.taxi_check.common.Config;
 import com.miu360.taxi_check.common.GpsManger;
-import com.miu30.common.data.MapPositionPreference;
-import com.miu30.common.config.MsgConfig;
 import com.miu360.taxi_check.common.PositionPreference;
 import com.miu360.taxi_check.common.Windows;
 import com.miu360.taxi_check.common.YuJingPreference;
 import com.miu360.taxi_check.data.CameraPreference;
 import com.miu360.taxi_check.data.InfoPerference;
-import com.miu30.common.ui.entity.Inspector;
 import com.miu360.taxi_check.data.UserData;
 import com.miu360.taxi_check.data.WeiFaCheckPreference;
 import com.miu360.taxi_check.data.WeiZhanData;
@@ -226,6 +226,7 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnChe
 
 	ArrayList<Inspector> inspectors = new ArrayList<>();
 	Case mCase;
+
 
 	// 如果稽查临时保存的inspector.txt存在，那么把它添加到临时保存temp.txt文件
 	private void initTemp() {

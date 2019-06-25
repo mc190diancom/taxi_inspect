@@ -2,9 +2,9 @@ package com.feidi.video.mvp.ui.adapter;
 
 import android.widget.CheckBox;
 
+import com.feidi.video.mvp.model.entity.AlarmType;
 import com.feidi.video.mvp.model.entity.ISelector;
-import com.feidi.video.mvp.model.entity.Industry;
-import com.feidi.video.mvp.model.entity.WarningType;
+import com.feidi.video.mvp.model.entity.IndustyType;
 
 import java.util.List;
 
@@ -20,10 +20,10 @@ public class IndustryOrWarningTypeAdapter extends BaseSingleSelectorAdapter {
 
     @Override
     public void setCheckBoxText(ISelector data, CheckBox checkBox) {
-        if (data instanceof Industry) {
-            checkBox.setText(((Industry) data).getName());
+        if (data instanceof IndustyType) {
+            checkBox.setText(((IndustyType) data).getHYLX());
         } else {
-            checkBox.setText(((WarningType) data).getType());
+            checkBox.setText(((AlarmType) data).getRKSM());
         }
     }
 }

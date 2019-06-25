@@ -17,6 +17,7 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.mapapi.utils.CoordinateConverter.CoordType;
+import com.feidi.video.util.DialogUtil;
 import com.google.gson.Gson;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -127,6 +128,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 		if(0 == type){
 			initData();
 		}else{
+			back_tv.setText("移除可疑车辆");
 			showInfo();
 			getCarPositionInfo();
 		}
@@ -134,7 +136,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 
 	private void showInfo() {
 		ll_header.setVisibility(View.VISIBLE);
-		car_vname.setText(alarmDetailInfo.getVname());
+
 		LatLng ll = new LatLng(alarmDetailInfo.getLat(), alarmDetailInfo.getLon());
 		reverseGeoCode(car_address, ll);
 		car_alarmReason.setText(alarmDetailInfo.getADK_WFXW());
@@ -156,6 +158,7 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 		if(!alarmDetailInfo.getVname().startsWith("京")){
 			alarmDetailInfo.setVname(alarmDetailInfo.getVname().substring(1));
 		}
+		car_vname.setText(alarmDetailInfo.getVname());
 		AsyncUtil.goAsync(new Callable<Result<String>>() {
 
 			@Override
@@ -337,7 +340,17 @@ public class CheckEarlyWarningDetailInfoActivity extends BaseActivity implements
 			intent.putExtra("isTurn", true);
 			startActivity(intent);
 		} else if (v == back_tv) {
-			finish();
+			if(type == 1){
+				DialogUtil.showRemoveDoubtCarDialog(self, new DialogUtil.OnRemoveReasonListener() {
+					@Override
+					public void onRemoveReason(String reason) {
+						UIUtils.toast(self,reason,Toast.LENGTH_SHORT);
+					}
+				});
+			}else{
+				finish();
+			}
+
 		}
 	}
 }

@@ -687,7 +687,7 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
 
     private void submitData(final LiveCheckRecordQ lcrq){
         if (1 == clickStatus) {
-            startActivityForResult(WebViewActivity.getIntent(self, lcrq, false), 0x0001);
+            startActivityForResult(CaseSignActivity.getIntent(self, lcrq, false), 0x0001);
         } else{
             if ("无".equals(tvIllegalSituation.getText().toString())) {
                 Windows.confirm(self, "违法情形是否空置？", new View.OnClickListener() {

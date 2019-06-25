@@ -63,7 +63,7 @@ import com.miu360.taxi_check.common.YuJingPreference;
 import com.miu360.taxi_check.common.isCommon;
 import com.miu360.taxi_check.data.HistoryData;
 import com.miu360.taxi_check.data.WeiZhanData;
-import com.miu360.taxi_check.model.AlarmReason;
+import com.miu30.common.ui.entity.AlarmReason;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity;
 import com.miu30.common.ui.SelectLocationActivity;

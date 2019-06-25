@@ -1,15 +1,19 @@
 package com.feidi.video.mvp.contract;
 
+import com.feidi.video.mvp.model.entity.AlarmType;
 import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.IndustyType;
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
 import com.miu30.common.async.Result;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
 import com.jess.arms.mvp.IView;
+import com.miu30.common.ui.entity.AlarmReason;
 
 
 /**
@@ -41,5 +45,9 @@ public interface MoveCameraContract {
     interface Model extends IModel {
         Observable<Result<List<CameraInfo>>> getCameraList(Map<String, Object> map);
         Observable<Result<String>> queryHistoryTrack(Map<String, Object> map);
+
+        Observable<Result<List<IndustyType>>> getHangYeType(String type);
+
+        Observable<Result<List<AlarmType>>> getAlarmType(String type);
     }
 }

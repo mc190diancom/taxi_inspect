@@ -49,6 +49,7 @@ public class SignatureActivity extends BaseMvpActivity<SignaturePresenter> imple
         header.init(self);
         header.setLeftTextViewText("返回");
         header.setLeftTextViewVisibility(View.VISIBLE);
+
     }
 
 }

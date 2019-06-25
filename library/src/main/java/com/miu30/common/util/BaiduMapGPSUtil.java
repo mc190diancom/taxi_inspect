@@ -25,7 +25,12 @@ public class BaiduMapGPSUtil {
             return "-";
         }
         double distance = com.baidu.mapapi.utils.DistanceUtil.getDistance(des1, des);
-        return String.format("%.2f", distance);
+        if(distance > 1000){
+            distance = distance / 1000;
+            return String.format("%.2f", distance) + "公里";
+        }else{
+            return String.format("%.2f", distance) + "米";
+        }
     }
 
     /**

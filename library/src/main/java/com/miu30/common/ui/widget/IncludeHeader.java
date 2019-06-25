@@ -53,6 +53,12 @@ public class IncludeHeader {
         }
     }
 
+    public void setLeftIvClick(View.OnClickListener listener) {
+        if (listener != null) {
+            ibtnLeft.setOnClickListener(listener);
+        }
+    }
+
     public void setLeftTextViewText(CharSequence text) {
         if (!TextUtils.isEmpty(text)) {
             tvLeft.setText(text);

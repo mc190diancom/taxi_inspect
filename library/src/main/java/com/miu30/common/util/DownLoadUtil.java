@@ -50,7 +50,9 @@ public class DownLoadUtil {
                         if(!file.getParentFile().exists()){
                             file.getParentFile().mkdirs();
                         }
-                        file.createNewFile();
+                        if(!file.exists()){
+                            file.createNewFile();
+                        }
                         FileOutputStream fileOutputStream = new FileOutputStream(path);
                         byte[] bytes = new byte[1024 * 10];
                         int len = 0;

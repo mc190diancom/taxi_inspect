@@ -15,7 +15,6 @@ import com.jess.arms.mvp.BasePresenter;
 import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu30.common.async.Result;
 import com.miu30.common.base.BaseData;
-import com.miu30.common.data.UserPreference;
 import com.miu30.common.ui.widget.MultiVeriticalItemDecoration;
 import com.miu30.common.util.MapUtil;
 import com.miu30.common.util.RxUtils;
@@ -106,7 +105,7 @@ public class SeeVideoListPresenter extends BasePresenter<SeeVideoListContract.Mo
 
     public void getVideoAddress(String cameraid,String zfzh) {
         Map<String, String> params = new HashMap<>();
-        params.put("CAMERAID", cameraid);
+        params.put("CAMERAID", "11000000001325291355");
         params.put("ZFZH", zfzh);
         Map<String, Object> map = new MapUtil().getMap("tokenBindCamera", BaseData.gson.toJson(params));
         mModel.getVideoAddress(map)
@@ -118,7 +117,7 @@ public class SeeVideoListPresenter extends BasePresenter<SeeVideoListContract.Mo
                         if (result.getData() != null) {
                             mRootView.getVideoAddressSuccess(result.getData().getRtspUrl());
                         }else{
-                            mRootView.getVideoAddressSuccess(null);
+                            mRootView.getVideoAddressSuccess("rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov");
                         }
                     }
 

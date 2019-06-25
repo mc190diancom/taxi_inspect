@@ -12,7 +12,7 @@ import com.miu360.taxi_check.common.isCommon;
 import com.miu360.taxi_check.common.CommonDialog.OnDialogItemClickListener;
 import com.miu360.taxi_check.data.HistoryData;
 import com.miu360.taxi_check.data.WeiZhanData;
-import com.miu360.taxi_check.model.AlarmReason;
+import com.miu30.common.ui.entity.AlarmReason;
 import com.miu30.common.ui.entity.VehicleInfo;
 import com.miu360.taxi_check.model.VehiclePositionModex1;
 import com.miu360.taxi_check.ui.CheckEarlyWarningDetailInfoActivity;

@@ -50,8 +50,8 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
                 } else {
                     UIUtils.toast(MiuBaseApp.self, "绑定摄像头失败", Toast.LENGTH_LONG);
                 }
-                String cs = "{\"eventID\":\"00059cc85d79fd7d4676a7fcde3afbba831c\",\"alarmType\":\"套牌车辆\",\"msgType\":3,\"vehicleIndustryType\":\"巡游出租车\",\"latitude\":40.05179977416992,\"occurTime\":\"2019-06-14T16:36:14\",\"cameraIDList\":[\"11000000001325291355\"],\"pictureIDList\":[\"ftp://snap_ftp:snapftp12345678@10.212.160.152:12021/PicPath/2019-06-14/0004599ccdeed45144898be9227aec2e0c16.jpg\",\"ftp://snap_ftp:snapftp12345678@10.212.160.152:12021/PicPath/2019-06-14/0004f34a5f679ee24c969eaf3b180745c204.jpg\"],\"deviceID\":\"11000000001325291355\",\"deviceName\":\"T3B1出口\",\"vehiclePlatNo\":\"京BQ1117\",\"longitude\":116.6136016845703}";
-                AlarmInfo alarmInfo2 = BaseData.gson.fromJson(cs,new TypeToken<AlarmInfo>() {
+                String path = "{\"eventID\":\"00059d9d2f3a72454fac819558533f179618\",\"alarmType\":\"套牌车辆\",\"msgType\":3,\"vehicleIndustryType\":\"巡游出租车\",\"latitude\":40.05179977416992,\"occurTime\":\"2019-06-19T17:24:59\",\"cameraIDList\":[\"11000000001325291355\"],\"pictureIDList\":[\"ftp:\\/\\/snap_ftp:snapftp12345678@10.212.160.152:12021\\/PicPath\\/2019-06-19\\/0004057274f6319e45549cef78f72ef31f08.jpg\",\"ftp:\\/\\/snap_ftp:snapftp12345678@10.212.160.152:12021\\/PicPath\\/2019-06-19\\/000480f2ca350715429f9f55c71af53a6466.jpg\"],\"deviceID\":\"11000000001325291355\",\"deviceName\":\"T3B1出口\",\"vehiclePlatNo\":\"蓝京BT2797\",\"longitude\":116.6136016845703}";
+                AlarmInfo alarmInfo2 = BaseData.gson.fromJson(path,new TypeToken<AlarmInfo>() {
                 }.getType());
                 Intent intent2 = new Intent();
                 intent2.setAction(FLAG);

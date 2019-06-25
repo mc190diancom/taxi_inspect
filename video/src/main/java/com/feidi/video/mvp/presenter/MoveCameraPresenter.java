@@ -8,14 +8,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.blankj.utilcode.util.SizeUtils;
 import com.feidi.video.mvp.contract.MoveCameraContract;
+import com.feidi.video.mvp.model.entity.AlarmType;
 import com.feidi.video.mvp.model.entity.CameraInfo;
 import com.feidi.video.mvp.model.entity.ISelector;
-import com.feidi.video.mvp.model.entity.Industry;
-import com.feidi.video.mvp.model.entity.WarningType;
+import com.feidi.video.mvp.model.entity.IndustyType;
 import com.feidi.video.mvp.ui.adapter.CrimeListAdapter;
 import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -70,6 +69,9 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
 
     private ArrayList<ISelector> data = new ArrayList<>();
     private ArrayList<ISelector> CameraData = new ArrayList<>();
+
+    private ArrayList<IndustyType> industyTypes = new ArrayList<>();
+    private ArrayList<AlarmType> AlarmTypes = new ArrayList<>();
 
     private CameraTCPReceiver broadCast;
     private ChooseLocationReceiver locationReceiver;
@@ -173,19 +175,18 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
     //测试数据
     public void setIndustryOrWarningTypeInfos(boolean isIndustry) {
         data.clear();
-
         if (isIndustry) {
-            data.add(new Industry("无选择"));
-            data.add(new Industry("行业1"));
-            data.add(new Industry("行业2"));
-            data.add(new Industry("行业3"));
-            data.add(new Industry("行业4"));
+            data.add(new IndustyType("无选择"));
+            data.addAll(industyTypes);
+            if(industyTypes == null || industyTypes.isEmpty()){
+                getIndustyType();
+            }
         } else {
-            data.add(new WarningType("无选择"));
-            data.add(new WarningType("交他人驾驶1"));
-            data.add(new WarningType("交他人驾驶2"));
-            data.add(new WarningType("交他人驾驶3"));
-            data.add(new WarningType("交他人驾驶4"));
+            data.add(new AlarmType("无选择"));
+            data.addAll(AlarmTypes);
+            if(AlarmTypes == null || AlarmTypes.isEmpty()){
+                getAlarmType();
+            }
         }
     }
 
@@ -227,19 +228,29 @@ public class MoveCameraPresenter extends BasePresenter<MoveCameraContract.Model,
                 });
     }
 
-    //通过GPS数据解析地址
-    public void getss(double lat,double lon) {
-        Map<String, String> params = new HashMap<>();
-        params.put("lat", String.valueOf(lat));
-        params.put("lon", String.valueOf(lon));
-        Map<String, Object> map = new MapUtil().getMap("queryPositionInfo", BaseData.gson.toJson(params));
-        mModel.queryHistoryTrack(map)
-                .compose(RxUtils.<Result<String>>applySchedulers(mRootView))
-                .subscribe(new MyErrorHandleSubscriber<Result<String>>(mErrorHandler) {
+    //获取预警的行业类别
+    public void getIndustyType() {
+        mModel.getHangYeType("getAlarmType")
+                .compose(RxUtils.<Result<List<IndustyType>>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<List<IndustyType>>>(mErrorHandler) {
 
                     @Override
-                    public void onNextResult(Result<String> result) {
+                    public void onNextResult(Result<List<IndustyType>> result) {
+                        industyTypes.addAll(result.getData());
+                    }
 
+                });
+    }
+
+    //获取预警的行业类别
+    public void getAlarmType() {
+        mModel.getAlarmType("querySuspiciousType")
+                .compose(RxUtils.<Result<List<AlarmType>>>applySchedulers(mRootView))
+                .subscribe(new MyErrorHandleSubscriber<Result<List<AlarmType>>>(mErrorHandler) {
+
+                    @Override
+                    public void onNextResult(Result<List<AlarmType>> result) {
+                        AlarmTypes.addAll(result.getData());
                     }
 
                 });

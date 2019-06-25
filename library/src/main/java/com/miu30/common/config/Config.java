@@ -28,6 +28,8 @@ public class Config {
     public static final String SERVER_WEBSERVICE = SERVER + "/webservice";
     public static final String SERVER_DOWNLOAD = SERVER + "/transfers";
     public static final String SERVER_VIDEO = SERVER + "/video";
+    public static final String SERVER_TAXIINFO = SERVER + "/app_Taxi";
+    public static final String SERVER_SIGN = SERVER + "/sign";
 
     public static final int LAWLOCATION = 1;
 

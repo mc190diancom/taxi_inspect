@@ -15,7 +15,7 @@ import com.miu360.legworkwrit.mvp.model.entity.UTC;
 import com.miu360.taxi_check.App;
 import com.miu360.taxi_check.common.Config;
 import com.miu360.taxi_check.common.ELog;
-import com.miu360.taxi_check.model.AlarmReason;
+import com.miu30.common.ui.entity.AlarmReason;
 import com.miu360.taxi_check.model.AllPosition;
 import com.miu360.taxi_check.model.BindCamera;
 import com.miu360.taxi_check.model.CPosition;

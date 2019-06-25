@@ -269,4 +269,8 @@ public interface MyApis {
     @POST(Config.SERVER_WAIQIN)
     Observable<Result<List<IllegalDetailItem>>> getIllegalContent(@FieldMap Map<String, Object> map);
 
+
+    @Multipart
+    @POST(Config.SERVER_SIGN)
+    Observable<Result<Void>> uploadSignFile(@QueryMap Map<String, Object> map, @Part() MultipartBody.Part part);
 }

@@ -13,8 +13,9 @@
     <color name="title_btn_color">#B2f8f8f8</color>
     <color name="white">#ffffff</color>
     <color name="bg_color">#eeeeee</color>
-
     <color name="color333">#333333</color>
+    <color name="colorff41c3d6">#41c3d6</color>
+    <color name="color666">#666666</color>
     <color name="colorFF3939">#FF3939</color>
     <color name="divide_color">#dddddd</color>
     <color name="light_blue">#41C3D6</color>

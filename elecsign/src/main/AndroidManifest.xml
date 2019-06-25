@@ -6,7 +6,7 @@
         <activity android:name=".mvp.ui.activity.prestoreSignActivity" />
         <activity
             android:name=".mvp.ui.activity.ElectronicSignatureActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.AuthorizationActivity"
             android:screenOrientation="portrait" />
@@ -16,7 +16,8 @@
         <activity
             android:name=".mvp.ui.activity.MySignatureActivity"
             android:screenOrientation="sensor" />
-        <activity android:name=".mvp.ui.activity.TestCActivity"></activity>
+        <activity android:name=".mvp.ui.activity.TestCActivity" />
+        <activity android:name=".mvp.ui.activity.CaseSignActivity"></activity>
     </application>
 
 </manifest>

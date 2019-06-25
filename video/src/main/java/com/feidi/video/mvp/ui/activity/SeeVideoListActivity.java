@@ -116,16 +116,13 @@ public class SeeVideoListActivity extends BaseMvpActivity<SeeVideoListPresenter>
     public void getVideoAddressSuccess(String rtspUrl) {
         if(!TextUtils.isEmpty(rtspUrl)){
             if(rtspUrl.contains("10.212.160.158")){
-                rtspUrl.replace("10.212.160.158","10.252.16.81");
+                rtspUrl = rtspUrl.replace("10.212.160.158","10.252.16.81");
             }
             Intent intent = new Intent(self,VideoPlayActivity.class);
             intent.putExtra("VAddress",rtspUrl);
             startActivity(intent);
         }else{
-            //UIUtils.toast(self,"视频地址获取失败",Toast.LENGTH_SHORT);
-            Intent intent = new Intent(self,VideoPlayActivity.class);
-            intent.putExtra("VAddress","rtsp://10.252.16.81:6333/11000000001325291355-rp098000010");
-            startActivity(intent);
+            UIUtils.toast(self,"视频地址获取失败",Toast.LENGTH_SHORT);
         }
     }
 

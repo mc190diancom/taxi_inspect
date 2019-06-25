@@ -2,7 +2,9 @@ package com.feidi.video.mvp.model;
 
 import android.app.Application;
 
+import com.feidi.video.mvp.model.entity.AlarmType;
 import com.feidi.video.mvp.model.entity.CameraInfo;
+import com.feidi.video.mvp.model.entity.IndustyType;
 import com.feidi.video.mvp.model.service.MyApis;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
@@ -14,6 +16,7 @@ import javax.inject.Inject;
 
 import com.feidi.video.mvp.contract.MoveCameraContract;
 import com.miu30.common.async.Result;
+import com.miu30.common.ui.entity.AlarmReason;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +63,16 @@ public class MoveCameraModel extends BaseModel implements MoveCameraContract.Mod
     @Override
     public Observable<Result<String>> queryHistoryTrack(Map<String, Object> map) {
         return mRepositoryManager.obtainRetrofitService(MyApis.class).queryHistoryTrack(map);
+    }
+
+    @Override
+    public Observable<Result<List<IndustyType>>> getHangYeType(String type) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).getHangYeType(type);
+    }
+
+    @Override
+    public Observable<Result<List<AlarmType>>> getAlarmType(String type) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).getAlarmType(type);
     }
 
 }

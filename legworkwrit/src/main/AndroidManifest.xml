@@ -91,11 +91,14 @@
         </receiver>
 
         <activity android:name=".mvp.ui.activity.CaseBlListActivity" />
-        <activity android:name=".mvp.ui.activity.WifiTestActivity"></activity>
+        <activity android:name=".mvp.ui.activity.WifiTestActivity" />
 
         <service android:name=".app.service.GeneralInformationService" />
 
-        <activity android:name=".mvp.ui.activity.TestAActivity"></activity>
+        <activity android:name=".mvp.ui.activity.CaseSignActivity"/>
+        <activity
+            android:name="cn.org.bjca.anysign.android.api.core.SignatureActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

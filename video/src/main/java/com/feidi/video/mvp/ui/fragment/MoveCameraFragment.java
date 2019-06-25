@@ -21,7 +21,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ViewSwitcher;
 
@@ -36,15 +35,14 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
-import com.blankj.utilcode.util.ToastUtils;
 import com.feidi.video.R;
 import com.feidi.video.R2;
 import com.feidi.video.di.component.DaggerMoveCameraComponent;
 import com.feidi.video.mvp.contract.MoveCameraContract;
+import com.feidi.video.mvp.model.entity.AlarmType;
 import com.feidi.video.mvp.model.entity.CameraInfo;
 import com.feidi.video.mvp.model.entity.ISelector;
-import com.feidi.video.mvp.model.entity.Industry;
-import com.feidi.video.mvp.model.entity.WarningType;
+import com.feidi.video.mvp.model.entity.IndustyType;
 import com.feidi.video.mvp.presenter.MoveCameraPresenter;
 import com.feidi.video.mvp.ui.adapter.CameraListAdapter;
 import com.feidi.video.mvp.ui.adapter.CrimeListAdapter;
@@ -64,7 +62,6 @@ import com.miu30.common.data.UserPreference;
 import com.miu30.common.ui.SelectLocationActivity;
 import com.miu30.common.ui.entity.AlarmInfo;
 import com.miu30.common.util.BaiduMapGPSUtil;
-import com.miu30.common.util.UIUtils;
 import com.miu30.common.util.isCommon;
 
 import java.util.ArrayList;
@@ -178,7 +175,8 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
         setMapMoveListner();
         mPresenter.registeBroadcast(getActivity());
         mPresenter.getCameraInfos(zfzh);
-
+        mPresenter.getIndustyType();
+        mPresenter.getAlarmType();
     }
 
     @OnCheckedChanged(R2.id.toggle)
@@ -309,17 +307,31 @@ public class MoveCameraFragment extends BaseMvpFragment<MoveCameraPresenter> imp
             @Override
             public void onSelectedChange(View v, ISelector data, int position, boolean isSelected) {
                 String value;
-                if (data instanceof Industry) {
-                    value = ((Industry) data).getName();
+                if (data instanceof IndustyType) {
+                    value = ((IndustyType) data).getHYLX();
+                    if (isSelected) {
+                        if("无选择".equals(value)){
+                            cbIndustry.setText("行业");
+                        }else{
+                            cbIndustry.setText(value);
+                        }
+                        cbIndustry.setChecked(false);
+                    } else {
+                    }
                 } else {
-                    value = ((WarningType) data).getType();
+                    value = ((AlarmType) data).getRKSM();
+                    if (isSelected) {
+                        if("无选择".equals(value)){
+                            cbWarningType.setText("预警类型");
+                        }else{
+                            cbWarningType.setText(value);
+                        }
+                        cbWarningType.setChecked(false);
+                    } else {
+                    }
                 }
 
-                if (isSelected) {
-                    ToastUtils.showShort("你选中了" + value);
-                } else {
-                    ToastUtils.showShort("你取消选中了" + value);
-                }
+
             }
         });
         rvIndustryOrWarningType.setAdapter(industryOrWarningTypeAdapter);

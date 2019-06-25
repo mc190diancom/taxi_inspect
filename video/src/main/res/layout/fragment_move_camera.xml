@@ -83,6 +83,9 @@
             android:drawablePadding="7dp"
             android:gravity="center"
             android:text="预警类别"
+            android:maxEms="6"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/checkbox_textcolor_selector"
             android:textSize="16sp" />
 
@@ -166,8 +169,9 @@
                 <ImageView
                     android:id="@+id/mine_position"
                     android:layout_width="20dp"
-                    android:layout_height="30dp"
+                    android:layout_height="60dp"
                     android:layout_centerInParent="true"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/mine_position"
                     android:visibility="gone" />
             </RelativeLayout>
@@ -198,12 +202,6 @@
             android:textOn="摄像头列表"
             android:textSize="14sp" />
 
-        <ViewStub
-            android:id="@+id/view_stub_industry_or_warningtype"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inflatedId="@id/id_industry_or_warningtype"
-            android:layout="@layout/layout_industry_or_warningtype" />
 
         <ViewStub
             android:id="@+id/view_stub_crime"
@@ -211,6 +209,14 @@
             android:layout_height="match_parent"
             android:inflatedId="@id/id_crime"
             android:layout="@layout/layout_crime" />
+
+        <ViewStub
+            android:id="@+id/view_stub_industry_or_warningtype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inflatedId="@id/id_industry_or_warningtype"
+            android:layout="@layout/layout_industry_or_warningtype" />
+
 
     </RelativeLayout>
 
