@@ -34,7 +34,7 @@ public class FtpUrl implements Key {
      * @throws MalformedURLException 主机名或端口号不合法
      */
     public FtpUrl(String host, int port, String path, String username, String password) throws MalformedURLException {
-        this.url = new URL("ftp", host, port, "");
+        this.url = new URL(FTP_SCHEME, host, port, "");
         this.path = path;
         this.username = username;
         this.password = password;
@@ -68,11 +68,11 @@ public class FtpUrl implements Key {
     }
 
     public String getHost() {
-        return url.getHost();
+        return this.url.getHost();
     }
 
     public int getPort() {
-        return url.getPort();
+        return this.url.getPort();
     }
 
     public String getPath() {
@@ -88,11 +88,11 @@ public class FtpUrl implements Key {
     }
 
     private String getCacheKey() {
-        return ftpUrlStr;
+        return this.ftpUrlStr;
     }
 
     public String getProtocol() {
-        return url.getProtocol();
+        return this.url.getProtocol();
     }
 
     @Override
