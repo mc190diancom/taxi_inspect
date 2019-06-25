@@ -109,7 +109,7 @@ public class FtpUrl implements Key {
         if (obj instanceof FtpUrl) {
             return getCacheKey().equals(((FtpUrl) obj).getCacheKey());
         }
-        return super.equals(obj);
+        return false;
     }
 
     @Override
