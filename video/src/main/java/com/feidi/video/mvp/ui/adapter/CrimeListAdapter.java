@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.feidi.video.R;
 import com.feidi.video.mvp.ui.adapter.listener.OnItemContentViewClickListener;
 import com.jess.arms.base.BaseHolder;
@@ -50,15 +51,15 @@ public class CrimeListAdapter extends DefaultAdapter<AlarmInfo> {
                 if(data.getPictureIDList() != null){
                     String imgAddr = data.getPictureIDList().get(0);
                     imgAddr = imgAddr.replace("10.212.160.152","10.252.16.83");
-//                    FtpUrl url = null;
-//                    try {
-//                        url = new FtpUrl("ftp://10.252.16.83:12021/PicPath/2019-06-19/0004057274f6319e45549cef78f72ef31f08.jpg", "snap_ftp", "snapftp12345678");
-//                    } catch (MalformedURLException e) {
-//                        e.printStackTrace();
-//                    }
-//                    /*String path = Config.PATHROOT + "/Android/data/" + activity.getPackageName() + "/files/"+ data.getEventID()+".jpg";
-//                    File file = new File(path);*/
-//                    GlideApp.with(activity).load(url).into(imageView);
+                    FtpUrl url = null;
+                    try {
+                        url = new FtpUrl("ftp://10.252.16.83:12021/PicPath/2019-06-19/0004057274f6319e45549cef78f72ef31f08.jpg", "snap_ftp", "snapftp12345678");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    /*String path = Config.PATHROOT + "/Android/data/" + activity.getPackageName() + "/files/"+ data.getEventID()+".jpg";
+                    File file = new File(path);*/
+                    //GlideApp.with(activity).load(url).into(imageView);
                 }
                 v.findViewById(R.id.item_tv_look).setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -48,7 +48,7 @@ public class PdfView {
                     .setMinMargins(PrintAttributes.Margins.NO_MARGINS).build();
         }
         PdfPrint pdfPrint = new PdfPrint(attributes);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             pdfPrint.print(webView.createPrintDocumentAdapter(jobName), directory, fileName, new PdfPrint.CallbackPrint() {
                 @Override
                 public void success(String path) {
@@ -74,7 +74,7 @@ public class PdfView {
                     }
                 });
             }
-        }
+        }*/
     }
 
 

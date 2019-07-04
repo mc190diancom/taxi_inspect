@@ -49,9 +49,7 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import org.simple.eventbus.Subscriber;
 
 import java.util.Date;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -148,6 +146,7 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
 
     private JCItem mJcitem;
     private String WFXWID;
+    private String SFZH;//存放身份证信息
 
 
     @Override
@@ -198,6 +197,7 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
             mJcitem = new JCItem();
             mJcitem.setLBMC(lawToCase.getWfxw());
             mJcitem.setZDLBID(lawToCase.getWfxwId());
+            SFZH = lawToCase.getSfzh();
             setRecordContent(mJcitem);
             tvIllegalBehavior.setText(lawToCase.getWfxw());
             assert mPresenter != null;
@@ -618,6 +618,7 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
                 return;
             }
             lcrq.setSFZH(etCard.getText().toString());
+            SFZH = etCard.getText().toString();
         } else {
             lcrq.setCYZGZ(etCard.getText().toString());
         }
@@ -677,7 +678,26 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
 
                 @Override
                 public void onClick(View v) {
+                    checkSfzh(lcrq);
+                }
+            });
+        }else{
+            checkSfzh(lcrq);
+        }
+    }
+
+    private void checkSfzh(final LiveCheckRecordQ lcrq){
+        if(TextUtils.isEmpty(SFZH) && !isUpdate){//检测到身份证号为空
+            Windows.confirm(self, "检测到身份证号为空，确认继续进行吗？", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     submitData(lcrq);
+                }
+            }, new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
                 }
             });
         }else{
@@ -687,6 +707,8 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
 
     private void submitData(final LiveCheckRecordQ lcrq){
         if (1 == clickStatus) {
+            startActivityForResult(WebViewActivity.getIntent(self, lcrq, false), 0x0001);
+        } else if (3 == clickStatus) {
             startActivityForResult(CaseSignActivity.getIntent(self, lcrq, false), 0x0001);
         } else{
             if ("无".equals(tvIllegalSituation.getText().toString())) {
@@ -695,10 +717,10 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
                     public void onClick(View v) {
                         assert mPresenter != null;
                         if (!isUpdate) {
-                            mPresenter.SubmitData(lcrq, followInstruments);
+                            mPresenter.SubmitData(lcrq, followInstruments,SFZH);
                         } else {
                             //调修改接口
-                            mPresenter.UpdateData(lcrq, checkChange(), followInstruments);
+                            mPresenter.UpdateData(lcrq, checkChange(), followInstruments,SFZH);
                         }
                     }
                 }, new View.OnClickListener() {
@@ -711,10 +733,10 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
             } else {
                 assert mPresenter != null;
                 if (!isUpdate) {
-                    mPresenter.SubmitData(lcrq, followInstruments);
+                    mPresenter.SubmitData(lcrq, followInstruments,SFZH);
                 } else {
                     //调修改接口
-                    mPresenter.UpdateData(lcrq, checkChange(), followInstruments);
+                    mPresenter.UpdateData(lcrq, checkChange(), followInstruments,SFZH);
                 }
             }
         }
@@ -741,6 +763,7 @@ public class LiveCheckRecordActivity extends BaseInstrumentActivity<LiveCheckRec
         }else if(idType == R.id.list_show_driver_info){
             DriverInfo info = (DriverInfo) parent.getItemAtPosition(position);
             StopChange = true;
+            SFZH = info.getId();
             listShowDriverInfo.setVisibility(View.GONE);
             setDriverInfo(info);
         }

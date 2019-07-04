@@ -308,6 +308,7 @@ public class FristRegisterNoticePresenter extends BasePresenter<FristRegisterNot
                             if (data != null) {
                                 String id = data.optString("id");
                                 mRootView.getID(id);
+                                fristRegisterQ.setID(id);
                             }
 
                             if (isAdd) {

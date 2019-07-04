@@ -29,6 +29,7 @@ import com.miu360.legworkwrit.mvp.model.entity.WifiRequestParams;
 import com.miu30.common.util.MapUtil;
 import com.miu360.legworkwrit.util.RequestParamsUtil;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -201,6 +202,10 @@ public class GeneralInformationService extends Service {
         } else if (FLAG == 2) {
             String vName = intent.getStringExtra("vname");
             getVehicleInfo(vName);
+        } else if(FLAG == 3){
+            String sfzh = intent.getStringExtra("sfzh");
+            String caseId = intent.getStringExtra("caseId");
+            getSfzhInfo(caseId,sfzh);
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -247,6 +252,28 @@ public class GeneralInformationService extends Service {
                             CacheManager.getInstance().putCarInfo(result.getData());
                         } else {
                             Log.d(TAG, "获取车辆信息失败");
+                        }
+                    }
+                });
+    }
+
+    private void getSfzhInfo(final String caseId,final String sfzh) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("type","addIdCode");
+        map.put("ajid",caseId);
+        map.put("idcode",sfzh);
+        ArmsUtils.obtainAppComponentFromContext(this).repositoryManager().obtainRetrofitService(MyApis.class)
+                .addIdCode(map)
+                .compose(RxUtils.<Result<Void>>tryWhen(3, 10))
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new MyErrorHandleSubscriber<Result<Void>>(ArmsUtils.obtainAppComponentFromContext(this).rxErrorHandler()) {
+                    @Override
+                    public void onNextResult(Result<Void> result) throws Exception {
+                        if (result.ok()) {
+                            Log.d(TAG, "身份信息写入成功:" + result.getData());
+                            CacheManager.getInstance().putSFZH(sfzh);
+                        } else {
+                            Log.d(TAG, "身份信息写入失败");
                         }
                     }
                 });

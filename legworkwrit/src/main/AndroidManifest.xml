@@ -99,6 +99,9 @@
         <activity
             android:name="cn.org.bjca.anysign.android.api.core.SignatureActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.org.bjca.anysign.android.api.core.CommentActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

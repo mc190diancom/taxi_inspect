@@ -136,6 +136,8 @@ public class TalkNoticeActivity extends BaseInstrumentActivity<TalkNoticePresent
         talkNoticeQ.setZH(mCase.getZH());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, talkNoticeQ, false), 0x0111);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, talkNoticeQ, false), 0x0001);
         } else if (!isUpdate) {
             mPresenter.addTalkNotice(talkNoticeQ);
         } else {

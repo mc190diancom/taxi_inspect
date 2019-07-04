@@ -247,6 +247,7 @@ public class AdministrativePenaltyPresenter extends BasePresenter<Administrative
                         if (result.ok()) {
                             putCashService(ap);
                             String id = result.getData().optString("id");
+                            ap.setID(id);
                             mRootView.getID(id);
                             mRootView.showMessage(result.getMsg());
                             if (isAdd) {

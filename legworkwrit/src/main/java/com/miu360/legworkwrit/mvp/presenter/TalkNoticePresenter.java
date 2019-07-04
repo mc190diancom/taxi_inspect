@@ -214,6 +214,7 @@ public class TalkNoticePresenter extends BasePresenter<TalkNoticeContract.Model,
                             if (data != null) {
                                 String id = data.optString("id");
                                 mRootView.getID(id);
+                                talkNoticeQ.setID(id);
                             }
 
                             if (isAdd) {

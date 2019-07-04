@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -22,6 +24,18 @@ public class MapUtil {
         params = new LinkedHashMap<>();
         params.put("type", type);
         params.put("jsonStr", jsonStr);
+        return params;
+    }
+
+    public Map<String, Object> getMapKeyAndValue(Map<String,Object> map) {
+        params = new LinkedHashMap<>();
+        Set<String> set = map.keySet();
+        Iterator<String> it = set.iterator();
+        while(it.hasNext()){
+            String key = it.next();
+            params.put(key,map.get(key));
+        }
+
         return params;
     }
 

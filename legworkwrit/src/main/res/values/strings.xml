@@ -39,6 +39,7 @@
     <string name="accord_rule">依据条例</string>
     <string name="accord_rule_hint">下拉选择条例</string>
     <string name="preview">预览</string>
+    <string name="sign">签字</string>
     <string name="save">保存</string>
     <string name="check_seize_info">查扣信息</string>
     <string name="deduction_time">扣车时间</string>
@@ -256,5 +257,6 @@
     <string name="car_type">车辆类型</string>
     <string name="car_type_hint">请输入车辆类型</string>
     <string name="et_test_hint">占位信息啊</string>
+    <string name="sign_tip">注：未获取到身份证信息，可直接进行打印！</string>
 
 </resources>

@@ -24,6 +24,7 @@
         android:layout_marginBottom="-16dp"
         android:background="@drawable/sign_backgroud">
         <LinearLayout
+            android:id="@+id/ll_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -49,11 +50,13 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@drawable/rectangular"/>
 
         <LinearLayout
+            android:id="@+id/ll_signed"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -66,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:text="已签字"
                 android:textSize="14sp"
-
                 android:textColor="@color/color333"/>
 
             <GridView
@@ -78,5 +80,14 @@
 
             </GridView>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/sign_tip"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="30dp"
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

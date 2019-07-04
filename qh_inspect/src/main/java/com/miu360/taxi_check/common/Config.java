@@ -2,6 +2,7 @@ package com.miu360.taxi_check.common;
 
 import android.os.Environment;
 
+import com.miu30.common.MiuBaseApp;
 import com.miu360.inspect.BuildConfig;
 
 public class Config {
@@ -11,6 +12,7 @@ public class Config {
 	public final static String FILE_NAME2 = "temp.txt";
 	public final static String ID_FILE_NAME = "cardqr.txt";
 	public final static String ID_FILE_NAME3 = "test.txt";
+
 	// 正式
 	//public static final String IP = "10.252.2.67";
 	//public static final String SERVER_BASIC = "http://" + IP + ":9875/";

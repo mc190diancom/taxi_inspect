@@ -11,11 +11,16 @@ public class LawToCase implements Parcelable {
 
     private String jdkh;
 
-    public LawToCase(String wfxwId, String wfxw, String jdkh) {
+    private String sfzh;
+
+    public LawToCase(String wfxwId, String wfxw, String jdkh, String sfzh) {
         this.wfxwId = wfxwId;
         this.wfxw = wfxw;
         this.jdkh = jdkh;
+        this.sfzh = sfzh;
     }
+
+    public LawToCase(){}
 
     public String getWfxwId() {
         return wfxwId;
@@ -41,6 +46,15 @@ public class LawToCase implements Parcelable {
         this.jdkh = jdkh;
     }
 
+    public String getSfzh() {
+        return sfzh;
+    }
+
+    public void setSfzh(String sfzh) {
+        this.sfzh = sfzh;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -51,15 +65,17 @@ public class LawToCase implements Parcelable {
         dest.writeString(this.wfxwId);
         dest.writeString(this.wfxw);
         dest.writeString(this.jdkh);
+        dest.writeString(this.sfzh);
     }
 
     protected LawToCase(Parcel in) {
         this.wfxwId = in.readString();
         this.wfxw = in.readString();
         this.jdkh = in.readString();
+        this.sfzh = in.readString();
     }
 
-    public static final Parcelable.Creator<LawToCase> CREATOR = new Parcelable.Creator<LawToCase>() {
+    public static final Creator<LawToCase> CREATOR = new Creator<LawToCase>() {
         @Override
         public LawToCase createFromParcel(Parcel source) {
             return new LawToCase(source);

@@ -637,6 +637,8 @@ public class DetainCarFormActivity extends BaseInstrumentActivity<DetainCarFormP
         detainCarFormQ.setZH(mCase.getZH());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, detainCarFormQ, false), 0x0100);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, detainCarFormQ, false), 0x0001);
         } else if (!isUpdate) {
             mPresenter.addDetainCarForm(detainCarFormQ);
         } else {

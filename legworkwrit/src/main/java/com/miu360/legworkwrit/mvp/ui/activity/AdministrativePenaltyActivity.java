@@ -225,6 +225,8 @@ public class AdministrativePenaltyActivity extends BaseInstrumentActivity<Admini
         ap.setZFRY2(mCase.getZFRYNAME2());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, ap, false), 0x0010);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, ap, false), 0x0001);
         } else if (!isUpdate) {
             mPresenter.submitAdministrativeData(ap);
         } else {

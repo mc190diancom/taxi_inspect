@@ -205,6 +205,7 @@ public class LiveTranscriptPresenter extends BasePresenter<LiveTranscriptContrac
                             if (data != null) {
                                 String id = data.optString("id");
                                 mRootView.getID(id);
+                                liveTranscript.setID(id);
                             }
 
                             if (isAdd) {

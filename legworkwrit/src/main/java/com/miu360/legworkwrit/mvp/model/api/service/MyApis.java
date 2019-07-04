@@ -273,4 +273,20 @@ public interface MyApis {
     @Multipart
     @POST(Config.SERVER_SIGN)
     Observable<Result<Void>> uploadSignFile(@QueryMap Map<String, Object> map, @Part() MultipartBody.Part part);
+
+    @FormUrlEncoded
+    @POST(Config.SERVER_ZFRYSIGN)
+    Observable<Result<Void>> asyncSignAddJob(@FieldMap Map<String, Object> map);
+
+    @FormUrlEncoded
+    @POST(Config.SERVER_BJCRSIGN)
+    Observable<Result<Void>> testAnySignEncPackage(@FieldMap Map<String, Object> map);
+
+    @FormUrlEncoded
+    @POST(Config.SERVER_PDFSIGN)
+    Observable<Result<Void>> pdfsign(@FieldMap Map<String, Object> map);
+
+    @FormUrlEncoded
+    @POST(Config.SERVER_SIGN)
+    Observable<Result<Void>> addIdCode(@FieldMap Map<String, Object> map);
 }

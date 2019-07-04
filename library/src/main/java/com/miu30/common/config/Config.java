@@ -2,6 +2,7 @@ package com.miu30.common.config;
 
 import android.os.Environment;
 
+import com.miu30.common.MiuBaseApp;
 import com.miu360.library.BuildConfig;
 
 /**
@@ -31,6 +32,13 @@ public class Config {
     public static final String SERVER_TAXIINFO = SERVER + "/app_Taxi";
     public static final String SERVER_SIGN = SERVER + "/sign";
 
+    public static final String SERVER_BJCRSIGN = "http://" + IP + ":9878/" + "AnyWriteClientToolTest/anyWriteSignPDF";
+    public static final String SERVER_ZFRYSIGN = "http://" + IP + ":9878/" + "MssgPdfClientTest/asyncSignAddJob";
+    public static final String SERVER_PDFSIGN = "http://" + IP + ":9878/" + "ESSPDFClientToolTest/pdfsign";
+
+
+    public final static String path_root = PATHROOT + "/Android/data/" + MiuBaseApp.self.getPackageName() + "/files/";
+
     public static final int LAWLOCATION = 1;
 
     //缓存KEY
@@ -44,6 +52,7 @@ public class Config {
     public static final String JCX = "jcx";//检查项信息
     public static final String LAWTOC = "lawToC";//现场检查笔录需要用到的执法稽查信息
     public static final String JDKH = "jdkh";//监督卡号
+    public static final String SFZH = "sfzh";//身份证号
 
     public static final String DISTRICT = "district";//区域
     public static final String ILLEGALDETAIL = "illegalDetail";//违法行为
@@ -54,6 +63,7 @@ public class Config {
 
     public static final int SERVICE_PRINT = 1;
     public static final int SERVICE_CAR = 2;
+    public static final int SERVICE_SFZH = 3;
 
     public static final String CHOOSE_TYPE_KEY = "choose_type";
     public static final String PRINT_TIMES = "print_times";//打印次数

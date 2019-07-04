@@ -275,6 +275,20 @@ public class CacheManager {
 
 
     /**
+     * 缓存身份证
+     */
+    public void putSFZH(String sfzh) {
+        cache.put(Config.SFZH, sfzh);
+    }
+
+    /**
+     * 获取身份证
+     */
+    public String getSFZH() {
+        return (String) cache.get(Config.SFZH);
+    }
+
+    /**
      * 缓存停车场信息
      */
     public void putPark(String park) {
@@ -341,6 +355,7 @@ public class CacheManager {
         cache.remove(Config.DRIVER);
         cache.remove(Config.LAWTOC);
         cache.remove(Config.JDKH);
+        cache.remove(Config.SFZH);
     }
 
     /**

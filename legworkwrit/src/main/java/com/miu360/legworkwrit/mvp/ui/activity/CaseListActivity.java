@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -143,6 +144,9 @@ public class CaseListActivity extends BaseMvpActivity<CaseListPresenter> impleme
     public void getCaseBlTypeSuccess(Case c, ArrayList<BlType> types) {
         Intent intent;
         CacheManager.getInstance().putPrintTimes(types);
+        if(!TextUtils.isEmpty(c.getSFZH())){
+            CacheManager.getInstance().putSFZH(c.getSFZH());
+        }
         if (isPrint) {
             if (types != null && types.size() > 0) {
                 CacheManager.getInstance().putPrintTimes(types);

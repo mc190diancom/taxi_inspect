@@ -196,6 +196,8 @@ public class LiveTranscriptActivity extends BaseInstrumentActivity<LiveTranscrip
         lt.setZH(mCase.getZH());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, lt, false), 0x0110);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, lt, false), 0x0001);
         } else if (!isUpdate) {
             mPresenter.submitLiveData(lt, followInstruments);
         } else {

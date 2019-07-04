@@ -460,6 +460,7 @@ public class DetainCarFormPresenter extends BasePresenter<DetainCarFormContract.
                             try {
                                 putCashService(detainCarFormQ);
                                 id = result.getData().optString("id");
+                                detainCarFormQ.setID(id);
                                 mRootView.onCreateSuccess(new DetainCarForm(id, detainCarFormQ));
                                 if (isAdd) {
                                     updateMap.put(Config.STR_CARFORM, 1);

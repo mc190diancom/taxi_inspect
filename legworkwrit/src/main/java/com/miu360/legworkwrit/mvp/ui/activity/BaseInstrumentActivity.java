@@ -57,6 +57,8 @@ public abstract class BaseInstrumentActivity<P extends IPresenter> extends BaseM
     Button btnPreview;
     @BindView(R2.id.btn_save)
     Button btnSave;
+    @BindView(R2.id.btn_sign)
+    Button btnSign;
 
     @Inject
     HeaderHolder header;
@@ -66,7 +68,7 @@ public abstract class BaseInstrumentActivity<P extends IPresenter> extends BaseM
 
     public Case mCase;
     public boolean isUpdate;//判断文书是修改状态还是第一次填写
-    public int clickStatus;//0保存，1直接预览，2保存后预览
+    public int clickStatus;//0保存，1直接预览，2保存后预览，3已经保存过信息文书签字,4未保存信息文书签字
     public boolean isZFRY2;//当前账号是否是执法人员2
     public ArrayList<CaseStatus> followInstruments;
 
@@ -140,13 +142,25 @@ public abstract class BaseInstrumentActivity<P extends IPresenter> extends BaseM
                 });
 
         RxView.clicks(btnPreview)
-                .throttleFirst(1, TimeUnit.SECONDS) //两秒钟之内只取一个点击事件，防抖操作
+                .throttleFirst(1, TimeUnit.SECONDS) //1秒钟之内只取一个点击事件，防抖操作
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) {
                         clickStatus = 1;
                         if (!isUpdate || isConfirmed()) {
                             clickStatus = 2;
+                        }
+                        mValidator.validate();
+                    }
+                });
+        RxView.clicks(btnSign)
+                .throttleFirst(1, TimeUnit.SECONDS) //1秒钟之内只取一个点击事件，防抖操作
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) {
+                        clickStatus = 3;
+                        if (!isUpdate || isConfirmed()) {
+                            clickStatus = 4;
                         }
                         mValidator.validate();
                     }
@@ -188,36 +202,47 @@ public abstract class BaseInstrumentActivity<P extends IPresenter> extends BaseM
         UIUtils.toast(self, validError.getFailedContent(self, list), Toast.LENGTH_SHORT);
     }
 
-    Intent intent = null;
+    Intent intent = null,intent2= null;
     @Override
     public void startWebActivity(final ParentQ parentQ) {
         switch (instrumentType){
             case Config.T_LIVERECORD:
                 intent = WebViewActivity.getIntent(self, (LiveCheckRecordQ) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (LiveCheckRecordQ) parentQ, false);
                 break;
             case Config.T_ADMINISTRATIVE:
                 intent = WebViewActivity.getIntent(self, (AdministrativePenalty) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (AdministrativePenalty) parentQ, false);
                 break;
             case Config.T_TALKNOTICE:
                 intent = WebViewActivity.getIntent(self, (TalkNoticeQ) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (TalkNoticeQ) parentQ, false);
                 break;
             case Config.T_FRISTREGISTER:
                 intent = WebViewActivity.getIntent(self, (FristRegisterQ) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (FristRegisterQ) parentQ, false);
                 break;
             case Config.T_CARFORM:
                 intent = WebViewActivity.getIntent(self, (DetainCarFormQ) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (DetainCarFormQ) parentQ, false);
                 break;
             case Config.T_CARDECIDE:
                 intent = WebViewActivity.getIntent(self, (DetainCarDecideQ) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (DetainCarDecideQ) parentQ, false);
                 break;
             case Config.T_LIVETRANSCRIPT:
                 intent = WebViewActivity.getIntent(self, (LiveTranscript) parentQ, false);
+                intent2 = CaseSignActivity.getIntent(self, (LiveTranscript) parentQ, false);
                 break;
         }
-        if(clickStatus == 2){//因为的是点击预览，所以保存后直接跳转预览
+        if(clickStatus == 2){//因为是点击预览，所以保存后直接跳转预览
             followInstruments.clear();
             isUpdate = true;
             startActivityForResult(intent,0x0001);
+        }else if(clickStatus == 4){
+            followInstruments.clear();
+            isUpdate = true;
+            startActivityForResult(intent2,0x0001);
         }else{//因为点击的是保存，所以是提示预览
             Windows.singleChoice2(self
                     , "保存成功，是否跳转预览?"

@@ -36,6 +36,7 @@ public class Case implements Parcelable {
     private String LAT;
     private String LON;
     private String STATE;
+    private String SFZH;
 
     public Case() {
     }
@@ -176,7 +177,13 @@ public class Case implements Parcelable {
         this.STATE = STATE;
     }
 
+    public String getSFZH() {
+        return SFZH;
+    }
 
+    public void setSFZH(String SFZH) {
+        this.SFZH = SFZH;
+    }
 
     @Override
     public String toString() {
@@ -226,6 +233,7 @@ public class Case implements Parcelable {
         dest.writeString(this.LAT);
         dest.writeString(this.LON);
         dest.writeString(this.STATE);
+        dest.writeString(this.SFZH);
     }
 
     protected Case(Parcel in) {
@@ -246,6 +254,7 @@ public class Case implements Parcelable {
         this.LAT = in.readString();
         this.LON = in.readString();
         this.STATE = in.readString();
+        this.SFZH = in.readString();
     }
 
     public static final Creator<Case> CREATOR = new Creator<Case>() {

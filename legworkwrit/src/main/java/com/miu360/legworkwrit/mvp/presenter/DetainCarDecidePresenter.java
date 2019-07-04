@@ -347,8 +347,8 @@ public class DetainCarDecidePresenter extends BasePresenter<DetainCarDecideContr
                             if (data != null) {
                                 String id = data.optString("id");
                                 mRootView.getID(id);
+                                detainCarDecideQ.setID(id);
                             }
-
                             if (isAdd) {
                                 updateMap.put(Config.STR_CARDECIDE, 1);
                                 EventBus.getDefault().post(updateMap, Config.UPDATECASESTATUS);

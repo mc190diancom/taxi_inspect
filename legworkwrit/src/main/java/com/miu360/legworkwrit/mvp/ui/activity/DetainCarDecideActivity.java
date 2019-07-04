@@ -442,6 +442,8 @@ public class DetainCarDecideActivity extends BaseInstrumentActivity<DetainCarDec
         detainCarDecideQ.setZFRY2(mCase.getZFRYNAME2());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, detainCarDecideQ, false), 0x0101);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, detainCarDecideQ, false), 0x0001);
         } else if (!isUpdate) {
             mPresenter.addDetainCarDecide(detainCarDecideQ, followInstruments);
         } else {

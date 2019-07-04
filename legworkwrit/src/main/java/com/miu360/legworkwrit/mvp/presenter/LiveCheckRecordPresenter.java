@@ -1,6 +1,7 @@
 package com.miu360.legworkwrit.mvp.presenter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.miu30.common.util.Windows;
 import com.miu360.legworkwrit.R;
 import com.miu30.common.app.MyErrorHandleSubscriber;
 import com.miu30.common.util.RxUtils;
+import com.miu360.legworkwrit.app.service.GeneralInformationService;
 import com.miu360.legworkwrit.mvp.contract.LiveCheckRecordContract;
 import com.miu360.legworkwrit.mvp.data.CacheManager;
 import com.miu360.legworkwrit.mvp.model.entity.Case;
@@ -555,17 +557,17 @@ public class LiveCheckRecordPresenter extends BasePresenter<LiveCheckRecordContr
     /*
      * 现场检查笔录信息保存
      */
-    public void SubmitData(LiveCheckRecordQ lcrq, ArrayList<CaseStatus> followInstruments) {
+    public void SubmitData(LiveCheckRecordQ lcrq, ArrayList<CaseStatus> followInstruments,String sfzh) {
         Map<String, Object> map = new MapUtil().getMap("addXcjcblLjInfo", RequestParamsUtil.RequestLiveRecordInfo(lcrq));
-        submitData(map, lcrq, true, false, followInstruments);
+        submitData(map, lcrq, true, false, followInstruments,sfzh);
     }
 
     /*
      * 现场检查笔录信息修改
      */
-    public void UpdateData(LiveCheckRecordQ lcrq, boolean isChange, ArrayList<CaseStatus> followInstruments) {
+    public void UpdateData(LiveCheckRecordQ lcrq, boolean isChange, ArrayList<CaseStatus> followInstruments,String sfzh) {
         Map<String, Object> map = new MapUtil().getMap("updateXcjcblInfo", RequestParamsUtil.RequestLiveRecordInfo(lcrq));
-        submitData(map, lcrq, false, isChange, followInstruments);
+        submitData(map, lcrq, false, isChange, followInstruments,sfzh);
     }
 
     private String WFQX = "", WFNR = "", SEX = "";
@@ -577,8 +579,11 @@ public class LiveCheckRecordPresenter extends BasePresenter<LiveCheckRecordContr
     }
 
 
-    private void submitData(Map<String, Object> map, final LiveCheckRecordQ lcrq, final boolean isAdd, final boolean isChange, final ArrayList<CaseStatus> followInstruments) {
+    private void submitData(Map<String, Object> map, final LiveCheckRecordQ lcrq, final boolean isAdd, final boolean isChange, final ArrayList<CaseStatus> followInstruments,String sfzh) {
         updateMap.clear();
+        if(!TextUtils.isEmpty(sfzh)){
+            startUploadSfzhService(sfzh);
+        }
 
         if (waiting == null) {
             waiting = Windows.waiting(activity);
@@ -598,7 +603,7 @@ public class LiveCheckRecordPresenter extends BasePresenter<LiveCheckRecordContr
                             putCashService(lcrq);
                             String id = result.getData().optString("id");
                             mRootView.getID(id);
-
+                            lcrq.setID(id);
                             if (isAdd) {
                                 updateMap.put(Config.STR_LIVERECORD, 1);
                                 EventBus.getDefault().post(updateMap, Config.UPDATECASESTATUS);
@@ -686,6 +691,14 @@ public class LiveCheckRecordPresenter extends BasePresenter<LiveCheckRecordContr
                     }
 
                 });
+    }
+
+    private void startUploadSfzhService(String sfzh) {
+        Intent intent = new Intent(activity, GeneralInformationService.class);
+        intent.putExtra("Flag", Config.SERVICE_SFZH);
+        intent.putExtra("caseId", mCase.getID());
+        intent.putExtra("sfzh", sfzh);
+        activity.startService(intent);
     }
 
     private void hideWaiting() {

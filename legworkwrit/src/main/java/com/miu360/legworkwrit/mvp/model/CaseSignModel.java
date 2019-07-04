@@ -27,4 +27,19 @@ public class CaseSignModel extends BaseModel implements CaseSignContract.Model {
     public Observable<Result<Void>> uploadSignFile(Map<String, Object> map, MultipartBody.Part part) {
         return mRepositoryManager.obtainRetrofitService(MyApis.class).uploadSignFile(map, part);
     }
+
+    @Override
+    public Observable<Result<Void>> testAnySignEncPackage(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).testAnySignEncPackage(map);
+    }
+
+    @Override
+    public Observable<Result<Void>> asyncSignAddJob(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).asyncSignAddJob(map);
+    }
+
+    @Override
+    public Observable<Result<Void>> pdfsign(Map<String, Object> map) {
+        return mRepositoryManager.obtainRetrofitService(MyApis.class).pdfsign(map);
+    }
 }

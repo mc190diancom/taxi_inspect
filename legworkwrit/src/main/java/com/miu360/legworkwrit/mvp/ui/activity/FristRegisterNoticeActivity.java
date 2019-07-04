@@ -601,6 +601,8 @@ public class FristRegisterNoticeActivity extends BaseInstrumentActivity<FristReg
         register.setZFRY2(mCase.getZFRYNAME2());
         if (1 == clickStatus) {
             startActivityForResult(WebViewActivity.getIntent(self, register, false), 0x0011);
+        } else if (3 == clickStatus) {
+            startActivityForResult(CaseSignActivity.getIntent(self, register, false), 0x0001);
         } else if (!isUpdate) {
             register.setQSRQZ("");
             mPresenter.createFristRegister(register, followInstruments);

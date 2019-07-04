@@ -2846,7 +2846,7 @@ public class LawInpsectActivity extends BaseActivity implements OnClickListener,
 		CacheManager.getInstance().putDriverInfo(driverInfo);
 		Intent intent = new Intent(self, CreateCaseActivity.class);
 		intent.putExtra("case",c);
-		intent.putExtra("lawToLive",new LawToCase(wfxwId,TextUtils.isEmpty(check_context.getText()) ? "" : check_context.getText().toString(),cyzgz));
+		intent.putExtra("lawToLive",new LawToCase(wfxwId,TextUtils.isEmpty(check_context.getText()) ? "" : check_context.getText().toString(),cyzgz,ID_CARD));
 		ActivityUtils.startActivity(intent);
 		finish();
 	}
